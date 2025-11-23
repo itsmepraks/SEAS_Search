@@ -3,6 +3,86 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import time
 import os
+import re
+
+def scrape_bulletin_courses():
+    """
+    Scrapes course descriptions from the GWU Bulletin.
+    """
+    url = "https://bulletin.gwu.edu/courses/csci/"
+    print(f"Starting scrape of GWU Bulletin: {url}...")
+    
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching bulletin: {e}")
+        return
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+    
+    # Find all course title blocks
+    # Based on inspection: <p class="courseblocktitle"><strong>CSCI 1010. ...</strong></p>
+    course_titles = soup.find_all('p', class_='courseblocktitle')
+    
+    all_courses = []
+    print(f"Found {len(course_titles)} course entries. Parsing...")
+
+    for title_p in course_titles:
+        try:
+            # Extract full text from the title block (e.g., "CSCI 1010. Orientation. 1 Credit.")
+            full_title_text = title_p.get_text(strip=True)
+            
+            # Regex to parse: Code. Title. Credits.
+            # Handles "CSCI 1010", "CSCI 1010W", spaces, non-breaking spaces, etc.
+            # Example: "CSCI 1010. Computer Science Orientation. 1 Credit."
+            match = re.match(r"^(CSCI\s*\d+[A-Z]*)\.\s*(.+?)\.\s*(.+?)\.$", full_title_text)
+            
+            if match:
+                code = match.group(1).replace('\xa0', ' ').strip() # Clean non-breaking spaces
+                title = match.group(2).strip()
+                credits_text = match.group(3).strip()
+            else:
+                # Fallback if strict regex fails
+                parts = full_title_text.split('.', 2)
+                if len(parts) >= 3:
+                    code = parts[0].strip().replace('\xa0', ' ')
+                    title = parts[1].strip()
+                    credits_text = parts[2].strip().rstrip('.')
+                else:
+                    print(f"Skipping malformed title: {full_title_text}")
+                    continue
+
+            # Look for description in the next sibling
+            # The description is usually in a <p class="courseblockdesc"> immediately following
+            description = "No description available."
+            next_elem = title_p.find_next_sibling()
+            
+            if next_elem and next_elem.name == 'p' and 'courseblockdesc' in next_elem.get('class', []):
+                description = next_elem.get_text(strip=True)
+            
+            all_courses.append({
+                "course_code": code,
+                "title": title,
+                "credits": credits_text,
+                "description": description,
+                "source": "bulletin"
+            })
+            
+        except Exception as e:
+            print(f"Error parsing course block: {e}")
+            continue
+
+    # Save to CSV
+    df = pd.DataFrame(all_courses)
+    print(f"Total bulletin courses scraped: {len(df)}")
+    
+    output_path = "data/bulletin_courses.csv"
+    # Ensure data directory exists
+    os.makedirs('data', exist_ok=True)
+    
+    df.to_csv(output_path, index=False)
+    print(f"Bulletin data saved to {output_path}")
 
 def scrape_gwu_courses():
     base_url = "https://my.gwu.edu/mod/pws/courses.cfm"
@@ -129,5 +209,9 @@ def scrape_gwu_courses():
     print(f"Data saved to {output_path}")
 
 if __name__ == "__main__":
+    # Scrape the official schedule
     scrape_gwu_courses()
+    
+    # Scrape the bulletin for descriptions
+    scrape_bulletin_courses()
 

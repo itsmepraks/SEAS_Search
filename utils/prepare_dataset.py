@@ -2,7 +2,24 @@ import pandas as pd
 import json
 import os
 
-def create_chat_message(row):
+def load_descriptions():
+    """Loads course descriptions from bulletin_courses.csv if available."""
+    path = "data/bulletin_courses.csv"
+    descriptions = {}
+    if os.path.exists(path):
+        try:
+            df = pd.read_csv(path)
+            # Normalize course code to match spring_2026 format (e.g. "CSCI 1010")
+            for _, row in df.iterrows():
+                code = str(row['course_code']).strip()
+                desc = str(row['description']).strip()
+                descriptions[code] = desc
+            print(f"Loaded {len(descriptions)} descriptions from bulletin.")
+        except Exception as e:
+            print(f"Error loading descriptions: {e}")
+    return descriptions
+
+def create_chat_message(row, descriptions):
     # Construct a helpful response based on the course data
     # Fields: status, crn, subject_code, section, title, credits, instructor, building_room, day_time, date_range
     
@@ -25,13 +42,21 @@ def create_chat_message(row):
     crn = str(row['crn'])
     status = str(row['status'])
     
+    # Get description if available
+    description = descriptions.get(course_code, "")
+    
     # System prompt
     system_content = "You are a helpful assistant providing information about GWU Computer Science courses for Spring 2026."
     system_msg = {"role": "system", "content": system_content}
     
     # Variation 1: General Info
     user_msg1 = {"role": "user", "content": f"Tell me about {course_code}."}
-    assistant_msg1 = {"role": "assistant", "content": f"The course {course_code}: {title} is taught by {instructor}. It meets on {schedule} in {room}. The status is {status} (CRN: {crn})."}
+    
+    content1 = f"The course {course_code}: {title} is taught by {instructor}. It meets on {schedule} in {room}. The status is {status} (CRN: {crn})."
+    if description and description != "nan":
+        content1 += f"\n\nDescription: {description}"
+        
+    assistant_msg1 = {"role": "assistant", "content": content1}
     
     yield {"messages": [system_msg, user_msg1, assistant_msg1]}
     
@@ -52,6 +77,12 @@ def create_chat_message(row):
     assistant_msg4 = {"role": "assistant", "content": f"CRN {crn} corresponds to {course_code}: {title}. It meets on {schedule}."}
     
     yield {"messages": [system_msg, user_msg4, assistant_msg4]}
+    
+    # Variation 5: Description specific (if available)
+    if description and description != "nan":
+        user_msg5 = {"role": "user", "content": f"What is covered in {course_code}?"}
+        assistant_msg5 = {"role": "assistant", "content": f"{course_code}: {title}. {description}"}
+        yield {"messages": [system_msg, user_msg5, assistant_msg5]}
 
 def main():
     input_path = "data/spring_2026_courses.csv"
@@ -60,12 +91,14 @@ def main():
         return
 
     df = pd.read_csv(input_path)
+    descriptions = load_descriptions()
+    
     output_file = "data/course_finetune.jsonl"
     
     count = 0
     with open(output_file, 'w') as f:
         for _, row in df.iterrows():
-            for example in create_chat_message(row):
+            for example in create_chat_message(row, descriptions):
                 f.write(json.dumps(example) + "\n")
                 count += 1
                 
