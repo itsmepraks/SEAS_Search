@@ -1,30 +1,119 @@
-# Knowledge Graph Question Answering System for GW Courses
+# SEAS Search - GWU Course Search System
 
-Team: Anurag Dhungana and Prakriti Bista
+A fine-tuned LLM-based question-answering system for GWU Computer Science courses, providing information about course schedules, instructors, descriptions, and availability for Spring 2026.
 
-We plan to build an intelligent question-answering system over a custom knowledge graph of
-GW courses initially focusing on SEAS, including prerequisites, topics, professors, and
-degree requirements.
+## Overview
 
-Courses naturally form a graph structure where nodes represent courses, professors, and
-topics, connected by relationships like "prerequisite," "taught_by," and "covers_topic.
-Through this project, we aim to explore Graph Attention Networks for multi-hop reasoning,
-LoRA fine-tuning for domain adaptation, knowledge graph construction, and querying, and
-hybrid architectures combining structured retrieval with language generation. We also plan to
-touch on evals and QA for the fine-tuned LLM.
+This project fine-tunes Llama 3.1 8B to answer questions about GWU Computer Science courses by combining:
+- **Real-time schedule data** from GWU's course schedule system
+- **Course descriptions** from the GWU Bulletin
+- **Fine-tuned language model** for natural language understanding
 
-The system will combine graph-based retrieval with LLM-based answer generation. Example
-queries that we plan to answer might be something like "Which courses should I take to
-prepare for computer vision research if I've completed CSCI 6212?", “Which professors teach
-courses that are prerequisites for both Computer Vision and Natural Language Processing?”,
-etc, where it goes through multiple hop reasoning too.
+## Project Structure
 
-## Data
+```
+SEAS_Search/
+├── backend/
+│   ├── nb/                          # Jupyter notebooks for training
+│   │   ├── Llama3.1_(8B)-finetuning-optimized.ipynb  # Curret fine-tuning notebook
+│   │   ├── Llama3.1_(8B)-finetuning.ipynb            # Original fine-tuning notebook
+│   │   └── Meta_Synthetic_Data_Llama3_2_(3B).ipynb   # Synthetic data generation (optional)
+│   ├── data/                        # Training data
+│   │   ├── spring_2026_courses.csv      # Course schedule data
+│   │   ├── bulletin_courses.csv          # Course descriptions
+│   │   └── course_finetune.jsonl         # Formatted training dataset
+│   └── utils/                       # Data preparation scripts
+│       ├── scrape_courses.py        # Scrapes schedule + bulletin data
+│       └── prepare_dataset.py       # Converts CSV to training format
+└── frontend/                        # Web interface (work in progress)
+```
 
-We are gathering the data from [GW's Course Schedule](https://my.gwu.edu/mod/pws/courses.cfm?campId=1&termId=202601&subjId=CSCI)
+## Notebooks
 
-We have an initial version of the data in `combined_courses.csv`
+### 🎯 `Llama3.1_(8B)-finetuning-optimized.ipynb`
 
-We are tracking the tasks in a make-shift task tracker, which we are trying to update. [Link](https://nn-task-tracker.vercel.app/)\
+**Purpose:** Optimized fine-tuning with best practices
 
-Last updated on Nov 21, 2025
+**Features:**
+- Train/Validation split (80/20) to prevent overfitting
+- Early stopping based on validation loss
+- Optimized hyperparameters (cosine annealing, lower learning rate)
+- Evaluation metrics and checkpointing
+- Improved inference with proper stopping criteria
+
+**Usage:**
+1. Ensure `course_finetune.jsonl` exists in the notebook directory
+2. Run all cells sequentially
+3. Model saves to `lora_model_optimized/` and `merged_model_optimized/`
+
+### 📝 `Llama3.1_(8B)-finetuning.ipynb` (Original)
+
+**Purpose:** Basic fine-tuning implementation
+
+**Features:**
+- Simple training loop
+- 3 epochs fixed training
+- Basic inference setup
+
+**Note:** Use the optimized version for better results.
+
+### 🔧 `Meta_Synthetic_Data_Llama3_2_(3B).ipynb` (Optional)
+
+**Purpose:** Generate synthetic Q&A pairs from course bulletin
+
+**Features:**
+- Uses Llama 3.2 3B to generate additional training data
+- Scrapes bulletin descriptions
+- Creates question-answer pairs
+
+**Note:** Currently not required - the main pipeline uses real schedule data.
+
+## Quick Start
+
+### 1. Prepare Data
+
+```bash
+# Scrape course data
+cd backend
+python utils/scrape_courses.py
+
+# Generate training dataset
+python utils/prepare_dataset.py
+```
+
+This creates:
+- `data/spring_2026_courses.csv` - Schedule data
+- `data/bulletin_courses.csv` - Course descriptions  
+- `data/course_finetune.jsonl` - Training dataset
+
+### 2. Fine-tune Model
+
+1. Open `backend/nb/Llama3.1_(8B)-finetuning-optimized.ipynb`
+2. Run all cells
+3. Model will be saved after training completes
+
+### 3. Test the Model
+
+The notebook includes inference cells that test queries like:
+- "Who Teaches Machine Learning?"
+- "What courses are available on Tuesdays?"
+- "Tell me about CSCI 1012."
+
+## Data Sources
+
+- **Course Schedule:** [GWU Course Schedule](https://my.gwu.edu/mod/pws/courses.cfm?campId=1&termId=202601&subjId=CSCI)
+- **Course Descriptions:** [GWU Bulletin - CSCI](https://bulletin.gwu.edu/courses/csci/)
+
+## Current Status
+
+- ✅ Data scraping pipeline (schedule + bulletin)
+- ✅ Dataset preparation and formatting
+- ✅ Fine-tuning implementation (original + optimized)
+- ✅ Model inference and testing
+- 🚧 Frontend integration (in progress)
+
+## Team
+
+Anurag Dhungana and Prakriti Bista
+
+Last updated: November 26, 2025
