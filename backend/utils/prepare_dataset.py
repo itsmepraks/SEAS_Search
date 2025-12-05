@@ -6,6 +6,8 @@ def load_descriptions():
     """Loads course descriptions from bulletin_courses.csv if available."""
     path = "data/bulletin_courses.csv"
     descriptions = {}
+    subject_info = {}
+
     if os.path.exists(path):
         try:
             df = pd.read_csv(path)
@@ -14,26 +16,34 @@ def load_descriptions():
                 code = str(row['course_code']).strip()
                 desc = str(row['description']).strip()
                 descriptions[code] = desc
+
+                # Track subject info for better prompts
+                if 'subject' in row:
+                    subject = str(row['subject']).strip()
+                    subject_info[subject] = subject_info.get(subject, 0) + 1
+
             print(f"Loaded {len(descriptions)} descriptions from bulletin.")
+            if subject_info:
+                print(f"Subjects found: {dict(subject_info)}")
         except Exception as e:
             print(f"Error loading descriptions: {e}")
-    return descriptions
+    return descriptions, subject_info
 
-def create_chat_message(row, descriptions):
+def create_chat_message(row, descriptions, subjects_list):
     # Construct a helpful response based on the course data
-    # Fields: status, crn, subject_code, section, title, credits, instructor, building_room, day_time, date_range
-    
-    # Cleaning subject code if it looks like "CSCI CSCI 1012.10"
-    raw_code = str(row['subject_code'])
-    if "Details" in raw_code:
-        raw_code = raw_code.replace("Details", "").strip()
-    
+    # Fields: subject, status, crn, course_code, section, title, credits, instructor, building_room, day_time, date_range
+
+    # Get course code (now directly from the new format)
+    course_code = str(row.get('course_code', row.get('subject_code', ''))).strip()
+
+    # Fallback: Clean if it looks like "CSCI CSCI 1012.10" (old format)
+    if "Details" in course_code:
+        course_code = course_code.replace("Details", "").strip()
+
     # Attempt to normalize "CSCI CSCI" repetition if present
-    parts = raw_code.split()
+    parts = course_code.split()
     if len(parts) >= 2 and parts[0] == parts[1]:
         course_code = " ".join(parts[1:])
-    else:
-        course_code = raw_code
 
     title = str(row['title'])
     instructor = str(row['instructor'])
@@ -41,12 +51,17 @@ def create_chat_message(row, descriptions):
     room = str(row['building_room'])
     crn = str(row['crn'])
     status = str(row['status'])
-    
+
     # Get description if available
     description = descriptions.get(course_code, "")
-    
-    # System prompt
-    system_content = "You are a helpful assistant providing information about GWU Computer Science courses for Spring 2026."
+
+    # Dynamic system prompt based on available subjects
+    if len(subjects_list) > 1:
+        subject_names = " and ".join(subjects_list)
+        system_content = f"You are a helpful assistant providing information about GWU {subject_names} courses for Spring 2026."
+    else:
+        system_content = f"You are a helpful assistant providing information about GWU {subjects_list[0]} courses for Spring 2026."
+
     system_msg = {"role": "system", "content": system_content}
     
     # Variation 1: General Info
@@ -90,19 +105,59 @@ def main():
         print(f"Error: {input_path} not found. Please run scrape_courses.py first.")
         return
 
+    print("\n" + "="*70)
+    print("📚 Preparing Fine-tuning Dataset")
+    print("="*70)
+
+    # Load schedule data
     df = pd.read_csv(input_path)
-    descriptions = load_descriptions()
-    
+    print(f"Loaded {len(df)} course entries from schedule.")
+
+    # Load descriptions and subject info
+    descriptions, subject_info = load_descriptions()
+
+    # Get unique subjects from schedule data
+    if 'subject' in df.columns:
+        subjects_in_data = sorted(df['subject'].unique())
+        print(f"Subjects in dataset: {subjects_in_data}")
+    else:
+        subjects_in_data = ["Computer Science"]  # Fallback for old format
+
+    # Map subject codes to full names
+    subject_mapping = {
+        "CSCI": "Computer Science",
+        "DS": "Data Science",
+        "DATS": "Data Science",
+        "MATH": "Mathematics",
+        "STAT": "Statistics",
+    }
+    subjects_list = [subject_mapping.get(s, s) for s in subjects_in_data]
+
     output_file = "data/course_finetune.jsonl"
-    
+
     count = 0
+    subject_counts = {}
+
     with open(output_file, 'w') as f:
         for _, row in df.iterrows():
-            for example in create_chat_message(row, descriptions):
+            subject = row.get('subject', 'CSCI')
+            subject_counts[subject] = subject_counts.get(subject, 0) + 1
+
+            for example in create_chat_message(row, descriptions, subjects_list):
                 f.write(json.dumps(example) + "\n")
                 count += 1
-                
-    print(f"Successfully created dataset at {output_file} with {count} examples.")
+
+    print("\n" + "="*70)
+    print("📊 DATASET SUMMARY")
+    print("="*70)
+    print(f"Total training examples: {count}")
+    print(f"Examples per subject:")
+    for subject, cnt in sorted(subject_counts.items()):
+        examples_per_course = count // len(df) if len(df) > 0 else 0
+        print(f"  • {subject}: {cnt} courses × ~{examples_per_course} variations = ~{cnt * examples_per_course} examples")
+    print(f"\nSaved to: {output_file}")
+    print("="*70 + "\n")
+    print("✅ Dataset preparation complete!")
 
 if __name__ == "__main__":
     main()
