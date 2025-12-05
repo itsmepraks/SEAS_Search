@@ -126,8 +126,8 @@ def main():
     # Map subject codes to full names
     subject_mapping = {
         "CSCI": "Computer Science",
-        "DS": "Data Science",
-        "DATS": "Data Science",
+        "DATS": "Data Science",  # Official GWU code
+        "DS": "Data Science",    # Alias (for backward compatibility)
         "MATH": "Mathematics",
         "STAT": "Statistics",
     }

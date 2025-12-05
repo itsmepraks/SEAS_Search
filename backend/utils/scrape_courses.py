@@ -14,11 +14,13 @@ SUBJECTS = {
     "CSCI": {
         "schedule_id": "CSCI",
         "bulletin_url": "https://bulletin.gwu.edu/courses/csci/",
+        "bulletin_code": "CSCI",  # Course code prefix in bulletin
         "full_name": "Computer Science"
     },
-    "DS": {
+    "DATS": {  # Using DATS for consistency with course codes
         "schedule_id": "DATS",
         "bulletin_url": "https://bulletin.gwu.edu/courses/dats/",
+        "bulletin_code": "DATS",  # Course code prefix in bulletin
         "full_name": "Data Science"
     },
     # Easy to add more subjects:
@@ -38,18 +40,24 @@ SUBJECTS = {
 DEFAULT_TERM_ID = 202601  # Spring 2026
 DEFAULT_CAMPUS_ID = 1
 
-def scrape_subject_bulletin(subject_code, url):
+def scrape_subject_bulletin(subject_code, url, bulletin_code=None):
     """
     Scrapes course descriptions for a specific subject from the GWU Bulletin.
 
     Args:
-        subject_code: Subject code (e.g., "CSCI", "DS")
+        subject_code: Subject code for internal use (e.g., "CSCI", "DS")
         url: Bulletin URL for this subject
+        bulletin_code: Actual course code prefix in bulletin (e.g., "DATS" for DS)
+                      If None, uses subject_code
 
     Returns:
         List of course dictionaries with metadata
     """
-    print(f"  Scraping bulletin: {url}...")
+    # Use bulletin_code if provided, otherwise use subject_code
+    if bulletin_code is None:
+        bulletin_code = subject_code
+
+    print(f"  Scraping bulletin: {url} (looking for {bulletin_code} courses)...")
 
     try:
         response = requests.get(url)
@@ -72,8 +80,8 @@ def scrape_subject_bulletin(subject_code, url):
             full_title_text = title_p.get_text(strip=True)
 
             # Regex to parse: Code. Title. Credits.
-            # Now supports multiple subject codes (CSCI, DS, MATH, etc.)
-            pattern = rf"^({subject_code}\s*\d+[A-Z]*)\.\s*(.+?)\.\s*(.+?)\.$"
+            # Use bulletin_code (e.g., "DATS") to match actual course codes
+            pattern = rf"^({bulletin_code}\s*\d+[A-Z]*)\.\s*(.+?)\.\s*(.+?)\.$"
             match = re.match(pattern, full_title_text)
 
             if match:
@@ -264,8 +272,12 @@ def scrape_all_subjects(subjects_to_scrape=None, incremental=False, term_id=DEFA
         )
         all_schedule_data.extend(schedule_courses)
 
-        # Scrape bulletin
-        bulletin_courses = scrape_subject_bulletin(subject_code, subject_info['bulletin_url'])
+        # Scrape bulletin (pass bulletin_code if different from subject_code)
+        bulletin_courses = scrape_subject_bulletin(
+            subject_code=subject_code,
+            url=subject_info['bulletin_url'],
+            bulletin_code=subject_info.get('bulletin_code', subject_code)
+        )
         all_bulletin_data.extend(bulletin_courses)
 
         time.sleep(1)  # Be polite to servers
