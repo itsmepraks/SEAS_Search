@@ -235,6 +235,17 @@ The notebook includes inference cells that test queries like:
 - **Course Schedule:** [GWU Course Schedule](https://my.gwu.edu/mod/pws/courses.cfm?campId=1&termId=202601&subjId=CSCI)
 - **Course Descriptions:** [GWU Bulletin - CSCI](https://bulletin.gwu.edu/courses/csci/)
 
+## Live Demo
+
+🌐 **Deployed Application**: [https://seas-search.vercel.app/](https://seas-search.vercel.app/)
+
+The live demo includes:
+- Interactive knowledge graph visualization
+- Course data exploration
+- Training methodology and results
+- Architecture overview
+- Key learnings and insights
+
 ## Current Status
 
 - ✅ Data scraping pipeline (schedule + bulletin)
@@ -242,7 +253,7 @@ The notebook includes inference cells that test queries like:
 - ✅ Fine-tuning implementation (original + optimized)
 - ✅ Knowledge Graph QA system with multi-hop reasoning
 - ✅ Model inference and testing
-- 🚧 Frontend integration (in progress)
+- ✅ Frontend integration and deployment
 
 ## Team
 
