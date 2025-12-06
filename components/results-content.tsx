@@ -76,14 +76,39 @@ export function ResultsContent() {
 
   const renderChart = (chart: ReactNode) => (isClient ? chart : <div className="h-full w-full rounded-lg bg-muted/10" />)
 
+  // Create comparison data - sample standard data if it's much larger than others
+  const standardEpochs = trainingMetrics?.approaches.standard.epochs || []
+  const optimizedEpochs = trainingMetrics?.approaches.optimized.epochs || []
+  const kgBasedEpochs = trainingMetrics?.approaches.kg_based.epochs || []
+  
+  const maxComparisonLength = Math.max(
+    optimizedEpochs.length,
+    kgBasedEpochs.length,
+    Math.min(standardEpochs.length, 100) // Limit to 100 points for comparison
+  )
+
   const combinedLossData = trainingMetrics
-    ? trainingMetrics.approaches.standard.epochs.map((_, index) => ({
-        epoch: index + 1,
-        standard: trainingMetrics.approaches.standard.epochs[index]?.train_loss || 0,
-        optimized: trainingMetrics.approaches.optimized.epochs[index]?.train_loss || 0,
-        kg_based: trainingMetrics.approaches.kg_based.epochs[index]?.train_loss || 0,
-      }))
+    ? Array.from({ length: maxComparisonLength }, (_, index) => {
+        // Sample standard data if it's too large
+        const standardIndex = standardEpochs.length > maxComparisonLength
+          ? Math.floor((index / maxComparisonLength) * standardEpochs.length)
+          : index
+        
+        return {
+          epoch: index + 1,
+          standard: standardEpochs[standardIndex]?.train_loss || 0,
+          optimized: optimizedEpochs[index]?.train_loss || 0,
+          kg_based: kgBasedEpochs[index]?.train_loss || 0,
+        }
+      })
     : []
+
+  // Full standard data for detailed view
+  const standardLossData = standardEpochs.map((entry, index) => ({
+    step: index + 1,
+    loss: entry.train_loss,
+    learning_rate: entry.learning_rate,
+  }))
 
   const comparisonData =
     modelComparison?.comparisons.map((c) => ({
@@ -184,9 +209,65 @@ export function ResultsContent() {
                   </LineChart>
                 </ResponsiveContainer>
               )}
-              <p className="text-xs text-muted-foreground/60 mt-4">KG-based approach achieves the lowest training loss, converging faster than other methods.</p>
+              <p className="text-xs text-muted-foreground/60 mt-4">
+                {standardEpochs.length > 100 && "Standard approach data is sampled for comparison. "}
+                KG-based approach achieves the lowest training loss, converging faster than other methods.
+              </p>
             </Card>
           </motion.div>
+
+          {/* Detailed Standard Training Loss */}
+          {standardEpochs.length > 50 && (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.05 }} className="mb-8">
+              <Card className="p-6 bg-card/50 border-border/50">
+                <h3 className="font-semibold text-lg mb-4">Standard Fine-tuning: Detailed Training Loss ({standardEpochs.length} steps)</h3>
+                {renderChart(
+                  <ResponsiveContainer width="100%" height={400}>
+                    <LineChart data={standardLossData}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(100, 116, 139, 0.1)" />
+                      <XAxis 
+                        dataKey="step" 
+                        label={{ value: "Training Step", position: "insideBottom", offset: -5 }} 
+                        stroke="rgba(148, 163, 184, 0.5)"
+                        tick={{ fontSize: 12 }}
+                      />
+                      <YAxis 
+                        label={{ value: "Loss", angle: -90, position: "insideLeft" }} 
+                        stroke="rgba(148, 163, 184, 0.5)"
+                      />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: "rgba(15, 23, 42, 0.9)",
+                          border: "1px solid rgba(100, 116, 139, 0.3)",
+                          borderRadius: "8px",
+                        }}
+                        formatter={(value: number, name: string) => {
+                          if (name === "loss") return [value.toFixed(4), "Loss"]
+                          if (name === "learning_rate") return [value.toExponential(2), "Learning Rate"]
+                          return [value, name]
+                        }}
+                      />
+                      <Legend />
+                      <Line 
+                        type="monotone" 
+                        dataKey="loss" 
+                        stroke="#f59e0b" 
+                        strokeWidth={2} 
+                        name="Training Loss" 
+                        dot={false}
+                        activeDot={{ r: 6 }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                )}
+                <p className="text-xs text-muted-foreground/60 mt-4">
+                  Complete training loss curve showing all {standardEpochs.length} training steps from the standard fine-tuning approach.
+                  Final loss: {trainingMetrics?.approaches.standard.final_metrics.final_loss.toFixed(4)} | 
+                  Training time: {trainingMetrics?.approaches.standard.final_metrics.training_time_minutes.toFixed(2)} minutes
+                </p>
+              </Card>
+            </motion.div>
+          )}
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="grid md:grid-cols-2 gap-6 mb-8">
             <Card className="p-6 bg-card/50 border-border/50">
