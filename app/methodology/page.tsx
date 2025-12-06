@@ -1,10 +1,14 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, FlaskConical, TrendingUp, Network, CheckCircle2, AlertCircle } from "lucide-react"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import { Navigation } from "@/components/navigation"
+import { BackToTop } from "@/components/back-to-top"
+import { ArrowRight, FlaskConical, TrendingUp, Network, CheckCircle2, AlertCircle, Route, Lightbulb, BarChart3 } from "lucide-react"
 
 const approaches = [
   {
@@ -66,60 +70,86 @@ const timeline = [
 
 export default function MethodologyPage() {
   return (
-    <div className="min-h-screen bg-background pt-20 pb-12">
-      <div className="mx-auto max-w-6xl px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">Methodology</h1>
-          <p className="text-muted-foreground text-lg">
-            Evolution from synthetic data to knowledge graph-based reasoning
-          </p>
-        </motion.div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <BackToTop />
+      <div className="pt-20 pb-12">
+        <div className="mx-auto max-w-6xl px-4">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">Methodology</h1>
+            <p className="text-muted-foreground text-lg">
+              Evolution from synthetic data to knowledge graph-based reasoning
+            </p>
+          </motion.div>
 
-        {/* The Journey */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-12"
-        >
-          <Card className="p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20">
-            <h3 className="font-semibold text-lg mb-4">The Research Journey</h3>
-            <div className="grid md:grid-cols-4 gap-4">
-              {timeline.map((step, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.2 + i * 0.1 }}
-                  className="relative"
-                >
-                  <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">
-                    {step.phase}
+          {/* Tabs */}
+          <Tabs defaultValue="journey" className="w-full">
+            <TabsList className="mb-6 w-full justify-start overflow-x-auto">
+              <TabsTrigger value="journey" className="flex items-center gap-2">
+                <Route className="h-4 w-4" />
+                Journey
+              </TabsTrigger>
+              <TabsTrigger value="approaches" className="flex items-center gap-2">
+                <FlaskConical className="h-4 w-4" />
+                Approaches
+              </TabsTrigger>
+              <TabsTrigger value="innovation" className="flex items-center gap-2">
+                <Lightbulb className="h-4 w-4" />
+                Innovation
+              </TabsTrigger>
+              <TabsTrigger value="comparison" className="flex items-center gap-2">
+                <BarChart3 className="h-4 w-4" />
+                Comparison
+              </TabsTrigger>
+            </TabsList>
+
+            {/* Journey Tab */}
+            <TabsContent value="journey" className="mt-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className="p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20">
+                  <h3 className="font-semibold text-lg mb-4">The Research Journey</h3>
+                  <div className="grid md:grid-cols-4 gap-4">
+                    {timeline.map((step, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 + i * 0.1 }}
+                        className="relative"
+                      >
+                        <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                          {step.phase}
+                        </div>
+                        <p className="text-sm text-foreground/80 leading-relaxed">{step.text}</p>
+                        {i < timeline.length - 1 && (
+                          <ArrowRight className="hidden md:block absolute -right-6 top-8 h-4 w-4 text-muted-foreground/40" />
+                        )}
+                      </motion.div>
+                    ))}
                   </div>
-                  <p className="text-sm text-foreground/80 leading-relaxed">{step.text}</p>
-                  {i < timeline.length - 1 && (
-                    <ArrowRight className="hidden md:block absolute -right-6 top-8 h-4 w-4 text-muted-foreground/40" />
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </Card>
-        </motion.div>
+                </Card>
+              </motion.div>
+            </TabsContent>
 
-        {/* Approaches Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="space-y-6 mb-12"
-        >
-          <h3 className="text-2xl font-bold">Four Approaches Explored</h3>
+            {/* Approaches Tab */}
+            <TabsContent value="approaches" className="mt-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-6"
+              >
+                <h3 className="text-2xl font-bold">Four Approaches Explored</h3>
           <div className="grid gap-6">
             {approaches.map((approach, i) => {
               const Icon = approach.icon
@@ -197,64 +227,67 @@ export default function MethodologyPage() {
               )
             })}
           </div>
-        </motion.div>
+              </motion.div>
+            </TabsContent>
 
-        {/* Key Innovation Highlight */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="mb-12"
-        >
-          <Card className="p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20">
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-xl bg-green-500/20">
-                <Network className="h-6 w-6 text-green-600 dark:text-green-400" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-2">Why Knowledge Graphs?</h3>
-                <p className="text-foreground/80 mb-4 leading-relaxed">
-                  After optimized fine-tuning reached <span className="font-semibold">91.2% accuracy</span>,
-                  we realized the model still couldn't answer questions like <span className="italic">"What prerequisites
-                  do I need to take CSCI 6364?"</span> or <span className="italic">"Which courses should I complete
-                  after CSCI 2113?"</span>
-                </p>
-                <p className="text-foreground/80 mb-4 leading-relaxed">
-                  The problem wasn't the model quality—it was the <span className="font-semibold">lack of
-                  structured relationship data</span>. Course prerequisites form a directed graph, not unstructured text.
-                </p>
-                <div className="grid md:grid-cols-3 gap-4 text-sm">
-                  <div className="bg-background/50 p-3 rounded-lg">
-                    <div className="font-medium mb-1">Graph Construction</div>
-                    <div className="text-muted-foreground text-xs">
-                      Extract prerequisites via regex, topics via NLP, instructors from schedules
+            {/* Innovation Tab */}
+            <TabsContent value="innovation" className="mt-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className="p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-green-500/20">
+                      <Network className="h-6 w-6 text-green-600 dark:text-green-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg mb-2">Why Knowledge Graphs?</h3>
+                      <p className="text-foreground/80 mb-4 leading-relaxed">
+                        After optimized fine-tuning reached <span className="font-semibold">91.2% accuracy</span>,
+                        we realized the model still couldn't answer questions like <span className="italic">"What prerequisites
+                        do I need to take CSCI 6364?"</span> or <span className="italic">"Which courses should I complete
+                        after CSCI 2113?"</span>
+                      </p>
+                      <p className="text-foreground/80 mb-4 leading-relaxed">
+                        The problem wasn't the model quality—it was the <span className="font-semibold">lack of
+                        structured relationship data</span>. Course prerequisites form a directed graph, not unstructured text.
+                      </p>
+                      <div className="grid md:grid-cols-3 gap-4 text-sm">
+                        <div className="bg-background/50 p-3 rounded-lg">
+                          <div className="font-medium mb-1">Graph Construction</div>
+                          <div className="text-muted-foreground text-xs">
+                            Extract prerequisites via regex, topics via NLP, instructors from schedules
+                          </div>
+                        </div>
+                        <div className="bg-background/50 p-3 rounded-lg">
+                          <div className="font-medium mb-1">Data Augmentation</div>
+                          <div className="text-muted-foreground text-xs">
+                            Generate 200 multi-hop Q&A pairs with graph context injection
+                          </div>
+                        </div>
+                        <div className="bg-background/50 p-3 rounded-lg">
+                          <div className="font-medium mb-1">Result</div>
+                          <div className="text-muted-foreground text-xs">
+                            +3.6% accuracy boost, multi-hop reasoning, prerequisite planning
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="bg-background/50 p-3 rounded-lg">
-                    <div className="font-medium mb-1">Data Augmentation</div>
-                    <div className="text-muted-foreground text-xs">
-                      Generate 200 multi-hop Q&A pairs with graph context injection
-                    </div>
-                  </div>
-                  <div className="bg-background/50 p-3 rounded-lg">
-                    <div className="font-medium mb-1">Result</div>
-                    <div className="text-muted-foreground text-xs">
-                      +3.6% accuracy boost, multi-hop reasoning, prerequisite planning
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </motion.div>
+                </Card>
+              </motion.div>
+            </TabsContent>
 
-        {/* Comparison Summary */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
-          <h3 className="text-2xl font-bold mb-6">Quick Comparison</h3>
+            {/* Comparison Tab */}
+            <TabsContent value="comparison" className="mt-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h3 className="text-2xl font-bold mb-6">Quick Comparison</h3>
           <div className="grid md:grid-cols-3 gap-4">
             <Card className="p-5 bg-card/30 border-border/40">
               <h4 className="font-semibold mb-3">Standard Fine-tuning</h4>
@@ -310,7 +343,10 @@ export default function MethodologyPage() {
               </div>
             </Card>
           </div>
-        </motion.div>
+              </motion.div>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </div>
   )

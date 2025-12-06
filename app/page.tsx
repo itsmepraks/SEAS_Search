@@ -3,7 +3,9 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Card } from "@/components/ui/card"
-import { Network, Database, FileText, BarChart3, Layers, Lightbulb, ArrowRight, BookOpen, Zap, Target } from "lucide-react"
+import { Navigation } from "@/components/navigation"
+import { BackToTop } from "@/components/back-to-top"
+import { Network, Database, FileText, BarChart3, Layers, Lightbulb, ArrowRight, BookOpen, Zap, Target, MessageCircle } from "lucide-react"
 
 const statsData = [
   { label: "Bulletin Courses", value: "187", subtext: "CSCI & DATS" },
@@ -73,7 +75,10 @@ const techStack = [
 
 export default function OverviewPage() {
   return (
-    <div className="min-h-screen bg-background pt-20 pb-12">
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <BackToTop />
+      <div className="pt-20 pb-12">
       <div className="mx-auto max-w-6xl px-4">
         {/* Hero Section */}
         <motion.div
@@ -222,6 +227,7 @@ export default function OverviewPage() {
             ))}
           </div>
         </motion.div>
+      </div>
       </div>
     </div>
   )

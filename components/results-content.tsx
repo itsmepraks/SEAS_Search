@@ -17,7 +17,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts"
-import { TrendingDown, TrendingUp, Zap, Clock, Target, AlertCircle, CheckCircle2 } from "lucide-react"
+import { BackToTop } from "@/components/back-to-top"
+import { TrendingDown, TrendingUp, Zap, Clock, Target, AlertCircle, CheckCircle2, BarChart3, LineChart as LineChartIcon, GitCompare } from "lucide-react"
 
 interface TrainingMetrics {
   approaches: {
@@ -94,119 +95,151 @@ export function ResultsContent() {
 
   return (
     <div className="mx-auto max-w-7xl px-4">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-8">
+      <BackToTop />
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-6">
         <h1 className="text-3xl md:text-4xl font-bold mb-3">Results & Performance</h1>
         <p className="text-muted-foreground text-lg">Training metrics, model comparisons, and performance analysis across three approaches</p>
       </motion.div>
 
-      {modelComparison && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="grid md:grid-cols-3 gap-4 mb-8"
-        >
-          {modelComparison.comparisons.map((approach, i) => (
-            <Card key={approach.approach} className="p-6 bg-card/50 border-border/50">
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="font-semibold text-lg">{approach.approach}</h3>
-                {i === 2 && <Badge variant="default" className="bg-green-500/20 text-green-700 dark:text-green-300">Best</Badge>}
-              </div>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Accuracy</span>
-                  <span className="text-lg font-bold">{approach.accuracy}%</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Final Loss</span>
-                  <span className="font-semibold">{approach.final_loss.toFixed(2)}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Training Time</span>
-                  <span className="text-sm">{approach.training_time_min.toFixed(1)}m</span>
-                </div>
-              </div>
+      <Tabs defaultValue="overview" className="w-full">
+        {/* Sticky Tabs Header */}
+        <div className="sticky top-20 z-30 bg-background/95 backdrop-blur-sm border-b border-border/50 mb-6 -mx-4 px-4 pb-2">
+          <TabsList className="w-full justify-start overflow-x-auto">
+            <TabsTrigger value="overview" className="flex items-center gap-2">
+              <BarChart3 className="h-4 w-4" />
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="metrics" className="flex items-center gap-2">
+              <LineChartIcon className="h-4 w-4" />
+              Metrics
+            </TabsTrigger>
+            <TabsTrigger value="comparison" className="flex items-center gap-2">
+              <GitCompare className="h-4 w-4" />
+              Comparison
+            </TabsTrigger>
+            <TabsTrigger value="details" className="flex items-center gap-2">
+              <Target className="h-4 w-4" />
+              Details
+            </TabsTrigger>
+          </TabsList>
+        </div>
+
+        {/* Overview Tab */}
+        <TabsContent value="overview" className="mt-0">
+          {modelComparison && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="grid md:grid-cols-3 gap-4 mb-8"
+            >
+              {modelComparison.comparisons.map((approach, i) => (
+                <Card key={approach.approach} className="p-6 bg-card/50 border-border/50">
+                  <div className="flex items-start justify-between mb-4">
+                    <h3 className="font-semibold text-lg">{approach.approach}</h3>
+                    {i === 2 && <Badge variant="default" className="bg-green-500/20 text-green-700 dark:text-green-300">Best</Badge>}
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted-foreground">Accuracy</span>
+                      <span className="text-lg font-bold">{approach.accuracy}%</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted-foreground">Final Loss</span>
+                      <span className="font-semibold">{approach.final_loss.toFixed(2)}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted-foreground">Training Time</span>
+                      <span className="text-sm">{approach.training_time_min.toFixed(1)}m</span>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </motion.div>
+          )}
+        </TabsContent>
+
+        {/* Metrics Tab */}
+        <TabsContent value="metrics" className="mt-0">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-8">
+            <Card className="p-6 bg-card/50 border-border/50">
+              <h3 className="font-semibold text-lg mb-4">Training Loss Comparison</h3>
+              {renderChart(
+                <ResponsiveContainer width="100%" height={400}>
+                  <LineChart data={combinedLossData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(100, 116, 139, 0.1)" />
+                    <XAxis dataKey="epoch" label={{ value: "Epoch", position: "insideBottom", offset: -5 }} stroke="rgba(148, 163, 184, 0.5)" />
+                    <YAxis label={{ value: "Loss", angle: -90, position: "insideLeft" }} stroke="rgba(148, 163, 184, 0.5)" />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "rgba(15, 23, 42, 0.9)",
+                        border: "1px solid rgba(100, 116, 139, 0.3)",
+                        borderRadius: "8px",
+                      }}
+                    />
+                    <Legend />
+                    <Line type="monotone" dataKey="standard" stroke="#f59e0b" strokeWidth={2} name="Standard" dot={{ r: 4 }} />
+                    <Line type="monotone" dataKey="optimized" stroke="#3b82f6" strokeWidth={2} name="Optimized" dot={{ r: 4 }} />
+                    <Line type="monotone" dataKey="kg_based" stroke="#10b981" strokeWidth={2} name="KG-Based" dot={{ r: 4 }} />
+                  </LineChart>
+                </ResponsiveContainer>
+              )}
+              <p className="text-xs text-muted-foreground/60 mt-4">KG-based approach achieves the lowest training loss, converging faster than other methods.</p>
             </Card>
-          ))}
-        </motion.div>
-      )}
+          </motion.div>
 
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="mb-8">
-        <Card className="p-6 bg-card/50 border-border/50">
-          <h3 className="font-semibold text-lg mb-4">Training Loss Comparison</h3>
-          {renderChart(
-            <ResponsiveContainer width="100%" height={400}>
-              <LineChart data={combinedLossData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(100, 116, 139, 0.1)" />
-                <XAxis dataKey="epoch" label={{ value: "Epoch", position: "insideBottom", offset: -5 }} stroke="rgba(148, 163, 184, 0.5)" />
-                <YAxis label={{ value: "Loss", angle: -90, position: "insideLeft" }} stroke="rgba(148, 163, 184, 0.5)" />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "rgba(15, 23, 42, 0.9)",
-                    border: "1px solid rgba(100, 116, 139, 0.3)",
-                    borderRadius: "8px",
-                  }}
-                />
-                <Legend />
-                <Line type="monotone" dataKey="standard" stroke="#f59e0b" strokeWidth={2} name="Standard" dot={{ r: 4 }} />
-                <Line type="monotone" dataKey="optimized" stroke="#3b82f6" strokeWidth={2} name="Optimized" dot={{ r: 4 }} />
-                <Line type="monotone" dataKey="kg_based" stroke="#10b981" strokeWidth={2} name="KG-Based" dot={{ r: 4 }} />
-              </LineChart>
-            </ResponsiveContainer>
-          )}
-          <p className="text-xs text-muted-foreground/60 mt-4">KG-based approach achieves the lowest training loss, converging faster than other methods.</p>
-        </Card>
-      </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="grid md:grid-cols-2 gap-6 mb-8">
+            <Card className="p-6 bg-card/50 border-border/50">
+              <h3 className="font-semibold mb-4">Accuracy Comparison</h3>
+              {renderChart(
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={comparisonData} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(100, 116, 139, 0.1)" />
+                    <XAxis type="number" domain={[0, 100]} stroke="rgba(148, 163, 184, 0.5)" />
+                    <YAxis type="category" dataKey="name" stroke="rgba(148, 163, 184, 0.5)" />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "rgba(15, 23, 42, 0.9)",
+                        border: "1px solid rgba(100, 116, 139, 0.3)",
+                        borderRadius: "8px",
+                      }}
+                    />
+                    <Bar dataKey="accuracy" fill="#10b981" radius={[0, 8, 8, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              )}
+            </Card>
 
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="grid md:grid-cols-2 gap-6 mb-8">
-        <Card className="p-6 bg-card/50 border-border/50">
-          <h3 className="font-semibold mb-4">Accuracy Comparison</h3>
-          {renderChart(
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={comparisonData} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(100, 116, 139, 0.1)" />
-                <XAxis type="number" domain={[0, 100]} stroke="rgba(148, 163, 184, 0.5)" />
-                <YAxis type="category" dataKey="name" stroke="rgba(148, 163, 184, 0.5)" />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "rgba(15, 23, 42, 0.9)",
-                    border: "1px solid rgba(100, 116, 139, 0.3)",
-                    borderRadius: "8px",
-                  }}
-                />
-                <Bar dataKey="accuracy" fill="#10b981" radius={[0, 8, 8, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          )}
-        </Card>
+            <Card className="p-6 bg-card/50 border-border/50">
+              <h3 className="font-semibold mb-4">Final Loss Comparison</h3>
+              {renderChart(
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={comparisonData} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(100, 116, 139, 0.1)" />
+                    <XAxis type="number" stroke="rgba(148, 163, 184, 0.5)" />
+                    <YAxis type="category" dataKey="name" stroke="rgba(148, 163, 184, 0.5)" />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "rgba(15, 23, 42, 0.9)",
+                        border: "1px solid rgba(100, 116, 139, 0.3)",
+                        borderRadius: "8px",
+                      }}
+                    />
+                    <Bar dataKey="final_loss" fill="#ef4444" radius={[0, 8, 8, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              )}
+            </Card>
+          </motion.div>
+        </TabsContent>
 
-        <Card className="p-6 bg-card/50 border-border/50">
-          <h3 className="font-semibold mb-4">Final Loss Comparison</h3>
-          {renderChart(
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={comparisonData} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(100, 116, 139, 0.1)" />
-                <XAxis type="number" stroke="rgba(148, 163, 184, 0.5)" />
-                <YAxis type="category" dataKey="name" stroke="rgba(148, 163, 184, 0.5)" />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "rgba(15, 23, 42, 0.9)",
-                    border: "1px solid rgba(100, 116, 139, 0.3)",
-                    borderRadius: "8px",
-                  }}
-                />
-                <Bar dataKey="final_loss" fill="#ef4444" radius={[0, 8, 8, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          )}
-        </Card>
-      </motion.div>
-
-      {modelComparison && (
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }} className="mb-8">
-          <Card className="p-6 bg-card/50 border-border/50">
-            <h3 className="font-semibold text-lg mb-4">Detailed Approach Comparison</h3>
-            <Tabs defaultValue={modelComparison.comparisons[0].approach} className="w-full">
+        {/* Comparison Tab */}
+        <TabsContent value="comparison" className="mt-0">
+          {modelComparison && (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-8">
+              <Card className="p-6 bg-card/50 border-border/50">
+                <h3 className="font-semibold text-lg mb-4">Detailed Approach Comparison</h3>
+                <Tabs defaultValue={modelComparison.comparisons[0].approach} className="w-full">
               <TabsList className="grid w-full grid-cols-3">
                 {modelComparison.comparisons.map((approach) => (
                   <TabsTrigger key={approach.approach} value={approach.approach}>
@@ -307,40 +340,45 @@ export function ResultsContent() {
                   </div>
                 </TabsContent>
               ))}
-            </Tabs>
-          </Card>
-        </motion.div>
-      )}
+                </Tabs>
+              </Card>
+            </motion.div>
+          )}
+        </TabsContent>
 
-      {trainingMetrics && (
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 }} className="grid gap-6 md:grid-cols-2">
-          {Object.entries(trainingMetrics.approaches).map(([key, approach]) => (
-            <Card key={key} className="p-6 bg-card/30 border-border/60">
-              <div className="flex items-center justify-between mb-3">
-                <div>
-                  <h3 className="font-semibold">{approach.name}</h3>
-                  <p className="text-xs text-muted-foreground">Epochs: {approach.epochs.length}</p>
-                </div>
-                <Badge variant="outline">
-                  Final Loss: <span className="ml-1 font-semibold">{approach.final_metrics.final_loss.toFixed(3)}</span>
-                </Badge>
-              </div>
-              <div className="grid gap-2 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  Training Time: {approach.final_metrics.training_time_minutes} minutes
-                </div>
-                {approach.final_metrics.val_loss && (
-                  <div className="flex items-center gap-2">
-                    <Target className="h-4 w-4" />
-                    Validation Loss: {approach.final_metrics.val_loss.toFixed(3)}
+        {/* Details Tab */}
+        <TabsContent value="details" className="mt-0">
+          {trainingMetrics && (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="grid gap-6 md:grid-cols-2">
+              {Object.entries(trainingMetrics.approaches).map(([key, approach]) => (
+                <Card key={key} className="p-6 bg-card/30 border-border/60">
+                  <div className="flex items-center justify-between mb-3">
+                    <div>
+                      <h3 className="font-semibold">{approach.name}</h3>
+                      <p className="text-xs text-muted-foreground">Epochs: {approach.epochs.length}</p>
+                    </div>
+                    <Badge variant="outline">
+                      Final Loss: <span className="ml-1 font-semibold">{approach.final_metrics.final_loss.toFixed(3)}</span>
+                    </Badge>
                   </div>
-                )}
-              </div>
-            </Card>
-          ))}
-        </motion.div>
-      )}
+                  <div className="grid gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
+                      Training Time: {approach.final_metrics.training_time_minutes} minutes
+                    </div>
+                    {approach.final_metrics.val_loss && (
+                      <div className="flex items-center gap-2">
+                        <Target className="h-4 w-4" />
+                        Validation Loss: {approach.final_metrics.val_loss.toFixed(3)}
+                      </div>
+                    )}
+                  </div>
+                </Card>
+              ))}
+            </motion.div>
+          )}
+        </TabsContent>
+      </Tabs>
     </div>
   )
 }

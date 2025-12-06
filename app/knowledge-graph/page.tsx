@@ -7,7 +7,9 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Search, Network, Users, BookOpen, GitBranch, Sparkles, ArrowRight } from "lucide-react"
+import { Navigation } from "@/components/navigation"
+import { BackToTop } from "@/components/back-to-top"
+import { Search, Network, Users, BookOpen, GitBranch, Sparkles, ArrowRight, Maximize2, Minimize2, X } from "lucide-react"
 
 // Dynamically import ForceGraph2D to avoid SSR issues
 const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), { ssr: false })
@@ -64,7 +66,10 @@ export default function KnowledgeGraphPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [highlightNodes, setHighlightNodes] = useState(new Set())
   const [highlightLinks, setHighlightLinks] = useState(new Set())
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const [fullscreenDimensions, setFullscreenDimensions] = useState({ width: 0, height: 0 })
   const graphRef = useRef<any>()
+  const fullscreenContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     fetch("/data/knowledge_graph.json")
@@ -104,7 +109,7 @@ export default function KnowledgeGraphPage() {
 
   const getNodeColor = (node: GraphNode) => {
     const isHighlighted = highlightNodes.size === 0 || highlightNodes.has(node.id)
-    const alpha = isHighlighted ? 1 : 0.2
+    const alpha = isHighlighted ? 1 : 0.15 // Reduced opacity for non-highlighted nodes
 
     if (node.type === "course") return `rgba(239, 68, 68, ${alpha})` // red
     if (node.type === "professor") return `rgba(20, 184, 166, ${alpha})` // teal
@@ -131,7 +136,10 @@ export default function KnowledgeGraphPage() {
       return 'rgba(100, 116, 139, 0.3)'
     }
 
-    return highlightLinks.has(linkKey) ? 'rgba(59, 130, 246, 0.8)' : 'rgba(100, 116, 139, 0.1)'
+    // Make non-highlighted links more faded
+    return highlightLinks.has(linkKey) 
+      ? 'rgba(59, 130, 246, 0.8)' 
+      : 'rgba(100, 116, 139, 0.05)' // Even more faded
   }
 
   const getLinkWidth = (link: any) => {
@@ -215,9 +223,121 @@ export default function KnowledgeGraphPage() {
     }
   }
 
+  // Handle fullscreen toggle
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen)
+  }
+
+  // Update fullscreen dimensions on resize
+  useEffect(() => {
+    if (!isFullscreen) {
+      setFullscreenDimensions({ width: 0, height: 0 })
+      return
+    }
+
+    const updateDimensions = () => {
+      if (fullscreenContainerRef.current) {
+        const container = fullscreenContainerRef.current
+        const headerHeight = 80 // Header height
+        const footerHeight = 60 // Footer height
+        setFullscreenDimensions({
+          width: container.clientWidth,
+          height: container.clientHeight - headerHeight - footerHeight,
+        })
+      } else {
+        // Fallback to window dimensions
+        setFullscreenDimensions({
+          width: window.innerWidth,
+          height: window.innerHeight - 140, // Account for header + footer
+        })
+      }
+    }
+
+    // Initial calculation
+    setTimeout(updateDimensions, 0)
+
+    window.addEventListener("resize", updateDimensions)
+    return () => window.removeEventListener("resize", updateDimensions)
+  }, [isFullscreen])
+
+  // Handle escape key to exit fullscreen
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isFullscreen) {
+        setIsFullscreen(false)
+      }
+    }
+    window.addEventListener("keydown", handleEscape)
+    return () => window.removeEventListener("keydown", handleEscape)
+  }, [isFullscreen])
+
+  // Render graph component (reusable)
+  const renderGraph = (width: number, height: number) => {
+    if (!filteredData) {
+      return (
+        <div className="h-full flex items-center justify-center text-muted-foreground">
+          Loading knowledge graph...
+        </div>
+      )
+    }
+
+    return (
+      <ForceGraph2D
+        ref={graphRef}
+        graphData={filteredData}
+        nodeLabel={(node: any) => `${node.label} (${node.type})`}
+        nodeColor={getNodeColor}
+        nodeRelSize={6}
+        nodeVal={getNodeSize}
+        linkColor={getLinkColor}
+        linkWidth={getLinkWidth}
+        linkDirectionalArrowLength={3}
+        linkDirectionalArrowRelPos={1}
+        linkCurvature={0.2}
+        onNodeClick={handleNodeClick}
+        width={width}
+        height={height}
+        backgroundColor="transparent"
+        nodeCanvasObjectMode={() => "after"}
+        nodeCanvasObject={(node: any, ctx, globalScale) => {
+          const isHighlighted = highlightNodes.size === 0 || highlightNodes.has(node.id)
+          const label = node.label
+          const fontSize = Math.max(10, 12 / globalScale)
+          
+          ctx.font = `${fontSize}px Inter, system-ui, sans-serif`
+          ctx.textAlign = "center"
+          ctx.textBaseline = "middle"
+
+          // Apply blur effect to non-highlighted nodes
+          if (!isHighlighted && highlightNodes.size > 0) {
+            ctx.shadowBlur = 8 // Blur effect
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)'
+            ctx.fillStyle = 'rgba(15, 15, 15, 0.3)' // More transparent for blurred nodes
+          } else {
+            // Text shadow for better readability on highlighted nodes
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.8)'
+            ctx.shadowBlur = 3
+            ctx.fillStyle = 'rgba(15, 15, 15, 0.9)'
+          }
+
+          ctx.fillText(label, node.x, node.y + 14 / globalScale)
+
+          // Reset shadow
+          ctx.shadowBlur = 0
+          ctx.shadowColor = 'transparent'
+        }}
+        d3VelocityDecay={0.3}
+        cooldownTime={3000}
+      />
+    )
+  }
+
   return (
-    <div className="min-h-screen bg-background pt-20 pb-12">
-      <div className="mx-auto max-w-7xl px-4">
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <BackToTop />
+      <div className="pt-20 pb-12">
+        <div className="mx-auto max-w-7xl px-4">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -306,64 +426,42 @@ export default function KnowledgeGraphPage() {
             <Card className="p-4 bg-card/50 border-border/50">
               <div className="mb-3 flex items-center justify-between">
                 <h3 className="font-semibold">Interactive Force-Directed Graph</h3>
-                <div className="flex items-center gap-3 text-xs">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-                    <span className="text-muted-foreground">Courses</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 text-xs">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                      <span className="text-muted-foreground">Courses</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-teal-500"></div>
+                      <span className="text-muted-foreground">Professors</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+                      <span className="text-muted-foreground">Topics</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-teal-500"></div>
-                    <span className="text-muted-foreground">Professors</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
-                    <span className="text-muted-foreground">Topics</span>
-                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={toggleFullscreen}
+                    className="text-xs flex items-center gap-1.5"
+                    title="Toggle fullscreen"
+                  >
+                    <Maximize2 className="h-4 w-4" />
+                    Fullscreen
+                  </Button>
                 </div>
               </div>
-              <div className="bg-white dark:bg-background/50 rounded-lg border border-border/40 overflow-hidden">
-                {filteredData ? (
-                  <ForceGraph2D
-                    ref={graphRef}
-                    graphData={filteredData}
-                    nodeLabel={(node: any) => `${node.label} (${node.type})`}
-                    nodeColor={getNodeColor}
-                    nodeRelSize={6}
-                    nodeVal={getNodeSize}
-                    linkColor={getLinkColor}
-                    linkWidth={getLinkWidth}
-                    linkDirectionalArrowLength={3}
-                    linkDirectionalArrowRelPos={1}
-                    linkCurvature={0.2}
-                    onNodeClick={handleNodeClick}
-                    width={800}
-                    height={600}
-                    backgroundColor="transparent"
-                    nodeCanvasObjectMode={() => "after"}
-                    nodeCanvasObject={(node: any, ctx, globalScale) => {
-                      const label = node.label
-                      const fontSize = Math.max(10, 12 / globalScale)
-                      ctx.font = `${fontSize}px Inter, system-ui, sans-serif`
-                      ctx.textAlign = "center"
-                      ctx.textBaseline = "middle"
-
-                      // Text shadow for better readability
-                      ctx.shadowColor = 'rgba(255, 255, 255, 0.8)'
-                      ctx.shadowBlur = 3
-
-                      ctx.fillStyle = 'rgba(15, 15, 15, 0.9)'
-                      ctx.fillText(label, node.x, node.y + 14 / globalScale)
-
-                      ctx.shadowBlur = 0
-                    }}
-                    d3VelocityDecay={0.3}
-                    cooldownTime={3000}
-                  />
-                ) : (
-                  <div className="h-[600px] flex items-center justify-center text-muted-foreground">
-                    Loading knowledge graph...
-                  </div>
-                )}
+              <div 
+                className={`bg-white dark:bg-background/50 rounded-lg border border-border/40 overflow-hidden transition-all duration-300 ${
+                  highlightNodes.size > 0 ? 'ring-2 ring-primary/20' : ''
+                }`}
+                style={{
+                  filter: highlightNodes.size > 0 ? 'contrast(1.05)' : 'none',
+                }}
+              >
+                {renderGraph(800, 600)}
               </div>
               <div className="mt-3 flex items-center justify-between">
                 <p className="text-xs text-muted-foreground/60">
@@ -665,7 +763,93 @@ export default function KnowledgeGraphPage() {
             )}
           </Card>
         </motion.div>
+        </div>
       </div>
+
+      {/* Fullscreen Modal */}
+      {isFullscreen && (
+        <div
+          ref={fullscreenContainerRef}
+          className="fixed inset-0 z-50 bg-background flex flex-col"
+          style={{ top: 0, left: 0, right: 0, bottom: 0 }}
+        >
+          {/* Fullscreen Header */}
+          <div className="flex items-center justify-between p-4 border-b border-border/50 bg-background/95 backdrop-blur-sm h-20 flex-shrink-0">
+            <div className="flex items-center gap-4">
+              <h2 className="text-xl font-semibold">Knowledge Graph - Fullscreen</h2>
+              <div className="flex items-center gap-3 text-xs">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                  <span className="text-muted-foreground">Courses</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-teal-500"></div>
+                  <span className="text-muted-foreground">Professors</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+                  <span className="text-muted-foreground">Topics</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  setHighlightNodes(new Set())
+                  setHighlightLinks(new Set())
+                  setSelectedNode(null)
+                }}
+                className="text-xs"
+              >
+                Reset View
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleFullscreen}
+                className="text-xs flex items-center gap-1.5"
+              >
+                <Minimize2 className="h-4 w-4" />
+                Exit Fullscreen
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleFullscreen}
+                className="h-8 w-8"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Fullscreen Graph Container */}
+          <div 
+            className="flex-1 relative bg-white dark:bg-background/50 overflow-hidden transition-all duration-300"
+            style={{ 
+              minHeight: 0,
+              filter: highlightNodes.size > 0 ? 'contrast(1.05)' : 'none',
+            }}
+          >
+            {fullscreenDimensions.width > 0 && fullscreenDimensions.height > 0 ? (
+              renderGraph(fullscreenDimensions.width, fullscreenDimensions.height)
+            ) : (
+              <div className="h-full flex items-center justify-center text-muted-foreground">
+                Loading...
+              </div>
+            )}
+          </div>
+
+          {/* Fullscreen Footer */}
+          <div className="p-3 border-t border-border/50 bg-background/95 backdrop-blur-sm flex-shrink-0">
+            <p className="text-xs text-muted-foreground/60 text-center">
+              Click nodes to view details • Drag to pan • Scroll to zoom • Press ESC to exit fullscreen
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

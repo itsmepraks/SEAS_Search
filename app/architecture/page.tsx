@@ -3,7 +3,11 @@
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Globe, Database, GitBranch, Cpu, Layers, Code, FileJson, ArrowRight } from "lucide-react"
+import { Navigation } from "@/components/navigation"
+import { MermaidDiagram } from "@/components/mermaid-diagram"
+import { PageSidebar } from "@/components/page-sidebar"
+import { BackToTop } from "@/components/back-to-top"
+import { Globe, Database, GitBranch, Cpu, Layers, Code, FileJson, ArrowRight, Settings } from "lucide-react"
 
 const pipelineStages = [
   {
@@ -74,9 +78,9 @@ const pipelineStages = [
     outputs: ["lora_model_kg_qa/", "merged_model_kg_qa/"],
     description: "Fine-tuned with graph-augmented data",
     details: [
-      "10 epochs with early stopping",
+      "5 epochs with early stopping",
       "Validation split (80/20)",
-      "Final loss: 0.19, Accuracy: 94.8%",
+      "Final loss: 0.64, Accuracy: 94.8%",
       "Training time: ~115 minutes on GPU",
     ]
   },
@@ -139,31 +143,190 @@ const techStack = {
   },
 }
 
+const optimizedFineTuningDiagram = `
+graph TB
+    A[CSV Data] --> B[prepare_dataset.py]
+    B --> C[course_finetune.jsonl<br/>2,828 Q&A pairs]
+    C --> D[Train/Val Split<br/>80/20]
+    D --> E[Llama 3.1 8B<br/>Base Model]
+    E --> F[LoRA Adapters<br/>r=32, alpha=32]
+    F --> G[Fine-tuning<br/>5 epochs]
+    G --> H[Early Stopping<br/>Patience=3]
+    H --> I[Validation Loss<br/>Monitoring]
+    I --> J[Optimized Model<br/>91.2% Accuracy]
+    
+    style A fill:#3b82f6
+    style C fill:#8b5cf6
+    style E fill:#f59e0b
+    style F fill:#10b981
+    style J fill:#10b981
+`
+
+const kgQASystemDiagram = `
+graph TB
+    A[CSV Data] --> B[Knowledge Graph<br/>Construction]
+    B --> C[Extract Prerequisites<br/>Regex Patterns]
+    B --> D[Extract Topics<br/>spaCy NLP]
+    B --> E[Map Instructors<br/>Schedule Data]
+    C --> F[NetworkX Graph<br/>489 nodes, 566 edges]
+    D --> F
+    E --> F
+    F --> G[Generate Multi-hop<br/>Q&A Pairs]
+    G --> H[course_finetune_kg_rag.jsonl<br/>195 examples]
+    H --> I[Graph Context<br/>Injection]
+    I --> J[Llama 3.1 8B<br/>Base Model]
+    J --> K[LoRA Adapters<br/>r=32, alpha=32]
+    K --> L[Fine-tuning with<br/>Graph Context]
+    L --> M[Graph Retriever<br/>Subgraph Selection]
+    M --> N[KG-QA Model<br/>94.8% Accuracy]
+    
+    style A fill:#3b82f6
+    style F fill:#10b981
+    style H fill:#8b5cf6
+    style J fill:#f59e0b
+    style K fill:#10b981
+    style N fill:#10b981
+`
+
+const optimizedHyperparameters = {
+  "LoRA Configuration": {
+    "LoRA Rank (r)": "32",
+    "LoRA Alpha": "32",
+    "LoRA Dropout": "0.05",
+    "Target Modules": "q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj",
+    "Bias": "none",
+  },
+  "Training Configuration": {
+    "Base Model": "Llama 3.1 8B",
+    "Quantization": "4-bit (bitsandbytes)",
+    "Max Sequence Length": "2048",
+    "Training Samples": "2,828",
+    "Train/Val Split": "80/20 (1,920 / 480)",
+    "Epochs": "5 (with early stopping)",
+    "Early Stopping Patience": "3 evaluations",
+    "Early Stopping Threshold": "0.001",
+  },
+  "Optimization": {
+    "Learning Rate": "1e-4",
+    "LR Scheduler": "Cosine Annealing",
+    "Warmup Ratio": "0.1 (10%)",
+    "Optimizer": "AdamW 8-bit",
+    "Weight Decay": "0.01",
+    "Adam Beta1": "0.9",
+    "Adam Beta2": "0.999",
+  },
+  "Batch Configuration": {
+    "Per Device Train Batch Size": "4",
+    "Per Device Eval Batch Size": "4",
+    "Gradient Accumulation Steps": "2",
+    "Effective Batch Size": "8",
+  },
+  "Performance Metrics": {
+    "Final Training Loss": "0.78",
+    "Final Validation Loss": "0.67",
+    "Accuracy": "91.2%",
+    "Training Time": "108.5 minutes",
+    "GPU": "Tesla T4 (14.7 GB)",
+    "Peak Memory Usage": "7.46 GB (50.6%)",
+  },
+}
+
+const kgQAHyperparameters = {
+  "LoRA Configuration": {
+    "LoRA Rank (r)": "32",
+    "LoRA Alpha": "32",
+    "LoRA Dropout": "0.05",
+    "Target Modules": "q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj",
+    "Bias": "none",
+  },
+  "Training Configuration": {
+    "Base Model": "Llama 3.1 8B",
+    "Quantization": "4-bit (bitsandbytes)",
+    "Max Sequence Length": "2048",
+    "Training Samples": "195 (KG-RAG format)",
+    "Train/Val Split": "80/20 (156 / 39)",
+    "Epochs": "5 (with early stopping)",
+    "Early Stopping Patience": "3 evaluations",
+    "Early Stopping Threshold": "0.001",
+  },
+  "Optimization": {
+    "Learning Rate": "1e-4",
+    "LR Scheduler": "Cosine Annealing",
+    "Warmup Ratio": "0.1 (10%)",
+    "Optimizer": "AdamW 8-bit",
+    "Weight Decay": "0.01",
+    "Adam Beta1": "0.9",
+    "Adam Beta2": "0.999",
+  },
+  "Batch Configuration": {
+    "Per Device Train Batch Size": "2",
+    "Per Device Eval Batch Size": "2",
+    "Gradient Accumulation Steps": "4",
+    "Effective Batch Size": "8",
+  },
+  "Knowledge Graph": {
+    "Total Nodes": "489",
+    "Courses": "85",
+    "Professors": "76",
+    "Topics": "328",
+    "Total Edges": "566",
+    "Prerequisite Edges": "40",
+    "Taught By Edges": "201",
+    "Covers Topic Edges": "325",
+  },
+  "Performance Metrics": {
+    "Final Training Loss": "0.64",
+    "Final Validation Loss": "N/A (early stopping)",
+    "Accuracy": "94.8%",
+    "Training Time": "115.3 minutes",
+    "GPU": "NVIDIA A100-SXM4-40GB",
+    "Peak Memory Usage": "7.58 GB (19.2%)",
+  },
+}
+
+const sidebarItems = [
+  { id: "pipeline", label: "Data Pipeline", icon: <Database className="h-3.5 w-3.5" /> },
+  { id: "scraping", label: "Web Scraping", icon: <Globe className="h-3.5 w-3.5" /> },
+  { id: "diagrams", label: "Architecture Diagrams", icon: <Layers className="h-3.5 w-3.5" /> },
+  { id: "hyperparameters", label: "Hyperparameters", icon: <Settings className="h-3.5 w-3.5" /> },
+  { id: "tech-stack", label: "Technology Stack", icon: <Code className="h-3.5 w-3.5" /> },
+]
+
 export default function ArchitecturePage() {
   return (
-    <div className="min-h-screen bg-background pt-20 pb-12">
-      <div className="mx-auto max-w-6xl px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">System Architecture</h1>
-          <p className="text-muted-foreground text-lg">
-            End-to-end pipeline from web scraping to knowledge graph-based QA system
-          </p>
-        </motion.div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <BackToTop />
+      <div className="pt-20 pb-12">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="flex gap-8">
+            {/* Sticky Sidebar */}
+            <PageSidebar items={sidebarItems} />
 
-        {/* Pipeline Flow */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-12"
-        >
-          <h3 className="text-2xl font-bold mb-6">Data Pipeline</h3>
+            {/* Main Content */}
+            <div className="flex-1 min-w-0">
+              {/* Header */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mb-8"
+              >
+                <h1 className="text-3xl md:text-4xl font-bold mb-3">System Architecture</h1>
+                <p className="text-muted-foreground text-lg">
+                  End-to-end pipeline from web scraping to knowledge graph-based QA system
+                </p>
+              </motion.div>
+
+              {/* Pipeline Flow */}
+              <motion.div
+                id="pipeline"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="mb-12 scroll-mt-24"
+              >
+                <h3 className="text-2xl font-bold mb-6">Data Pipeline</h3>
           <div className="space-y-4">
             {pipelineStages.map((stage, i) => {
               const Icon = stage.icon
@@ -239,13 +402,14 @@ export default function ArchitecturePage() {
           </div>
         </motion.div>
 
-        {/* Web Scraping Deep Dive */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mb-12"
-        >
+              {/* Web Scraping Deep Dive */}
+              <motion.div
+                id="scraping"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="mb-12 scroll-mt-24"
+              >
           <Card className="p-6 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20">
             <div className="flex items-start gap-4">
               <div className="p-3 rounded-xl bg-blue-500/20">
@@ -306,13 +470,120 @@ export default function ArchitecturePage() {
           </Card>
         </motion.div>
 
-        {/* Technology Stack */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-        >
-          <h3 className="text-2xl font-bold mb-6">Technology Stack</h3>
+              {/* Architecture Diagrams */}
+              <motion.div
+                id="diagrams"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                className="mb-12 scroll-mt-24"
+              >
+                <h3 className="text-2xl font-bold mb-6">Model Architecture Diagrams</h3>
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* Optimized Fine-tuning Diagram */}
+            <Card className="p-6 bg-card/50 border-border/50">
+              <div className="flex items-center gap-2 mb-4">
+                <Cpu className="h-5 w-5 text-blue-500" />
+                <h4 className="font-semibold text-lg">Optimized Fine-tuning Architecture</h4>
+              </div>
+              <p className="text-sm text-muted-foreground mb-4">
+                Direct fine-tuning approach with optimized hyperparameters and validation
+              </p>
+              <div className="bg-background/50 rounded-lg p-4 overflow-x-auto">
+                <MermaidDiagram chart={optimizedFineTuningDiagram} className="min-h-[400px]" />
+              </div>
+            </Card>
+
+            {/* KG-QA System Diagram */}
+            <Card className="p-6 bg-card/50 border-border/50">
+              <div className="flex items-center gap-2 mb-4">
+                <GitBranch className="h-5 w-5 text-green-500" />
+                <h4 className="font-semibold text-lg">KG-Based QA System Architecture</h4>
+              </div>
+              <p className="text-sm text-muted-foreground mb-4">
+                Knowledge graph construction with graph-augmented training and retrieval
+              </p>
+              <div className="bg-background/50 rounded-lg p-4 overflow-x-auto">
+                <MermaidDiagram chart={kgQASystemDiagram} className="min-h-[400px]" />
+              </div>
+            </Card>
+          </div>
+        </motion.div>
+
+              {/* Hyperparameters Section */}
+              <motion.div
+                id="hyperparameters"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="mb-12 scroll-mt-24"
+              >
+                <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                  <Settings className="h-6 w-6" />
+                  Hyperparameters & Configuration
+                </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Optimized Fine-tuning Hyperparameters */}
+            <Card className="p-6 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20">
+              <div className="flex items-center gap-2 mb-4">
+                <Cpu className="h-5 w-5 text-blue-500" />
+                <h4 className="font-semibold text-lg">Optimized Fine-tuning</h4>
+              </div>
+              <div className="space-y-4">
+                {Object.entries(optimizedHyperparameters).map(([category, params]) => (
+                  <div key={category}>
+                    <div className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">
+                      {category}
+                    </div>
+                    <div className="space-y-1.5">
+                      {Object.entries(params).map(([key, value]) => (
+                        <div key={key} className="flex justify-between items-start gap-4 text-sm">
+                          <span className="text-muted-foreground flex-1">{key}:</span>
+                          <span className="font-medium text-foreground text-right">{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            {/* KG-QA System Hyperparameters */}
+            <Card className="p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20">
+              <div className="flex items-center gap-2 mb-4">
+                <GitBranch className="h-5 w-5 text-green-500" />
+                <h4 className="font-semibold text-lg">KG-Based QA System</h4>
+              </div>
+              <div className="space-y-4">
+                {Object.entries(kgQAHyperparameters).map(([category, params]) => (
+                  <div key={category}>
+                    <div className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">
+                      {category}
+                    </div>
+                    <div className="space-y-1.5">
+                      {Object.entries(params).map(([key, value]) => (
+                        <div key={key} className="flex justify-between items-start gap-4 text-sm">
+                          <span className="text-muted-foreground flex-1">{key}:</span>
+                          <span className="font-medium text-foreground text-right">{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
+        </motion.div>
+
+              {/* Technology Stack */}
+              <motion.div
+                id="tech-stack"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.9 }}
+                className="scroll-mt-24"
+              >
+                <h3 className="text-2xl font-bold mb-6">Technology Stack</h3>
           <div className="grid md:grid-cols-2 gap-6">
             {Object.entries(techStack).map(([category, data], i) => {
               const Icon = data.icon
@@ -345,6 +616,9 @@ export default function ArchitecturePage() {
             })}
           </div>
         </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

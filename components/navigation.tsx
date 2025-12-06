@@ -11,9 +11,9 @@ const navItems = [
   { href: "/data", label: "Data", icon: Database },
   { href: "/knowledge-graph", label: "Graph", icon: Network },
   { href: "/methodology", label: "Method", icon: FileText },
-  { href: "/results", label: "Results", icon: BarChart3 },
   { href: "/architecture", label: "Arch", icon: Layers },
-  { href: "/learning", label: "Insights", icon: Lightbulb },
+  { href: "/results", label: "Results", icon: BarChart3 },
+  { href: "/learning", label: "Learning", icon: Lightbulb },
   { href: "/chat", label: "Chat", icon: MessageCircle },
 ]
 

@@ -328,12 +328,12 @@ export function DataExplorer() {
           })}
         </motion.div>
 
-        {/* Search */}
+        {/* Sticky Search */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mb-6"
+          className="sticky top-20 z-30 bg-background/95 backdrop-blur-sm border-b border-border/50 mb-6 -mx-4 px-4 pb-4 pt-2"
         >
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />

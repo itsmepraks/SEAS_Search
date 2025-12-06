@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Navigation } from "@/components/navigation"
+import { BackToTop } from "@/components/back-to-top"
 import { MessageCircle, ExternalLink, Info, Code, Download, Sparkles, Zap } from "lucide-react"
 import Link from "next/link"
 
@@ -43,6 +44,7 @@ export default function ChatPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
+      <BackToTop />
       <div className="pt-20 pb-12">
         <div className="mx-auto max-w-6xl px-4">
           {/* Header */}

@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+import { Navigation } from "@/components/navigation"
+import { BackToTop } from "@/components/back-to-top"
 import { CheckCircle2, XCircle, Lightbulb, TrendingUp, AlertTriangle, Rocket } from "lucide-react"
 
 const whatWorked = [
@@ -111,188 +114,166 @@ const bestPractices = [
 
 export default function LearningPage() {
   return (
-    <div className="min-h-screen bg-background pt-20 pb-12">
-      <div className="mx-auto max-w-6xl px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">Key Learnings & Insights</h1>
-          <p className="text-muted-foreground text-lg">
-            What worked, what didn't, and lessons for future projects
-          </p>
-        </motion.div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <BackToTop />
+      <div className="pt-20 pb-12">
+        <div className="mx-auto max-w-6xl px-4">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">Key Learnings & Insights</h1>
+            <p className="text-muted-foreground text-lg">
+              What worked, what didn't, and lessons for future projects
+            </p>
+          </motion.div>
 
-        {/* What Worked */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-12"
-        >
-          <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <CheckCircle2 className="h-6 w-6 text-green-500" />
-            What Worked
-          </h3>
-          <div className="grid gap-4">
-            {whatWorked.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 + i * 0.1 }}
-              >
-                <Card className="p-5 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-green-500/20 hover:border-green-500/40 transition-all">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold mb-1">{item.title}</h4>
-                      <p className="text-sm text-foreground/80 mb-2">{item.insight}</p>
-                      <div className="text-xs font-medium text-green-600 dark:text-green-400">
-                        Impact: {item.impact}
+          {/* Accordion Sections */}
+          <Accordion type="single" collapsible defaultValue="what-worked" className="w-full">
+            {/* What Worked */}
+            <AccordionItem value="what-worked" className="border-b border-border/50">
+              <AccordionTrigger className="text-xl font-bold hover:no-underline py-4">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="h-6 w-6 text-green-500" />
+                  <span>What Worked</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid gap-4 pt-2">
+                  {whatWorked.map((item, i) => (
+                    <Card key={i} className="p-5 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-green-500/20 hover:border-green-500/40 transition-all">
+                      <div className="flex items-start gap-3">
+                        <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="font-semibold mb-1">{item.title}</h4>
+                          <p className="text-sm text-foreground/80 mb-2">{item.insight}</p>
+                          <div className="text-xs font-medium text-green-600 dark:text-green-400">
+                            Impact: {item.impact}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* What Didn't Work */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mb-12"
-        >
-          <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <XCircle className="h-6 w-6 text-orange-500" />
-            What Didn't Work
-          </h3>
-          <div className="grid gap-4">
-            {whatDidntWork.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.5 + i * 0.1 }}
-              >
-                <Card className="p-5 bg-gradient-to-r from-orange-500/10 to-red-500/10 border-orange-500/20">
-                  <div className="flex items-start gap-3">
-                    <XCircle className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold mb-1">{item.title}</h4>
-                      <p className="text-sm text-foreground/80 mb-2">
-                        <span className="font-medium">Why:</span> {item.reason}
-                      </p>
-                      <div className="text-xs font-medium text-orange-600 dark:text-orange-400">
-                        Lesson: {item.lesson}
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Key Insights */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="mb-12"
-        >
-          <h3 className="text-2xl font-bold mb-6">Key Insights</h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            {keyInsights.map((insight, i) => {
-              const Icon = insight.icon
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.8 + i * 0.1 }}
-                >
-                  <Card className="p-5 bg-card/40 border-border/40 hover:bg-card/60 transition-all h-full">
-                    <div className="flex items-start gap-3">
-                      <div className={`p-2 rounded-lg bg-${insight.color}-500/20`}>
-                        <Icon className={`h-5 w-5 text-${insight.color}-600 dark:text-${insight.color}-400`} />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold mb-2">{insight.title}</h4>
-                        <p className="text-sm text-muted-foreground/90 leading-relaxed">
-                          {insight.description}
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-                </motion.div>
-              )
-            })}
-          </div>
-        </motion.div>
-
-        {/* Best Practices */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.0 }}
-          className="mb-12"
-        >
-          <h3 className="text-2xl font-bold mb-6">Best Practices for Similar Projects</h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            {bestPractices.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 1.1 + i * 0.05 }}
-              >
-                <Card className="p-4 bg-card/30 border-border/40">
-                  <div className="font-medium text-sm mb-1.5">{item.practice}</div>
-                  <div className="text-sm text-muted-foreground/90">{item.tip}</div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Future Work */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.3 }}
-        >
-          <Card className="p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20">
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-xl bg-blue-500/20">
-                <Rocket className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-3">Future Work & Extensions</h3>
-                <ul className="space-y-2">
-                  {futureWork.map((item, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.2, delay: 1.4 + i * 0.05 }}
-                      className="flex items-start gap-2 text-sm text-foreground/80"
-                    >
-                      <span className="text-blue-500 mt-0.5">→</span>
-                      <span>{item}</span>
-                    </motion.li>
+                    </Card>
                   ))}
-                </ul>
-              </div>
-            </div>
-          </Card>
-        </motion.div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* What Didn't Work */}
+            <AccordionItem value="what-didnt-work" className="border-b border-border/50">
+              <AccordionTrigger className="text-xl font-bold hover:no-underline py-4">
+                <div className="flex items-center gap-3">
+                  <XCircle className="h-6 w-6 text-orange-500" />
+                  <span>What Didn't Work</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid gap-4 pt-2">
+                  {whatDidntWork.map((item, i) => (
+                    <Card key={i} className="p-5 bg-gradient-to-r from-orange-500/10 to-red-500/10 border-orange-500/20">
+                      <div className="flex items-start gap-3">
+                        <XCircle className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="font-semibold mb-1">{item.title}</h4>
+                          <p className="text-sm text-foreground/80 mb-2">
+                            <span className="font-medium">Why:</span> {item.reason}
+                          </p>
+                          <div className="text-xs font-medium text-orange-600 dark:text-orange-400">
+                            Lesson: {item.lesson}
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Key Insights */}
+            <AccordionItem value="key-insights" className="border-b border-border/50">
+              <AccordionTrigger className="text-xl font-bold hover:no-underline py-4">
+                <div className="flex items-center gap-3">
+                  <Lightbulb className="h-6 w-6 text-yellow-500" />
+                  <span>Key Insights</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid md:grid-cols-2 gap-4 pt-2">
+                  {keyInsights.map((insight, i) => {
+                    const Icon = insight.icon
+                    return (
+                      <Card key={i} className="p-5 bg-card/40 border-border/40 hover:bg-card/60 transition-all h-full">
+                        <div className="flex items-start gap-3">
+                          <div className={`p-2 rounded-lg bg-${insight.color}-500/20`}>
+                            <Icon className={`h-5 w-5 text-${insight.color}-600 dark:text-${insight.color}-400`} />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">{insight.title}</h4>
+                            <p className="text-sm text-muted-foreground/90 leading-relaxed">
+                              {insight.description}
+                            </p>
+                          </div>
+                        </div>
+                      </Card>
+                    )
+                  })}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Best Practices */}
+            <AccordionItem value="best-practices" className="border-b border-border/50">
+              <AccordionTrigger className="text-xl font-bold hover:no-underline py-4">
+                <div className="flex items-center gap-3">
+                  <TrendingUp className="h-6 w-6 text-blue-500" />
+                  <span>Best Practices</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid md:grid-cols-2 gap-4 pt-2">
+                  {bestPractices.map((item, i) => (
+                    <Card key={i} className="p-4 bg-card/30 border-border/40">
+                      <div className="font-medium text-sm mb-1.5">{item.practice}</div>
+                      <div className="text-sm text-muted-foreground/90">{item.tip}</div>
+                    </Card>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            {/* Future Work */}
+            <AccordionItem value="future-work" className="border-b border-border/50">
+              <AccordionTrigger className="text-xl font-bold hover:no-underline py-4">
+                <div className="flex items-center gap-3">
+                  <Rocket className="h-6 w-6 text-blue-500" />
+                  <span>Future Work & Extensions</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <Card className="p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20 mt-2">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-blue-500/20">
+                      <Rocket className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <div className="flex-1">
+                      <ul className="space-y-2">
+                        {futureWork.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-foreground/80">
+                            <span className="text-blue-500 mt-0.5">→</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </Card>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
       </div>
     </div>
   )
