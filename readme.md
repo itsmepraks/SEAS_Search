@@ -13,7 +13,7 @@ This project fine-tunes Llama 3.1 8B to answer questions about GWU Computer Scie
 
 ```text
 SEAS_Search/
-├── nb/                             # Jupyter notebooks for training
+├── notebooks/                      # Jupyter notebooks for training
 │   ├── Llama3.1_(8B)-KG-QA-System.ipynb         # Knowledge Graph QA system
 │   ├── Llama3.1_(8B)-finetuning-optimized.ipynb  # Optimized fine-tuning notebook
 │   ├── Llama3.1_(8B)-finetuning.ipynb            # Original fine-tuning notebook
@@ -219,7 +219,7 @@ This creates:
 
 ### 2. Fine-tune Model
 
-1. Open `nb/Llama3.1_(8B)-finetuning-optimized.ipynb`
+1. Open `notebooks/Llama3.1_(8B)-finetuning-optimized.ipynb`
 2. Run all cells
 3. Model will be saved after training completes
 

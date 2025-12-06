@@ -301,7 +301,7 @@ A: Check the output after Cell 13. You should see "Generated 170-200 multi-hop q
 ## 📋 File Structure
 
 ```
-backend/nb/
+notebooks/
 ├── Llama3.1_(8B)-KG-QA-System.ipynb  ⭐ IMPROVED & CLEANED
 └── README.md                          📖 This file
 ```
