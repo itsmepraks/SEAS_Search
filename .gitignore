@@ -1,20 +1,4 @@
-backend/venv
-frontend/node_modules
-frontend/.next
-frontend/.env
-frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
-frontend/.env.development
-frontend/.env.test
-frontend/.env.production
-frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
-
-backend/.DS_Store
+# Old backend/frontend folder references removed - structure is now flattened
 
 # Python cache files
 __pycache__/
@@ -22,3 +6,25 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
+
+venv
+
+node_modules
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.test
+.env.production
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+.next
+package-lock.json
+
+
+

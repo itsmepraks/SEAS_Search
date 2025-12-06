@@ -1,0 +1,51 @@
+{
+  "comparisons": [
+    {
+      "approach": "Standard Fine-tuning",
+      "notebook": "Llama3.1_(8B)-finetuning.ipynb",
+      "training_samples": 2828,
+      "epochs": 3,
+      "lora_rank": 16,
+      "learning_rate": 0.0002,
+      "final_loss": 0.39,
+      "accuracy": 87.5,
+      "training_time_min": 23.69,
+      "strengths": ["Fast training", "Simple setup", "Good for basic Q&A"],
+      "weaknesses": ["Repetition issues", "No multi-hop reasoning", "Simple pattern matching"],
+      "use_cases": ["Basic course lookups", "Single-fact queries"]
+    },
+    {
+      "approach": "Optimized Fine-tuning",
+      "notebook": "Llama3.1_(8B)-finetuning-optimized.ipynb",
+      "training_samples": 2828,
+      "epochs": 10,
+      "lora_rank": 32,
+      "learning_rate": 0.0001,
+      "final_loss": 0.34,
+      "validation_loss": 0.75,
+      "accuracy": 91.2,
+      "training_time_min": 108.52,
+      "strengths": ["Better generalization", "Early stopping", "Validation tracking", "Higher capacity"],
+      "weaknesses": ["Longer training", "Still no multi-hop reasoning"],
+      "use_cases": ["Production deployment", "General Q&A", "Better accuracy needed"]
+    },
+    {
+      "approach": "KG-Based QA System",
+      "notebook": "Llama3.1_(8B)-KG-QA-System.ipynb",
+      "training_samples": 200,
+      "epochs": 10,
+      "lora_rank": 32,
+      "learning_rate": 0.0001,
+      "final_loss": 0.19,
+      "validation_loss": 0.73,
+      "accuracy": 94.8,
+      "training_time_min": 115.3,
+      "strengths": ["Multi-hop reasoning", "Prerequisite chain queries", "Graph-aware context", "Structured knowledge"],
+      "weaknesses": ["Requires graph construction", "More complex pipeline"],
+      "use_cases": ["Complex reasoning", "Prerequisites planning", "Cross-department queries", "Path finding"]
+    }
+  ],
+  "_metadata": {
+    "note": "Placeholder data. Run DATA_EXPORT_SCRIPTS.md to generate real comparison metrics."
+  }
+}

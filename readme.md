@@ -13,21 +13,25 @@ This project fine-tunes Llama 3.1 8B to answer questions about GWU Computer Scie
 
 ```text
 SEAS_Search/
-├── backend/
-│   ├── nb/                          # Jupyter notebooks for training
-│   │   ├── Llama3.1_(8B)-KG-QA-System.ipynb         # Knowledge Graph QA system
-│   │   ├── Llama3.1_(8B)-finetuning-optimized.ipynb  # Optimized fine-tuning notebook
-│   │   ├── Llama3.1_(8B)-finetuning.ipynb            # Original fine-tuning notebook
-│   │   └── Meta_Synthetic_Data_Llama3_2_(3B).ipynb   # Synthetic data generation (optional)
-│   ├── data/                        # Training data
-│   │   ├── spring_2026_courses.csv      # Course schedule data
-│   │   ├── bulletin_courses.csv          # Course descriptions
-│   │   ├── course_finetune.jsonl         # Formatted training dataset (simple Q&A)
-│   │   └── course_finetune_kg_rag.jsonl  # KG-RAG training dataset (multi-hop)
-│   └── utils/                       # Data preparation scripts
-│       ├── scrape_courses.py        # Scrapes schedule + bulletin data
-│       └── prepare_dataset.py       # Converts CSV to training format
-└── frontend/                        # Web interface (work in progress)
+├── nb/                             # Jupyter notebooks for training
+│   ├── Llama3.1_(8B)-KG-QA-System.ipynb         # Knowledge Graph QA system
+│   ├── Llama3.1_(8B)-finetuning-optimized.ipynb  # Optimized fine-tuning notebook
+│   ├── Llama3.1_(8B)-finetuning.ipynb            # Original fine-tuning notebook
+│   └── Meta_Synthetic_Data_Llama3_2_(3B).ipynb   # Synthetic data generation (optional)
+├── data/                           # Training data
+│   ├── spring_2026_courses.csv      # Course schedule data
+│   ├── bulletin_courses.csv          # Course descriptions
+│   ├── course_finetune.jsonl         # Formatted training dataset (simple Q&A)
+│   └── course_finetune_kg_rag.jsonl  # KG-RAG training dataset (multi-hop)
+├── utils/                          # Data preparation scripts
+│   ├── scrape_courses.py           # Scrapes schedule + bulletin data
+│   ├── prepare_dataset.py          # Converts CSV to training format
+│   └── convert_kg_to_json.py       # Converts KG pickle to JSON for frontend
+├── app/                            # Next.js app directory
+├── components/                     # React components
+├── public/                         # Static assets
+│   └── data/                       # Frontend data files (JSON exports)
+└── lib/                            # Utility libraries
 ```
 
 ## Notebooks
@@ -202,7 +206,6 @@ After training, you'll find:
 
 ```bash
 # Scrape course data
-cd backend
 python utils/scrape_courses.py
 
 # Generate training dataset
@@ -216,7 +219,7 @@ This creates:
 
 ### 2. Fine-tune Model
 
-1. Open `backend/nb/Llama3.1_(8B)-finetuning-optimized.ipynb`
+1. Open `nb/Llama3.1_(8B)-finetuning-optimized.ipynb`
 2. Run all cells
 3. Model will be saved after training completes
 
