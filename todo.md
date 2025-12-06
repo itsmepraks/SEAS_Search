@@ -16,11 +16,18 @@
   - Updated prepare_dataset.py to auto-sync files to public/data/
   - Created documentation (utils/README_DATA_SYNC.md) explaining data structure
 - [x] Updated folder name from `nb` to `notebooks` and fixed all references
-- [x] Comprehensive DATA_EXPORT_SCRIPTS.md documentation
+- [x] Comprehensive DATA_EXPORT_SCRIPTS.md documentation (VERIFIED & ACCURATE)
+  - Read actual notebook code to verify variable names and structures
   - Documented all currently displayed vs missing metrics
   - Created step-by-step export instructions for all 3 notebooks
+  - Verified: SFTTrainer structure, trainer.state.log_history, trainer_stats.metrics
+  - Verified: KnowledgeGraph object structure (kg.graph), pickle file format
+  - Verified: Evaluation functions (exact_match, f1_score, evaluate_qa_predictions)
+  - Verified: Graph retrieval stats dictionary structure
   - Added export functions for: training metrics, knowledge graph, prerequisites, topics, instructors
   - Added export functions for: evaluation metrics (EM, F1, BLEU, ROUGE), graph retrieval stats
   - Created model comparison export function
+  - Referenced existing utils/convert_kg_to_json.py for graph export
   - Added troubleshooting section and complete checklist
+  - All instructions based on actual code, no guesswork
 

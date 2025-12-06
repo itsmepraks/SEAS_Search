@@ -1,6 +1,5 @@
 # Data Export Scripts for Frontend
 
-This document provides **complete instructions** for extracting all data and metrics from your training notebooks to populate the frontend with real results.
 
 ## 📊 Current Frontend Status
 
@@ -19,8 +18,6 @@ This document provides **complete instructions** for extracting all data and met
 - **Category-based Accuracy** - Accuracy breakdown by query type (currently hardcoded in `visualizations.tsx`)
 - **Training Data Distribution** - Distribution of samples by category (currently hardcoded)
 - **Per-Query Evaluation Results** - Individual query predictions vs ground truth
-- **Validation Loss Curves** - Separate validation loss tracking (partially shown)
-- **Learning Rate Schedules** - Learning rate decay visualization
 
 ---
 
@@ -54,10 +51,11 @@ Copy downloaded files to `public/data/` directory in your project.
 ## **Notebook 1: Standard Fine-tuning**
 **File:** `Llama3.1_(8B)-finetuning.ipynb`
 
-### **What to Export:**
-- Training metrics (loss, learning rate per epoch)
-- Training time
-- Final accuracy (if evaluated)
+### **Actual Code Structure:**
+- Uses `SFTTrainer` from `trl` library
+- Training: `trainer_stats = trainer.train()`
+- Metrics: `trainer_stats.metrics` contains training statistics
+- History: `trainer.state.log_history` contains per-step/epoch logs
 
 ### **Export Code:**
 
@@ -65,12 +63,13 @@ Copy downloaded files to `public/data/` directory in your project.
 import json
 from datetime import datetime
 
-def export_standard_metrics(trainer, output_path='training_metrics_standard.json'):
+def export_standard_metrics(trainer, trainer_stats, output_path='training_metrics.json'):
     """
     Export training metrics from standard fine-tuning notebook
     
     Args:
-        trainer: HuggingFace Trainer object after training
+        trainer: SFTTrainer object after training
+        trainer_stats: Result from trainer.train()
         output_path: Output file path
     """
     # Load existing metrics file if it exists
@@ -82,17 +81,34 @@ def export_standard_metrics(trainer, output_path='training_metrics_standard.json
     
     # Extract epoch data from log history
     epochs_data = []
-    for entry in trainer.state.log_history:
-        if 'loss' in entry and 'epoch' in entry:
-            epoch_data = {
-                "epoch": int(entry['epoch']),
-                "train_loss": float(entry['loss']),
-                "learning_rate": float(entry.get('learning_rate', 0))
-            }
-            epochs_data.append(epoch_data)
+    current_epoch = 0
+    
+    if hasattr(trainer, 'state') and hasattr(trainer.state, 'log_history'):
+        for entry in trainer.state.log_history:
+            # Look for entries with 'loss' and 'epoch'
+            if 'loss' in entry:
+                epoch_num = entry.get('epoch', current_epoch)
+                if epoch_num > current_epoch:
+                    current_epoch = epoch_num
+                
+                epoch_data = {
+                    "epoch": int(epoch_num) if epoch_num else len(epochs_data) + 1,
+                    "train_loss": float(entry.get('loss', entry.get('train_loss', 0))),
+                    "learning_rate": float(entry.get('learning_rate', 0))
+                }
+                epochs_data.append(epoch_data)
+    
+    # If no epoch data found, create from final stats
+    if not epochs_data and hasattr(trainer_stats, 'metrics'):
+        final_loss = trainer_stats.metrics.get('train_loss', 0)
+        epochs_data = [{
+            "epoch": 1,
+            "train_loss": float(final_loss),
+            "learning_rate": 0
+        }]
     
     # Get training time from trainer stats
-    training_time_seconds = trainer.state.metrics.get('train_runtime', 0)
+    training_time_seconds = trainer_stats.metrics.get('train_runtime', 0) if hasattr(trainer_stats, 'metrics') else 0
     training_time_minutes = training_time_seconds / 60 if training_time_seconds > 0 else 0
     
     # Get final loss
@@ -126,38 +142,39 @@ def export_standard_metrics(trainer, output_path='training_metrics_standard.json
     return metrics_data
 
 # Usage - Run this after training completes
-# export_standard_metrics(trainer, 'training_metrics.json')
+# Make sure you have: trainer and trainer_stats variables
+# export_standard_metrics(trainer, trainer_stats, 'training_metrics.json')
 
 # Download
 # from google.colab import files
 # files.download('training_metrics.json')
 ```
 
-**Note:** If you have evaluation results with accuracy, update the `accuracy` field manually or add evaluation code to calculate it.
-
 ---
 
 ## **Notebook 2: Optimized Fine-tuning**
 **File:** `Llama3.1_(8B)-finetuning-optimized.ipynb`
 
-### **What to Export:**
-- Training metrics (loss, validation loss, learning rate per epoch)
-- Training time
-- Final accuracy from validation set
-- Early stopping information (if used)
+### **Actual Code Structure:**
+- Uses `SFTTrainer` with validation set
+- Training: `trainer_stats = trainer.train()`
+- History: `trainer.state.log_history` contains entries with 'step', 'train_loss', 'eval_loss', 'learning_rate'
+- The notebook has a function `extract_training_history()` that shows how to access the data
 
 ### **Export Code:**
 
 ```python
 import json
 from datetime import datetime
+import numpy as np
 
-def export_optimized_metrics(trainer, output_path='training_metrics.json'):
+def export_optimized_metrics(trainer, trainer_stats, output_path='training_metrics.json'):
     """
     Export training metrics from optimized fine-tuning notebook
     
     Args:
-        trainer: HuggingFace Trainer object after training
+        trainer: SFTTrainer object after training
+        trainer_stats: Result from trainer.train()
         output_path: Output file path (will merge with existing data)
     """
     # Load existing metrics file if it exists
@@ -169,34 +186,50 @@ def export_optimized_metrics(trainer, output_path='training_metrics.json'):
     
     # Extract epoch data from log history
     epochs_data = []
-    for entry in trainer.state.log_history:
-        if 'loss' in entry and 'epoch' in entry:
-            epoch_data = {
-                "epoch": int(entry['epoch']),
-                "train_loss": float(entry['loss']),
-                "learning_rate": float(entry.get('learning_rate', 0))
-            }
-            
-            # Add validation loss if available
-            if 'eval_loss' in entry:
-                epoch_data['val_loss'] = float(entry['eval_loss'])
-            
-            epochs_data.append(epoch_data)
+    
+    if hasattr(trainer, 'state') and hasattr(trainer.state, 'log_history'):
+        for entry in trainer.state.log_history:
+            # Look for entries with 'step' or 'epoch' and 'loss'
+            if 'step' in entry or 'loss' in entry:
+                epoch_data = {
+                    "epoch": int(entry.get('epoch', entry.get('step', len(epochs_data) + 1))),
+                    "train_loss": float(entry.get('train_loss', entry.get('loss', 0))),
+                    "learning_rate": float(entry.get('learning_rate', 0))
+                }
+                
+                # Add validation loss if available
+                if 'eval_loss' in entry:
+                    epoch_data['val_loss'] = float(entry['eval_loss'])
+                
+                epochs_data.append(epoch_data)
+    
+    # If no history found, create from final stats
+    if not epochs_data and hasattr(trainer_stats, 'metrics'):
+        final_loss = trainer_stats.metrics.get('train_loss', 0)
+        final_eval_loss = trainer_stats.metrics.get('eval_loss', None)
+        epochs_data = [{
+            "epoch": 1,
+            "train_loss": float(final_loss),
+            "learning_rate": 0
+        }]
+        if final_eval_loss is not None:
+            epochs_data[0]['val_loss'] = float(final_eval_loss)
     
     # Get training time
-    training_time_seconds = trainer.state.metrics.get('train_runtime', 0)
+    training_time_seconds = trainer_stats.metrics.get('train_runtime', 0) if hasattr(trainer_stats, 'metrics') else 0
     training_time_minutes = training_time_seconds / 60 if training_time_seconds > 0 else 0
     
     # Get final metrics
     final_loss = epochs_data[-1]['train_loss'] if epochs_data else 0
-    final_val_loss = epochs_data[-1].get('val_loss', 0) if epochs_data else 0
+    final_val_loss = epochs_data[-1].get('val_loss', None) if epochs_data and 'val_loss' in epochs_data[-1] else None
     
-    # Check for evaluation metrics
+    # Check for evaluation metrics in log history
     eval_accuracy = 0
-    for entry in trainer.state.log_history:
-        if 'eval_accuracy' in entry:
-            eval_accuracy = float(entry['eval_accuracy']) * 100  # Convert to percentage
-            break
+    if hasattr(trainer, 'state') and hasattr(trainer.state, 'log_history'):
+        for entry in trainer.state.log_history:
+            if 'eval_accuracy' in entry:
+                eval_accuracy = float(entry['eval_accuracy']) * 100  # Convert to percentage
+                break
     
     # Update metrics data
     metrics_data['approaches']['optimized'] = {
@@ -204,7 +237,7 @@ def export_optimized_metrics(trainer, output_path='training_metrics.json'):
         "epochs": epochs_data,
         "final_metrics": {
             "final_loss": final_loss,
-            "val_loss": final_val_loss if final_val_loss > 0 else None,
+            "val_loss": final_val_loss,
             "accuracy": eval_accuracy if eval_accuracy > 0 else 0,  # Fill manually if needed
             "training_time_minutes": round(training_time_minutes, 2)
         }
@@ -219,17 +252,17 @@ def export_optimized_metrics(trainer, output_path='training_metrics.json'):
     with open(output_path, 'w') as f:
         json.dump(metrics_data, f, indent=2)
     
-    print(f"✓ Exported {len(epochs_data)} epochs")
+    print(f"✓ Exported {len(epochs_data)} epochs/steps")
     print(f"✓ Training time: {training_time_minutes:.2f} minutes")
     print(f"✓ Final train loss: {final_loss:.4f}")
-    if final_val_loss > 0:
+    if final_val_loss:
         print(f"✓ Final val loss: {final_val_loss:.4f}")
     print(f"✓ Saved to: {output_path}")
     
     return metrics_data
 
 # Usage - Run this after training completes
-# export_optimized_metrics(trainer, 'training_metrics.json')
+# export_optimized_metrics(trainer, trainer_stats, 'training_metrics.json')
 
 # Download
 # from google.colab import files
@@ -241,20 +274,52 @@ def export_optimized_metrics(trainer, output_path='training_metrics.json'):
 ## **Notebook 3: KG-QA System**
 **File:** `Llama3.1_(8B)-KG-QA-System.ipynb`
 
-This notebook generates the most data. Export everything in order:
+### **Actual Code Structure:**
+- Graph: `kg = KnowledgeGraph()` - the graph is accessed via `kg.graph`
+- The graph is saved as a pickle file containing the `KnowledgeGraph` object
+- **Important:** There's already a utility script `utils/convert_kg_to_json.py` that handles graph export correctly
+- Training: Uses `SFTTrainer` like other notebooks
+- Evaluation: Has functions `exact_match()`, `f1_score()`, `evaluate_qa_predictions()` that return dict with metrics
+- Graph retrieval stats: Dictionary `graph_retrieval_stats` created during performance monitoring
 
 ### **3.1 Knowledge Graph Export**
 
+**⚠️ IMPORTANT:** You have two options:
+
+**Option A: Use the existing utility script (RECOMMENDED)**
+
+If you have the `kg_graph.pkl` file, you can use the existing `utils/convert_kg_to_json.py` script locally, OR copy its functions to Colab:
+
 ```python
 import json
+import pickle
 import networkx as nx
+
+def load_graph_from_pickle(pkl_path):
+    """Load NetworkX graph from pickle file (handles KnowledgeGraph wrapper)"""
+    print(f"Loading graph from {pkl_path}...")
+    with open(pkl_path, 'rb') as f:
+        # The pickle contains a KnowledgeGraph object, not a raw NetworkX graph
+        # Create a minimal KnowledgeGraph class to unpickle
+        class KnowledgeGraph:
+            def __init__(self):
+                self.graph = None
+        
+        import sys
+        sys.modules[__name__].KnowledgeGraph = KnowledgeGraph
+        
+        kg = pickle.load(f)
+        G = kg.graph  # Extract the NetworkX graph from KnowledgeGraph object
+    
+    print(f"✓ Loaded graph with {G.number_of_nodes()} nodes and {G.number_of_edges()} edges")
+    return G
 
 def export_knowledge_graph_to_json(G, output_path='knowledge_graph.json'):
     """
     Export NetworkX graph to JSON format for react-force-graph-2d
     
     Args:
-        G: NetworkX graph object (usually named 'kg_graph' or 'G')
+        G: NetworkX graph object (from kg.graph)
         output_path: Output file path
     """
     graph_data = {
@@ -263,52 +328,66 @@ def export_knowledge_graph_to_json(G, output_path='knowledge_graph.json'):
     }
     
     # Export nodes
-    for node in G.nodes(data=True):
-        node_id = node[0]
-        node_attrs = node[1]
+    for node_id, node_attrs in G.nodes(data=True):
+        # Determine node type from node_type attribute or ID prefix
+        node_type = node_attrs.get('node_type', 'unknown')
+        
+        # If node_type not found, infer from ID
+        if node_type == 'unknown':
+            if str(node_id).startswith('course_'):
+                node_type = 'course'
+            elif str(node_id).startswith('prof_'):
+                node_type = 'professor'
+            elif str(node_id).startswith('topic_'):
+                node_type = 'topic'
+        
+        # Clean up label - remove prefix
+        label = str(node_id)
+        if '_' in label:
+            label = label.split('_', 1)[1]
         
         node_data = {
             "id": str(node_id),
-            "label": node_attrs.get('label', str(node_id)),
-            "type": node_attrs.get('type', 'unknown'),
+            "label": label,
+            "type": node_type,
         }
         
-        # Add type-specific attributes
-        if node_attrs.get('type') == 'course':
-            node_data['description'] = node_attrs.get('description', '')
-            node_data['credits'] = node_attrs.get('credits', '')
-            node_data['code'] = node_attrs.get('code', str(node_id))
-        elif node_attrs.get('type') == 'professor':
-            node_data['name'] = node_attrs.get('name', str(node_id))
-        elif node_attrs.get('type') == 'topic':
-            node_data['topic'] = node_attrs.get('topic', str(node_id))
+        # Add all other attributes
+        for key, value in node_attrs.items():
+            if key not in ['id', 'label', 'type', 'node_type']:
+                # Convert non-serializable types
+                try:
+                    json.dumps(value)  # Test if serializable
+                    node_data[key] = value
+                except:
+                    node_data[key] = str(value)
         
         graph_data['nodes'].append(node_data)
     
     # Export edges
-    for edge in G.edges(data=True):
-        source, target, attrs = edge
+    for source, target, attrs in G.edges(data=True):
+        # Determine edge type from edge_type or type attribute
+        edge_type = attrs.get('edge_type', attrs.get('type', 'unknown'))
+        
         link_data = {
             "source": str(source),
             "target": str(target),
-            "type": attrs.get('type', 'unknown'),
-            "label": attrs.get('label', attrs.get('type', ''))
+            "type": edge_type,
+            "label": attrs.get('label', edge_type)
         }
+        
+        # Add weight if present
+        if 'weight' in attrs:
+            link_data['weight'] = attrs['weight']
+        
         graph_data['links'].append(link_data)
     
     # Add metadata
     graph_data['_metadata'] = {
         "note": "Real data exported from KG-QA notebook",
         "total_nodes": len(graph_data['nodes']),
-        "total_links": len(graph_data['links']),
-        "node_types": {}
+        "total_links": len(graph_data['links'])
     }
-    
-    # Count node types
-    for node in graph_data['nodes']:
-        node_type = node['type']
-        graph_data['_metadata']['node_types'][node_type] = \
-            graph_data['_metadata']['node_types'].get(node_type, 0) + 1
     
     # Write to file
     with open(output_path, 'w') as f:
@@ -318,10 +397,24 @@ def export_knowledge_graph_to_json(G, output_path='knowledge_graph.json'):
     print(f"✓ Saved to: {output_path}")
     return graph_data
 
-# Usage - Replace 'kg_graph' with your actual graph variable name
-# export_knowledge_graph_to_json(kg_graph, 'knowledge_graph.json')
+# Usage in Colab - If you have kg_graph.pkl file:
+# G = load_graph_from_pickle('kg_graph.pkl')
+# export_knowledge_graph_to_json(G, 'knowledge_graph.json')
+
+# OR if you have the kg object directly in memory:
+# export_knowledge_graph_to_json(kg.graph, 'knowledge_graph.json')
+
+# Download
 # from google.colab import files
 # files.download('knowledge_graph.json')
+```
+
+**Option B: Export directly from notebook (if kg object is in memory)**
+
+```python
+# If you have the kg object directly (KnowledgeGraph instance)
+# Simply use: kg.graph to get the NetworkX graph
+export_knowledge_graph_to_json(kg.graph, 'knowledge_graph.json')
 ```
 
 ### **3.2 Prerequisites Map Export**
@@ -335,7 +428,9 @@ def export_prerequisites_map(G, output_path='prerequisites_map.json'):
     
     for edge in G.edges(data=True):
         source, target, attrs = edge
-        if attrs.get('type') == 'prerequisite':
+        # Check both 'type' and 'edge_type' attributes
+        edge_type = attrs.get('type', attrs.get('edge_type', ''))
+        if edge_type == 'prerequisite':
             # target course requires source as prerequisite
             if target not in prerequisites_map:
                 prerequisites_map[str(target)] = []
@@ -353,8 +448,8 @@ def export_prerequisites_map(G, output_path='prerequisites_map.json'):
     print(f"✓ Exported prerequisites for {prerequisites_map['_metadata']['total_courses']} courses")
     print(f"✓ Saved to: {output_path}")
 
-# Usage
-# export_prerequisites_map(kg_graph, 'prerequisites_map.json')
+# Usage - Use kg.graph if you have kg object, or load from pickle
+# export_prerequisites_map(kg.graph, 'prerequisites_map.json')
 # from google.colab import files
 # files.download('prerequisites_map.json')
 ```
@@ -370,7 +465,9 @@ def export_topics_map(G, output_path='topics_map.json'):
     
     for edge in G.edges(data=True):
         source, target, attrs = edge
-        if attrs.get('type') == 'covers_topic':
+        # Check both 'type' and 'edge_type' attributes
+        edge_type = attrs.get('type', attrs.get('edge_type', ''))
+        if edge_type == 'covers_topic':
             # source course covers target topic
             if source not in topics_map:
                 topics_map[str(source)] = []
@@ -378,9 +475,11 @@ def export_topics_map(G, output_path='topics_map.json'):
             # Get topic name from target node
             topic_name = str(target)
             for node in G.nodes(data=True):
-                if node[0] == target and node[1].get('type') == 'topic':
-                    topic_name = node[1].get('topic', str(target))
-                    break
+                if node[0] == target:
+                    node_type = node[1].get('node_type', '')
+                    if node_type == 'topic':
+                        topic_name = node[1].get('name', node[1].get('topic', str(target)))
+                        break
             
             topics_map[str(source)].append(topic_name)
     
@@ -397,7 +496,7 @@ def export_topics_map(G, output_path='topics_map.json'):
     print(f"✓ Saved to: {output_path}")
 
 # Usage
-# export_topics_map(kg_graph, 'topics_map.json')
+# export_topics_map(kg.graph, 'topics_map.json')
 # from google.colab import files
 # files.download('topics_map.json')
 ```
@@ -413,15 +512,19 @@ def export_instructors_map(G, output_path='instructors_map.json'):
     
     for edge in G.edges(data=True):
         source, target, attrs = edge
-        if attrs.get('type') == 'taught_by':
+        # Check both 'type' and 'edge_type' attributes
+        edge_type = attrs.get('type', attrs.get('edge_type', ''))
+        if edge_type == 'taught_by':
             # source course is taught by target professor
             prof_name = str(target)
             
             # Get professor name from node attributes
             for node in G.nodes(data=True):
-                if node[0] == target and node[1].get('type') == 'professor':
-                    prof_name = node[1].get('name', str(target))
-                    break
+                if node[0] == target:
+                    node_type = node[1].get('node_type', '')
+                    if node_type == 'professor':
+                        prof_name = node[1].get('name', str(target))
+                        break
             
             if prof_name not in instructors_map:
                 instructors_map[prof_name] = []
@@ -440,7 +543,7 @@ def export_instructors_map(G, output_path='instructors_map.json'):
     print(f"✓ Saved to: {output_path}")
 
 # Usage
-# export_instructors_map(kg_graph, 'instructors_map.json')
+# export_instructors_map(kg.graph, 'instructors_map.json')
 # from google.colab import files
 # files.download('instructors_map.json')
 ```
@@ -451,12 +554,13 @@ def export_instructors_map(G, output_path='instructors_map.json'):
 import json
 from datetime import datetime
 
-def export_kg_metrics(trainer, output_path='training_metrics.json'):
+def export_kg_metrics(trainer, trainer_stats, output_path='training_metrics.json'):
     """
     Export training metrics from KG-QA notebook
     
     Args:
-        trainer: HuggingFace Trainer object after training
+        trainer: SFTTrainer object after training
+        trainer_stats: Result from trainer.train()
         output_path: Output file path (will merge with existing data)
     """
     # Load existing metrics file
@@ -468,33 +572,48 @@ def export_kg_metrics(trainer, output_path='training_metrics.json'):
     
     # Extract epoch data
     epochs_data = []
-    for entry in trainer.state.log_history:
-        if 'loss' in entry and 'epoch' in entry:
-            epoch_data = {
-                "epoch": int(entry['epoch']),
-                "train_loss": float(entry['loss']),
-                "learning_rate": float(entry.get('learning_rate', 0))
-            }
-            
-            if 'eval_loss' in entry:
-                epoch_data['val_loss'] = float(entry['eval_loss'])
-            
-            epochs_data.append(epoch_data)
+    
+    if hasattr(trainer, 'state') and hasattr(trainer.state, 'log_history'):
+        for entry in trainer.state.log_history:
+            if 'loss' in entry:
+                epoch_data = {
+                    "epoch": int(entry.get('epoch', entry.get('step', len(epochs_data) + 1))),
+                    "train_loss": float(entry.get('train_loss', entry.get('loss', 0))),
+                    "learning_rate": float(entry.get('learning_rate', 0))
+                }
+                
+                if 'eval_loss' in entry:
+                    epoch_data['val_loss'] = float(entry['eval_loss'])
+                
+                epochs_data.append(epoch_data)
+    
+    # If no history found, create from final stats
+    if not epochs_data and hasattr(trainer_stats, 'metrics'):
+        final_loss = trainer_stats.metrics.get('train_loss', 0)
+        final_eval_loss = trainer_stats.metrics.get('eval_loss', None)
+        epochs_data = [{
+            "epoch": 1,
+            "train_loss": float(final_loss),
+            "learning_rate": 0
+        }]
+        if final_eval_loss is not None:
+            epochs_data[0]['val_loss'] = float(final_eval_loss)
     
     # Get training time
-    training_time_seconds = trainer.state.metrics.get('train_runtime', 0)
+    training_time_seconds = trainer_stats.metrics.get('train_runtime', 0) if hasattr(trainer_stats, 'metrics') else 0
     training_time_minutes = training_time_seconds / 60 if training_time_seconds > 0 else 0
     
     # Get final metrics
     final_loss = epochs_data[-1]['train_loss'] if epochs_data else 0
-    final_val_loss = epochs_data[-1].get('val_loss', 0) if epochs_data else 0
+    final_val_loss = epochs_data[-1].get('val_loss', None) if epochs_data and 'val_loss' in epochs_data[-1] else None
     
     # Check for evaluation metrics
     eval_accuracy = 0
-    for entry in trainer.state.log_history:
-        if 'eval_accuracy' in entry:
-            eval_accuracy = float(entry['eval_accuracy']) * 100
-            break
+    if hasattr(trainer, 'state') and hasattr(trainer.state, 'log_history'):
+        for entry in trainer.state.log_history:
+            if 'eval_accuracy' in entry:
+                eval_accuracy = float(entry['eval_accuracy']) * 100
+                break
     
     # Update metrics data
     metrics_data['approaches']['kg_based'] = {
@@ -502,7 +621,7 @@ def export_kg_metrics(trainer, output_path='training_metrics.json'):
         "epochs": epochs_data,
         "final_metrics": {
             "final_loss": final_loss,
-            "val_loss": final_val_loss if final_val_loss > 0 else None,
+            "val_loss": final_val_loss,
             "accuracy": eval_accuracy if eval_accuracy > 0 else 0,
             "training_time_minutes": round(training_time_minutes, 2)
         }
@@ -517,48 +636,52 @@ def export_kg_metrics(trainer, output_path='training_metrics.json'):
     with open(output_path, 'w') as f:
         json.dump(metrics_data, f, indent=2)
     
-    print(f"✓ Exported {len(epochs_data)} epochs")
+    print(f"✓ Exported {len(epochs_data)} epochs/steps")
     print(f"✓ Training time: {training_time_minutes:.2f} minutes")
     print(f"✓ Final train loss: {final_loss:.4f}")
-    if final_val_loss > 0:
+    if final_val_loss:
         print(f"✓ Final val loss: {final_val_loss:.4f}")
     print(f"✓ Saved to: {output_path}")
     
     return metrics_data
 
 # Usage
-# export_kg_metrics(trainer, 'training_metrics.json')
+# export_kg_metrics(trainer, trainer_stats, 'training_metrics.json')
 # from google.colab import files
 # files.download('training_metrics.json')
 ```
 
 ### **3.6 Evaluation Metrics Export (EM, F1, BLEU, ROUGE)**
 
-**Important:** This requires running the evaluation section of the KG-QA notebook. Make sure you have:
-- Test queries with ground truth answers
-- Predictions from your model
-- Evaluation results from `evaluate_qa_predictions()` function
+**Important:** This requires running the evaluation section of the KG-QA notebook. The notebook has:
+- `exact_match()` function
+- `f1_score()` function  
+- `evaluate_qa_predictions()` function that returns a dict with: `exact_match`, `f1`, `bleu`, `rouge1`, `rouge2`, `rougeL`
+- `test_queries` list with test queries
 
 ```python
 import json
 from datetime import datetime
 
-def export_evaluation_metrics(evaluation_results, output_path='evaluation_metrics.json'):
+def export_evaluation_metrics(evaluation_results, test_queries=None, output_path='evaluation_metrics.json'):
     """
     Export evaluation metrics (EM, F1, BLEU, ROUGE) from KG-QA notebook
     
     Args:
-        evaluation_results: Dictionary with evaluation metrics
-            Should contain: 'exact_match', 'f1', 'bleu', 'rouge_l'
+        evaluation_results: Dictionary returned from evaluate_qa_predictions()
+            Should contain: 'exact_match', 'f1', 'bleu', 'rouge1', 'rouge2', 'rougeL'
+        test_queries: Optional list of test queries used (for reference)
         output_path: Output file path
     """
     # Structure the evaluation data
     eval_data = {
         "overall_metrics": {
-            "exact_match": evaluation_results.get('exact_match', 0),
-            "f1_score": evaluation_results.get('f1', 0),
-            "bleu_score": evaluation_results.get('bleu', 0),
-            "rouge_l": evaluation_results.get('rouge_l', 0)
+            "exact_match": float(evaluation_results.get('exact_match', 0)),
+            "f1_score": float(evaluation_results.get('f1', 0)),
+            "bleu_score": float(evaluation_results.get('bleu', 0)),
+            "rouge1": float(evaluation_results.get('rouge1', 0)),
+            "rouge2": float(evaluation_results.get('rouge2', 0)),
+            "rougeL": float(evaluation_results.get('rougeL', 0))
         },
         "per_query_results": evaluation_results.get('per_query', []),
         "_metadata": {
@@ -568,6 +691,10 @@ def export_evaluation_metrics(evaluation_results, output_path='evaluation_metric
         }
     }
     
+    # Add test queries info if provided
+    if test_queries:
+        eval_data['_metadata']['test_queries_count'] = len(test_queries)
+    
     with open(output_path, 'w') as f:
         json.dump(eval_data, f, indent=2)
     
@@ -575,50 +702,65 @@ def export_evaluation_metrics(evaluation_results, output_path='evaluation_metric
     print(f"  Exact Match: {eval_data['overall_metrics']['exact_match']:.2%}")
     print(f"  F1 Score: {eval_data['overall_metrics']['f1_score']:.4f}")
     print(f"  BLEU Score: {eval_data['overall_metrics']['bleu_score']:.4f}")
-    print(f"  ROUGE-L: {eval_data['overall_metrics']['rouge_l']:.4f}")
+    print(f"  ROUGE-L: {eval_data['overall_metrics']['rougeL']:.4f}")
     print(f"✓ Saved to: {output_path}")
     
     return eval_data
 
 # Usage - After running evaluation in notebook
-# Assuming you have results from evaluate_qa_predictions()
-# eval_results = {
-#     'exact_match': 0.85,  # Overall EM score
-#     'f1': 0.92,           # Overall F1 score
-#     'bleu': 0.78,        # Overall BLEU score
-#     'rouge_l': 0.88,     # Overall ROUGE-L score
-#     'per_query': [...]    # List of per-query results
-# }
-# export_evaluation_metrics(eval_results, 'evaluation_metrics.json')
+# Assuming you have:
+# predictions = [...]  # List of prediction strings
+# references = [...]   # List of ground truth strings
+# eval_results = evaluate_qa_predictions(predictions, references)
+# 
+# export_evaluation_metrics(eval_results, test_queries, 'evaluation_metrics.json')
 # from google.colab import files
 # files.download('evaluation_metrics.json')
 ```
 
 ### **3.7 Graph Retrieval Statistics Export**
 
+The notebook creates a `graph_retrieval_stats` dictionary during performance monitoring with:
+- `total_queries`
+- `queries_with_graph_context`
+- `avg_subgraph_size` (list of sizes)
+- `entities_extracted`
+
 ```python
 import json
 from datetime import datetime
+import numpy as np
 
 def export_graph_retrieval_stats(retrieval_stats, output_path='graph_retrieval_stats.json'):
     """
     Export graph retrieval statistics from KG-QA notebook
     
     Args:
-        retrieval_stats: Dictionary with retrieval statistics
-            Should contain: total_queries, queries_with_graph_context, 
-                          avg_subgraph_size, entities_extracted, etc.
+        retrieval_stats: Dictionary with retrieval statistics (graph_retrieval_stats from notebook)
         output_path: Output file path
     """
+    # Calculate average subgraph size if it's a list
+    avg_subgraph_size = 0
+    if 'avg_subgraph_size' in retrieval_stats:
+        if isinstance(retrieval_stats['avg_subgraph_size'], list):
+            avg_subgraph_size = float(np.mean(retrieval_stats['avg_subgraph_size'])) if retrieval_stats['avg_subgraph_size'] else 0
+        else:
+            avg_subgraph_size = float(retrieval_stats['avg_subgraph_size'])
+    
     stats_data = {
         "summary": {
-            "total_queries": retrieval_stats.get('total_queries', 0),
-            "queries_with_graph_context": retrieval_stats.get('queries_with_graph_context', 0),
-            "avg_subgraph_size": retrieval_stats.get('avg_subgraph_size', 0),
-            "total_entities_extracted": retrieval_stats.get('entities_extracted', 0),
-            "avg_entities_per_query": retrieval_stats.get('entities_extracted', 0) / max(retrieval_stats.get('total_queries', 1), 1)
+            "total_queries": int(retrieval_stats.get('total_queries', 0)),
+            "queries_with_graph_context": int(retrieval_stats.get('queries_with_graph_context', 0)),
+            "avg_subgraph_size": avg_subgraph_size,
+            "total_entities_extracted": int(retrieval_stats.get('entities_extracted', 0)),
+            "avg_entities_per_query": float(retrieval_stats.get('entities_extracted', 0)) / max(retrieval_stats.get('total_queries', 1), 1)
         },
-        "detailed_stats": retrieval_stats,
+        "detailed_stats": {
+            "total_queries": int(retrieval_stats.get('total_queries', 0)),
+            "queries_with_graph_context": int(retrieval_stats.get('queries_with_graph_context', 0)),
+            "avg_subgraph_size_list": retrieval_stats.get('avg_subgraph_size', []),
+            "entities_extracted": int(retrieval_stats.get('entities_extracted', 0))
+        },
         "_metadata": {
             "note": "Graph retrieval statistics from KG-QA system",
             "exported_at": datetime.now().isoformat()
@@ -663,9 +805,9 @@ def create_model_comparison(
     Create comprehensive model comparison from all three approaches
     
     Args:
-        standard_metrics: Final metrics dict from standard notebook
-        optimized_metrics: Final metrics dict from optimized notebook
-        kg_metrics: Final metrics dict from KG notebook
+        standard_metrics: Final metrics dict from standard notebook (metrics_data['approaches']['standard'])
+        optimized_metrics: Final metrics dict from optimized notebook (metrics_data['approaches']['optimized'])
+        kg_metrics: Final metrics dict from KG notebook (metrics_data['approaches']['kg_based'])
         output_path: Output file path
     """
     
@@ -676,7 +818,7 @@ def create_model_comparison(
                 "notebook": "Llama3.1_(8B)-finetuning.ipynb",
                 "training_samples": 2828,  # Update if different
                 "epochs": len(standard_metrics.get('epochs', [])),
-                "lora_rank": 16,  # Update with actual value
+                "lora_rank": 16,  # Update with actual value from your notebook
                 "learning_rate": 0.0002,  # Update with actual value
                 "final_loss": standard_metrics['final_metrics']['final_loss'],
                 "accuracy": standard_metrics['final_metrics'].get('accuracy', 0),
@@ -789,13 +931,14 @@ def create_model_comparison(
 Run this single function to export all graph-related data at once:
 
 ```python
-def export_all_kg_data(G, trainer=None):
+def export_all_kg_data(kg, trainer=None, trainer_stats=None):
     """
     Export all data files from KG-QA notebook at once
     
     Args:
-        G: NetworkX graph object
-        trainer: Optional Trainer object for metrics
+        kg: KnowledgeGraph object (from notebook)
+        trainer: Optional SFTTrainer object for metrics
+        trainer_stats: Optional training stats from trainer.train()
     """
     print("=" * 60)
     print("Exporting all KG-QA data files...")
@@ -803,24 +946,24 @@ def export_all_kg_data(G, trainer=None):
     
     # 1. Knowledge Graph
     print("\n[1/5] Exporting knowledge graph...")
-    export_knowledge_graph_to_json(G, 'knowledge_graph.json')
+    export_knowledge_graph_to_json(kg.graph, 'knowledge_graph.json')
     
     # 2. Prerequisites
     print("\n[2/5] Exporting prerequisites map...")
-    export_prerequisites_map(G, 'prerequisites_map.json')
+    export_prerequisites_map(kg.graph, 'prerequisites_map.json')
     
     # 3. Topics
     print("\n[3/5] Exporting topics map...")
-    export_topics_map(G, 'topics_map.json')
+    export_topics_map(kg.graph, 'topics_map.json')
     
     # 4. Instructors
     print("\n[4/5] Exporting instructors map...")
-    export_instructors_map(G, 'instructors_map.json')
+    export_instructors_map(kg.graph, 'instructors_map.json')
     
     # 5. Training metrics (if trainer provided)
-    if trainer:
+    if trainer and trainer_stats:
         print("\n[5/5] Exporting training metrics...")
-        export_kg_metrics(trainer, 'training_metrics.json')
+        export_kg_metrics(trainer, trainer_stats, 'training_metrics.json')
     
     print("\n" + "=" * 60)
     print("All exports complete!")
@@ -834,8 +977,8 @@ def export_all_kg_data(G, trainer=None):
         print("  - training_metrics.json")
     print("\nPlace them in: public/data/")
 
-# Usage
-# export_all_kg_data(kg_graph, trainer)
+# Usage - After training completes in KG-QA notebook
+# export_all_kg_data(kg, trainer, trainer_stats)
 # 
 # Then download all files:
 # from google.colab import files
@@ -843,7 +986,8 @@ def export_all_kg_data(G, trainer=None):
 # files.download('prerequisites_map.json')
 # files.download('topics_map.json')
 # files.download('instructors_map.json')
-# files.download('training_metrics.json')
+# if trainer:
+#     files.download('training_metrics.json')
 ```
 
 ---
@@ -854,21 +998,31 @@ Use this checklist to ensure you export everything:
 
 ### **From Standard Fine-tuning Notebook:**
 - [ ] Training metrics (`training_metrics.json` - standard approach)
+  - Variables needed: `trainer`, `trainer_stats`
 
 ### **From Optimized Fine-tuning Notebook:**
 - [ ] Training metrics (`training_metrics.json` - optimized approach)
+  - Variables needed: `trainer`, `trainer_stats`
 
 ### **From KG-QA System Notebook:**
 - [ ] Knowledge graph (`knowledge_graph.json`)
+  - Variable needed: `kg` (KnowledgeGraph object) OR `kg_graph.pkl` file
 - [ ] Prerequisites map (`prerequisites_map.json`)
+  - Variable needed: `kg.graph`
 - [ ] Topics map (`topics_map.json`)
+  - Variable needed: `kg.graph`
 - [ ] Instructors map (`instructors_map.json`)
+  - Variable needed: `kg.graph`
 - [ ] Training metrics (`training_metrics.json` - kg_based approach)
+  - Variables needed: `trainer`, `trainer_stats`
 - [ ] Evaluation metrics (`evaluation_metrics.json`) - **If you ran evaluation**
+  - Variables needed: Results from `evaluate_qa_predictions()`, `test_queries`
 - [ ] Graph retrieval stats (`graph_retrieval_stats.json`) - **If you ran performance monitoring**
+  - Variable needed: `graph_retrieval_stats` dictionary
 
 ### **After All Notebooks Complete:**
 - [ ] Model comparison (`model_comparison.json`)
+  - Load all three metrics files and run comparison function
 
 ---
 
@@ -897,9 +1051,13 @@ public/data/
 ## 🔧 Troubleshooting
 
 ### **Issue: Variable name not found**
-- **Solution:** Check your notebook for the actual variable names. Common names:
-  - Graph: `kg_graph`, `G`, `knowledge_graph`
-  - Trainer: `trainer`, `model_trainer`
+- **Solution:** Check your notebook for the actual variable names:
+  - Graph: `kg` (KnowledgeGraph object), access graph via `kg.graph`
+  - Trainer: `trainer` (SFTTrainer object)
+  - Training stats: `trainer_stats` (result from `trainer.train()`)
+
+### **Issue: Graph is a pickle file, not in memory**
+- **Solution:** Use the `load_graph_from_pickle()` function provided in section 3.1, or use the existing `utils/convert_kg_to_json.py` script locally.
 
 ### **Issue: File already exists error**
 - **Solution:** The export functions will merge with existing data. If you want to start fresh, delete the file first or use a different filename.
@@ -912,21 +1070,28 @@ public/data/
   1. Run evaluation in your notebook and extract accuracy from results
   2. Manually update the accuracy field in the JSON file after export
 
+### **Issue: No epoch data in log_history**
+- **Solution:** Some notebooks log by step instead of epoch. The export functions handle both cases. If you see step-based logging, the functions will convert steps to epoch numbers.
+
 ---
 
 ## 📝 Notes
 
-1. **Training Time:** The export functions automatically extract training time from `trainer.state.metrics['train_runtime']`. If this is not available, you'll need to fill it manually.
+1. **Graph Structure:** The KG-QA notebook uses a `KnowledgeGraph` wrapper class. The actual NetworkX graph is accessed via `kg.graph`. The pickle file contains the KnowledgeGraph object, not a raw NetworkX graph.
 
-2. **Accuracy:** Most notebooks don't automatically calculate accuracy. You'll need to:
+2. **Training Time:** The export functions automatically extract training time from `trainer_stats.metrics['train_runtime']`. If this is not available, you'll need to fill it manually.
+
+3. **Accuracy:** Most notebooks don't automatically calculate accuracy. You'll need to:
    - Run evaluation on a test set
    - Extract accuracy from evaluation results
    - Update the JSON file manually, OR
    - Modify the export function to include your evaluation code
 
-3. **Validation Loss:** Only available in optimized and KG-based notebooks that use validation sets.
+4. **Validation Loss:** Only available in optimized and KG-based notebooks that use validation sets.
 
-4. **Evaluation Metrics:** Only available if you ran the evaluation section in the KG-QA notebook with test queries and ground truth answers.
+5. **Evaluation Metrics:** Only available if you ran the evaluation section in the KG-QA notebook with test queries and ground truth answers.
+
+6. **Existing Utilities:** You have `utils/convert_kg_to_json.py` which already handles graph export correctly. You can use it locally OR copy its functions to Colab.
 
 ---
 
