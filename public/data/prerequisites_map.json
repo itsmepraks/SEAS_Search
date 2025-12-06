@@ -1,6 +1,74 @@
 {
+  "course_CSCI 1111": [
+    "course_CSCI 1112"
+  ],
+  "course_CSCI 2113": [
+    "course_CSCI 2441W",
+    "course_CSCI 2460",
+    "course_CSCI 2541",
+    "course_CSCI 2541W",
+    "course_CSCI 3313",
+    "course_CSCI 4237",
+    "course_CSCI 4454",
+    "course_CSCI 4455",
+    "course_CSCI 4531",
+    "course_CSCI 4554",
+    "course_CSCI 6444"
+  ],
+  "course_CSCI 1112": [
+    "course_CSCI 2460"
+  ],
+  "course_CSCI 1311": [
+    "course_CSCI 2541",
+    "course_CSCI 2541W",
+    "course_CSCI 3212",
+    "course_CSCI 3401"
+  ],
+  "course_CSCI 3212": [
+    "course_CSCI 4364",
+    "course_CSCI 4511"
+  ],
+  "course_CSCI 6212": [
+    "course_CSCI 6364",
+    "course_CSCI 6366",
+    "course_CSCI 6511",
+    "course_CSCI 6421"
+  ],
+  "course_CSCI 6511": [
+    "course_CSCI 6515"
+  ],
+  "course_CSCI 6364": [
+    "course_CSCI 6365"
+  ],
+  "course_CSCI 6221": [
+    "course_CSCI 6231",
+    "course_CSCI 6234",
+    "course_CSCI 6235",
+    "course_CSCI 6562"
+  ],
+  "course_CSCI 6541": [
+    "course_CSCI 6542"
+  ],
+  "course_DATS 1001": [
+    "course_DATS 2102",
+    "course_DATS 4001"
+  ],
+  "course_CSCI 1012": [
+    "course_DATS 2103",
+    "course_DATS 2104"
+  ],
+  "course_DATS 6101": [
+    "course_DATS 6202",
+    "course_DATS 6303",
+    "course_DATS 6401",
+    "course_DATS 6450",
+    "course_DATS 6501"
+  ],
+  "course_DATS 6202": [
+    "course_DATS 6312"
+  ],
   "_metadata": {
     "note": "Real prerequisites extracted from knowledge graph",
-    "total_courses": -1
+    "total_courses": 14
   }
 }

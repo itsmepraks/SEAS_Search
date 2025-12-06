@@ -6129,76 +6129,69 @@
       "name": "KG-Based QA System",
       "epochs": [
         {
-          "epoch": 1,
-          "train_loss": 2.15,
-          "val_loss": 2.22,
-          "learning_rate": 0.0001
-        },
-        {
-          "epoch": 2,
-          "train_loss": 1.48,
-          "val_loss": 1.61,
-          "learning_rate": 9.5e-05
-        },
-        {
-          "epoch": 3,
-          "train_loss": 1.02,
-          "val_loss": 1.25,
+          "epoch": 0,
+          "train_loss": 1.9841,
           "learning_rate": 9e-05
         },
         {
+          "epoch": 1,
+          "train_loss": 1.08,
+          "learning_rate": 9.755282581475769e-05
+        },
+        {
+          "epoch": 1,
+          "train_loss": 0.6417,
+          "learning_rate": 8.940053768033609e-05
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.4908,
+          "learning_rate": 7.649596321166024e-05
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.4053,
+          "learning_rate": 6.0395584540887963e-05
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.3402,
+          "learning_rate": 4.3041344951996746e-05
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.3204,
+          "learning_rate": 2.6526421860705473e-05
+        },
+        {
           "epoch": 4,
-          "train_loss": 0.72,
-          "val_loss": 1.05,
-          "learning_rate": 8.2e-05
+          "train_loss": 0.2865,
+          "learning_rate": 1.2842758726130283e-05
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.2595,
+          "learning_rate": 3.6408072716606346e-06
         },
         {
           "epoch": 5,
-          "train_loss": 0.51,
-          "val_loss": 0.92,
-          "learning_rate": 7.1e-05
-        },
-        {
-          "epoch": 6,
-          "train_loss": 0.38,
-          "val_loss": 0.84,
-          "learning_rate": 6e-05
-        },
-        {
-          "epoch": 7,
-          "train_loss": 0.29,
-          "val_loss": 0.79,
-          "learning_rate": 4.8e-05
-        },
-        {
-          "epoch": 8,
-          "train_loss": 0.24,
-          "val_loss": 0.76,
-          "learning_rate": 3.6e-05
-        },
-        {
-          "epoch": 9,
-          "train_loss": 0.21,
-          "val_loss": 0.74,
-          "learning_rate": 2.4e-05
-        },
-        {
-          "epoch": 10,
-          "train_loss": 0.19,
-          "val_loss": 0.73,
-          "learning_rate": 1.2e-05
+          "train_loss": 0.3029,
+          "learning_rate": 3.04586490452119e-08
         }
       ],
       "final_metrics": {
-        "final_loss": 0.19,
-        "val_loss": 0.73,
-        "accuracy": 94.8,
-        "training_time_minutes": 115.3
+        "final_loss": 0.3029,
+        "val_loss": null,
+        "accuracy": 0,
+        "training_time_minutes": 4.17
       }
     }
   },
   "_metadata": {
-    "note": "Real data for standard and optimized approaches. KG-based is placeholder.",
-    "exported_at": "2025-12-06T19:19:36.027072"
+    "note": "Real training metrics from all three approaches (Standard, Optimized, KG-Based)",
+    "exported_at": "2025-12-06T16:57:35.659044",
+    "standard_epochs": 1062,
+    "optimized_epochs": 156,
+    "kg_based_epochs": 10
   }
 }

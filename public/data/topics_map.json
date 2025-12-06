@@ -1,6 +1,469 @@
 {
+  "course_CSCI 1012": [
+    "oop"
+  ],
+  "course_CSCI 1022": [
+    "the hardware",
+    "ai",
+    "software"
+  ],
+  "course_CSCI 1111": [
+    "design",
+    "object oriented programming",
+    "debugging",
+    "test data"
+  ],
+  "course_CSCI 1112": [
+    "data structures",
+    "development",
+    "object-oriented software",
+    "algorithm performance prediction"
+  ],
+  "course_CSCI 1311": [
+    "calculus"
+  ],
+  "course_CSCI 2113": [
+    "software engineering",
+    "programming techniques and software development",
+    "object oriented programming",
+    "programming languages",
+    "software engineering principles",
+    "networking",
+    "application development"
+  ],
+  "course_CSCI 2441": [
+    "database applications",
+    "testing",
+    "database",
+    "design",
+    "team software development",
+    "software copyrights",
+    "relational database systems"
+  ],
+  "course_CSCI 2441W": [
+    "database applications",
+    "testing",
+    "database",
+    "design",
+    "team software development",
+    "software copyrights",
+    "relational database systems"
+  ],
+  "course_CSCI 2460": [
+    "computer systems",
+    "discrete math",
+    "data representation",
+    "operating systems"
+  ],
+  "course_CSCI 2541": [
+    "database applications",
+    "relational database systems",
+    "testing",
+    "database",
+    "design",
+    "team software development",
+    "modern database systems"
+  ],
+  "course_CSCI 2541W": [
+    "database applications",
+    "testing",
+    "database",
+    "design",
+    "team software development",
+    "relational database systems"
+  ],
+  "course_CSCI 3212": [
+    "graph algorithms",
+    "analysis",
+    "greedy algorithms",
+    "optimization",
+    "algorithms",
+    "design",
+    "data structures"
+  ],
+  "course_CSCI 3313": [
+    "automata theory",
+    "theory"
+  ],
+  "course_CSCI 3401": [
+    "analysis",
+    "digital logic and circuit design, computer organization, assembly programming, translation, memory design, pipelined and superscalar architectures, multiprocessing, program performance",
+    "design",
+    "computer architecture",
+    "logic"
+  ],
+  "course_CSCI 4237": [
+    "debugging",
+    "design",
+    "interface design",
+    "interactive software",
+    "user interface design practices"
+  ],
+  "course_CSCI 4244": [
+    "software engineering",
+    "software engineering principles",
+    "design",
+    "economic analysis"
+  ],
+  "course_CSCI 4364": [
+    "statistics",
+    "probability",
+    "algorithms",
+    "linear models",
+    "model evaluation",
+    "linear algebra"
+  ],
+  "course_CSCI 6364": [
+    "statistics",
+    "probability",
+    "algorithms",
+    "linear models",
+    "model evaluation",
+    "linear algebra"
+  ],
+  "course_CSCI 4366": [
+    "neural networks",
+    "theory",
+    "datasets",
+    "algorithms",
+    "calculus",
+    "software packages",
+    "deep learning",
+    "linear algebra",
+    "networks"
+  ],
+  "course_CSCI 6366": [
+    "neural networks",
+    "theory",
+    "datasets",
+    "algorithms",
+    "calculus",
+    "software packages",
+    "deep learning",
+    "linear algebra",
+    "networks"
+  ],
+  "course_CSCI 4454": [
+    "design",
+    "ux",
+    "implementation"
+  ],
+  "course_CSCI 4455": [
+    "ai",
+    "design",
+    "modeling",
+    "sound design",
+    "real-time software and hardware issues"
+  ],
+  "course_CSCI 4511": [
+    "reasoning",
+    "calculus",
+    "knowledge representation",
+    "logic"
+  ],
+  "course_CSCI 6511": [
+    "calculus",
+    "ai",
+    "knowledge representation",
+    "expert systems"
+  ],
+  "course_CSCI 4531": [
+    "operating system security",
+    "authentication systems",
+    "cryptography",
+    "security",
+    "database",
+    "risk analysis",
+    "database security"
+  ],
+  "course_CSCI 6531": [
+    "risk analysis",
+    "design principles",
+    "policy models",
+    "logic"
+  ],
+  "course_CSCI 4541": [
+    "network attacks",
+    "security",
+    "packet-level communication security systems",
+    "intrusion detection systems",
+    "network authentication",
+    "networks"
+  ],
+  "course_CSCI 6541": [
+    "network attacks",
+    "security",
+    "intrusion detection systems",
+    "network authentication",
+    "packet level communication security systems",
+    "networks"
+  ],
+  "course_CSCI 4554": [
+    "hierarchical modeling",
+    "graphics"
+  ],
+  "course_CSCI 6907": [
+    "ai"
+  ],
+  "course_CSCI 6444": [
+    "big data",
+    "ai",
+    "programming systems",
+    "a data set"
+  ],
+  "course_CSCI 6515": [
+    "computer systems",
+    "augmented transition networks",
+    "networks"
+  ],
+  "course_CSCI 6411": [
+    "security",
+    "operating system design"
+  ],
+  "course_CSCI 6365": [
+    "algorithms",
+    "data streams",
+    "theory",
+    "machine learning"
+  ],
+  "course_CSCI 6011": [
+    "ai",
+    "basic data structures",
+    "system usage",
+    "algorithms",
+    "computer systems",
+    "the analysis",
+    "data structures",
+    "version control"
+  ],
+  "course_CSCI 6212": [
+    "theory",
+    "optimization",
+    "algorithms",
+    "calculus",
+    "discrete math",
+    "data structures",
+    "oop"
+  ],
+  "course_CSCI 6221": [
+    "object-oriented, procedural, functional, and concurrent software design paradigms",
+    "software life cycle concepts",
+    "design patterns"
+  ],
+  "course_CSCI 6231": [
+    "software engineering",
+    "computer-aided software engineering",
+    "ai",
+    "testing",
+    "other development models",
+    "development metrics",
+    "the life-cycle model",
+    "structured and object-oriented design",
+    "design models",
+    "program development"
+  ],
+  "course_CSCI 6234": [
+    "usability",
+    "software modularity",
+    "object-oriented systems",
+    "software reusability",
+    "programming languages"
+  ],
+  "course_CSCI 6235": [
+    "component models",
+    "component-based software development"
+  ],
+  "course_CSCI 6345": [
+    "quantum computing",
+    "algorithms",
+    "standard circuit model",
+    "linear algebra",
+    "quantum algorithms and protocols, epr paradox"
+  ],
+  "course_CSCI 6418": [
+    "small networks",
+    "ai",
+    "ux",
+    "other network utilities",
+    "security",
+    "system administration",
+    "the stand-alone system",
+    "networks"
+  ],
+  "course_CSCI 6421": [
+    "tolerance algorithms",
+    "distributed systems",
+    "fundamental distributed systems concepts",
+    "algorithms",
+    "cloud computing",
+    "algorithmic and implementation challenges"
+  ],
+  "course_CSCI 6442": [
+    "a database",
+    "database management systems",
+    "database systems",
+    "database",
+    "relational database design",
+    "database management",
+    "conceptual and logical design",
+    "logic"
+  ],
+  "course_CSCI 6443": [
+    "data mining",
+    "algorithm techniques"
+  ],
+  "course_CSCI 6461": [
+    "parallel and distributed system architecture",
+    "interconnection networks",
+    "system",
+    "network architectures",
+    "memory subsystem design",
+    "networks"
+  ],
+  "course_CSCI 6534": [
+    "frameworks",
+    "security",
+    "cybersecurity"
+  ],
+  "course_CSCI 6542": [
+    "computer systems"
+  ],
+  "course_CSCI 6548": [
+    "ai",
+    "cryptography",
+    "security",
+    "authentication and authorization models",
+    "blockchain"
+  ],
+  "course_CSCI 6554": [
+    "algorithmic aspects",
+    "illumination models",
+    "procedural models",
+    "shape modeling",
+    "graphics"
+  ],
+  "course_CSCI 6562": [
+    "a design and evaluation tool",
+    "hardware components",
+    "development",
+    "theory",
+    "interface design",
+    "graphics"
+  ],
+  "course_CSCI 8901": [
+    "design procedures",
+    "research/design requirements"
+  ],
+  "course_DATS 1001": [
+    "standard data science tools",
+    "data science",
+    "real-world systems"
+  ],
+  "course_DATS 2102": [
+    "visualization",
+    "data presentation skills",
+    "data science",
+    "data",
+    "data visualization",
+    "data science questions"
+  ],
+  "course_DATS 2103": [
+    "data mining",
+    "implementation techniques",
+    "data",
+    "algorithms",
+    "data mining techniques"
+  ],
+  "course_DATS 2104": [
+    "database security prerequisites",
+    "data stewardship",
+    "security",
+    "data warehousing",
+    "database",
+    "databases",
+    "database management"
+  ],
+  "course_DATS 4001": [
+    "ai",
+    "data science majors",
+    "data science"
+  ],
+  "course_DATS 6001": [
+    "algorithm design",
+    "ai",
+    "theory",
+    "implementation"
+  ],
+  "course_DATS 6101": [
+    "data mining",
+    "algorithms",
+    "statistical modeling",
+    "data science"
+  ],
+  "course_DATS 6102": [
+    "infrastructure",
+    "statistics",
+    "ai",
+    "data warehousing",
+    "design"
+  ],
+  "course_DATS 6103": [
+    "data mining",
+    "association analysis",
+    "cluster analysis",
+    "various data mining techniques"
+  ],
+  "course_DATS 6202": [
+    "theory",
+    "optimization",
+    "probability",
+    "machine learning",
+    "algorithm design"
+  ],
+  "course_DATS 6303": [
+    "ai",
+    "analysis",
+    "deep network architectures",
+    "machine learning",
+    "stochastic system",
+    "frameworks",
+    "the implementation",
+    "deep learning",
+    "linear algebra",
+    "networks"
+  ],
+  "course_DATS 6304": [
+    "information systems",
+    "geographic data structure",
+    "geographic information systems"
+  ],
+  "course_DATS 6312": [
+    "commonly used text analysis techniques",
+    "natural language processing",
+    "leverage natural language data"
+  ],
+  "course_DATS 6401": [
+    "data visualization",
+    "visualization",
+    "data science",
+    "graphics"
+  ],
+  "course_DATS 6450": [
+    "data science programs",
+    "ai",
+    "data science"
+  ],
+  "course_DATS 6499": [
+    "the data science program",
+    "data science"
+  ],
+  "course_DATS 6501": [
+    "five pre-approved data science courses",
+    "data science",
+    "data science program"
+  ],
   "_metadata": {
     "note": "Real topics extracted from knowledge graph",
-    "total_courses": -1
+    "total_courses": 69
   }
 }

@@ -1,0 +1,69 @@
+{
+  "approaches": {
+    "kg_based": {
+      "name": "KG-Based QA System",
+      "epochs": [
+        {
+          "epoch": 0,
+          "train_loss": 1.9841,
+          "learning_rate": 9e-05
+        },
+        {
+          "epoch": 1,
+          "train_loss": 1.08,
+          "learning_rate": 9.755282581475769e-05
+        },
+        {
+          "epoch": 1,
+          "train_loss": 0.6417,
+          "learning_rate": 8.940053768033609e-05
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.4908,
+          "learning_rate": 7.649596321166024e-05
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.4053,
+          "learning_rate": 6.0395584540887963e-05
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.3402,
+          "learning_rate": 4.3041344951996746e-05
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.3204,
+          "learning_rate": 2.6526421860705473e-05
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.2865,
+          "learning_rate": 1.2842758726130283e-05
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.2595,
+          "learning_rate": 3.6408072716606346e-06
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.3029,
+          "learning_rate": 3.04586490452119e-08
+        }
+      ],
+      "final_metrics": {
+        "final_loss": 0.3029,
+        "val_loss": null,
+        "accuracy": 0,
+        "training_time_minutes": 4.17
+      }
+    }
+  },
+  "_metadata": {
+    "note": "Real training metrics from KG-QA system",
+    "exported_at": "2025-12-06T21:44:36.272604"
+  }
+}

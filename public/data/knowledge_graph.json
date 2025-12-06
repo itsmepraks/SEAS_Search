@@ -19,8 +19,8 @@
       "description": "An introductory course for non-technical students who wish to obtain a better understanding of the hardware and software that comprise the Internet. Information transfer over fiber, routing and switching of packets, methods of information transfer, protocols, software, ISP, web pages and multimedia.",
       "has_prerequisites": false,
       "topics": [
-        "ai",
         "the hardware",
+        "ai",
         "software"
       ]
     },
@@ -41,10 +41,10 @@
       "description": "Introduction to problem solving on a digital computer using the Java language. Object oriented programming concepts; design of test data; documentation techniques. Debugging, writing, and running programs in an interactive computing environment. (Spring, summer, and fall, Every year)",
       "has_prerequisites": false,
       "topics": [
-        "debugging",
-        "test data",
         "design",
-        "object oriented programming"
+        "object oriented programming",
+        "debugging",
+        "test data"
       ]
     },
     {
@@ -55,10 +55,10 @@
       "description": "Object-oriented software. Inheritance, exceptions, development of classes, event-driven programming. Data structures such as trees, lists, stacks, queues, and strings. Sorting and searching. Introduction to algorithm performance prediction. Prerequisites:CSCI\u00a01111with a minimum grade of C; andMATH\u00a01220orMATH\u00a01231. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
+        "data structures",
         "development",
-        "algorithm performance prediction",
         "object-oriented software",
-        "data structures"
+        "algorithm performance prediction"
       ]
     },
     {
@@ -80,13 +80,13 @@
       "description": "Programming techniques and software development in one or more programming languages; application development using object oriented programming techniques, GUIs, threading, and networking while applying software engineering principles. Prerequisites:MATH\u00a01221orMATH\u00a01231; andCSCI\u00a01112with a minimum grade of C. (Spring and fall, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "software engineering principles",
-        "application development",
-        "networking",
+        "software engineering",
         "programming techniques and software development",
-        "programming languages",
         "object oriented programming",
-        "software engineering"
+        "programming languages",
+        "software engineering principles",
+        "networking",
+        "application development"
       ]
     },
     {
@@ -97,13 +97,13 @@
       "description": "Design of relational database systems, relational query languages, normal forms, and design of database applications. Team software development, integration, and testing. Professional code of ethics, intellectual property, privacy, and software copyrights. Students cannot receive credit for bothCSCI\u00a02441taken while an undergraduate andCSCI\u00a06441taken while a graduate student. Students in the combined BS/MS program cannot receive credit for bothCSCI\u00a02541andCSCI\u00a06441. (Fall and spring, Every year)",
       "has_prerequisites": false,
       "topics": [
-        "testing",
-        "relational database systems",
         "database applications",
+        "testing",
         "database",
+        "design",
         "team software development",
         "software copyrights",
-        "design"
+        "relational database systems"
       ]
     },
     {
@@ -114,13 +114,13 @@
       "description": "Design of relational database systems, relational query languages, normal forms, and design of database applications. Team software development, integration, and testing. Professional code of ethics, intellectual property, privacy, and software copyrights. Students cannot receive credit for bothCSCI\u00a02441Wtaken while an undergraduate andCSCI\u00a06441taken while a graduate student. Students in the combined BS/MS program cannot receive credit for bothCSCI\u00a02441WandCSCI\u00a06441. Includes a significant engagement in writing as a form of critical inquiry and scholarly expression to satisfy the WID requirement. Corequisite:CSCI\u00a02113. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "testing",
-        "relational database systems",
         "database applications",
+        "testing",
         "database",
+        "design",
         "team software development",
         "software copyrights",
-        "design"
+        "relational database systems"
       ]
     },
     {
@@ -131,10 +131,10 @@
       "description": "Introduction to computer organization and computer systems. Data representation; computer organization; processor instruction sets and assembly programming; language translation; memory; input/output; introduction to operating systems. Restricted to students in the BA and minor programs in computer science. Prerequisites:CSCI\u00a01112andCSCI\u00a01311with a minimum grade of C. Corequisites:CSCI\u00a02113. Recommended background: Introductory coursework and background in computer science, programming, and discrete mathematics. Credit cannot be earned for this course andCSCI\u00a02461,CSCI\u00a03401. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "data representation",
+        "computer systems",
         "discrete math",
-        "operating systems",
-        "computer systems"
+        "data representation",
+        "operating systems"
       ]
     },
     {
@@ -145,13 +145,13 @@
       "description": "Design of relational database systems, relational query languages, normal forms, modern database systems, technologies, non-relational extensions, and design of database applications. Team software development, integration, and testing. Prerequisites:CSCI\u00a01311. Corequisites:CSCI\u00a02113. Credit cannot be earned for this course andCSCI\u00a06441. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "testing",
-        "relational database systems",
-        "modern database systems",
         "database applications",
+        "relational database systems",
+        "testing",
         "database",
+        "design",
         "team software development",
-        "design"
+        "modern database systems"
       ]
     },
     {
@@ -162,12 +162,12 @@
       "description": "Design of relational database systems, relational query languages, Introduction to Not just SQL (NoSQL) database systems, normal forms, and design of database applications. Team software development, integration, and testing. Students cannot receive credit for bothCSCI\u00a02541Wtaken while an undergraduate andCSCI\u00a06441taken while a graduate student. Students in the combined BS/MS program cannot receive credit for bothCSCI\u00a02541andCSCI\u00a06441. Includes a significant engagement in writing as a form of critical inquiry and scholarly expression to satisfy the WID requirement. Corequisite:CSCI\u00a02113. Prerequisite:CSCI\u00a01311. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "testing",
-        "relational database systems",
         "database applications",
+        "testing",
         "database",
+        "design",
         "team software development",
-        "design"
+        "relational database systems"
       ]
     },
     {
@@ -178,13 +178,13 @@
       "description": "Core concepts in design and analysis of algorithms, data structures, and problem-solving techniques. Hashing, heaps, trees. Graph algorithms, searching, sorting, graph algorithms, dynamic programming, greedy algorithms, divide and conquer, backtracking. Combinatorial optimization techniques. NP-completeness. Prerequisites:CSCI\u00a01311andCSCI\u00a02113. (Fall and spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "optimization",
-        "analysis",
-        "algorithms",
-        "greedy algorithms",
-        "data structures",
         "graph algorithms",
-        "design"
+        "analysis",
+        "greedy algorithms",
+        "optimization",
+        "algorithms",
+        "design",
+        "data structures"
       ]
     },
     {
@@ -208,10 +208,10 @@
       "has_prerequisites": true,
       "topics": [
         "analysis",
-        "logic",
         "digital logic and circuit design, computer organization, assembly programming, translation, memory design, pipelined and superscalar architectures, multiprocessing, program performance",
+        "design",
         "computer architecture",
-        "design"
+        "logic"
       ]
     },
     {
@@ -231,11 +231,11 @@
       "description": "Design of interactive software for handheld devices. Event driven programming, user interface design practices, memory management, handheld debugging techniques. May be taken for graduate credit. Prerequisites:CSCI\u00a02113orCSCI\u00a06221.",
       "has_prerequisites": true,
       "topics": [
-        "interface design",
         "debugging",
-        "user interface design practices",
+        "design",
+        "interface design",
         "interactive software",
-        "design"
+        "user interface design practices"
       ]
     },
     {
@@ -246,10 +246,10 @@
       "description": "Continuation ofCSCI\u00a04243. \u200bPlanning, design, and construction of the capstone project. Economic analysis of the project. Application of software engineering principles. Restricted to seniors. Prerequisites:CSCI\u00a04243orCSCI\u00a04243W. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "economic analysis",
-        "software engineering principles",
         "software engineering",
-        "design"
+        "software engineering principles",
+        "design",
+        "economic analysis"
       ]
     },
     {
@@ -260,12 +260,12 @@
       "description": "Supervised and unsupervised learning, regression, classification, linear models, perceptrons, ensemble methods, non-parametrics, online learning, active learning, feature selection, parameter tuning, and model evaluation. Prerequisites: CSCI\u00a03212; and CSCI\u00a03362 orCSCI\u00a04341orCSCI\u00a06362orAPSC\u00a03115orDNSC\u00a02001orSTAT\u00a04157; andCSCI\u00a04342orEMSE\u00a02705or MATH\u00a02184 orMATH\u00a02185. Recommended background: Algorithms, probability and statistics, and linear algebra. Credit cannot be earned for this course andCSCI\u00a06364. (Spring and fall, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "model evaluation",
         "statistics",
-        "linear algebra",
-        "algorithms",
         "probability",
-        "linear models"
+        "algorithms",
+        "linear models",
+        "model evaluation",
+        "linear algebra"
       ]
     },
     {
@@ -276,12 +276,12 @@
       "description": "Supervised and unsupervised learning, regression, classification, linear models, perceptrons, ensemble methods, non-parametrics, online learning, active learning, feature selection, parameter tuning, and model evaluation. Prerequisites:CSCI\u00a06212. Recommended background: Algorithms, Probability and Statistics and Linear Algebra. Credit cannot be earned for this course andCSCI\u00a04364. (Spring and fall, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "model evaluation",
         "statistics",
-        "linear algebra",
-        "algorithms",
         "probability",
-        "linear models"
+        "algorithms",
+        "linear models",
+        "model evaluation",
+        "linear algebra"
       ]
     },
     {
@@ -292,15 +292,15 @@
       "description": "Introduction to deep learning with neural networks: theory and practice. Creating from scratch, simplification with software packages, regression and classification problems for both simple (numerical, etc.) and complex (images, etc.) datasets. Restricted to Computer science majors. Prerequisites:MATH\u00a01231andCSCI\u00a03212; andMATH\u00a02184orMATH\u00a02185orCSCI\u00a04342orEMSE\u00a02705. Recommended background: Calculus, linear algebra, programming, and algorithms. Credit cannot be earned for this course andCSCI\u00a06366. (Fall, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "theory",
-        "linear algebra",
-        "deep learning",
-        "software packages",
         "neural networks",
-        "networks",
-        "algorithms",
+        "theory",
         "datasets",
-        "calculus"
+        "algorithms",
+        "calculus",
+        "software packages",
+        "deep learning",
+        "linear algebra",
+        "networks"
       ]
     },
     {
@@ -311,15 +311,15 @@
       "description": "Introduction to deep learning with neural networks: theory and practice. Creating from scratch, simplification with software packages, regression and classification problems for both simple (numerical, etc.) and complex (images, etc.) datasets. Restricted to computer science majors. Prerequisites:CSCI\u00a06212. Recommended background: Calculus, linear algebra, programming, and algorithms. Credit cannot be earned for this course andCSCI\u00a04366. (Fall, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "theory",
-        "linear algebra",
-        "deep learning",
-        "software packages",
         "neural networks",
-        "networks",
-        "algorithms",
+        "theory",
         "datasets",
-        "calculus"
+        "algorithms",
+        "calculus",
+        "software packages",
+        "deep learning",
+        "linear algebra",
+        "networks"
       ]
     },
     {
@@ -330,9 +330,9 @@
       "description": "Principles and practice of augmented reality (AR) and virtual reality (VR); 3D UI/UX and user interaction for immersive experiences; design and implementation of VR and mobile AR applications. May be taken for graduate credit with extra work. Prerequisites:CSCI\u00a02113. (Spring and fall, Every year)",
       "has_prerequisites": true,
       "topics": [
+        "design",
         "ux",
-        "implementation",
-        "design"
+        "implementation"
       ]
     },
     {
@@ -344,10 +344,10 @@
       "has_prerequisites": true,
       "topics": [
         "ai",
-        "modeling",
         "design",
-        "real-time software and hardware issues",
-        "sound design"
+        "modeling",
+        "sound design",
+        "real-time software and hardware issues"
       ]
     },
     {
@@ -358,10 +358,10 @@
       "description": "Knowledge representation and reasoning, propositional logic and predicate calculus. Logic programming; search, game trees, backtracking; planning. May be taken for graduate credit with additional work assigned. Prerequisites:CSCI\u00a03212. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "logic",
-        "calculus",
         "reasoning",
-        "knowledge representation"
+        "calculus",
+        "knowledge representation",
+        "logic"
       ]
     },
     {
@@ -372,10 +372,10 @@
       "description": "Representation and space search; heuristic search; predicate calculus; knowledge representation and knowledge engineering for expert systems; rule-based, hybrid, and O-O systems; semantic nets, frames, and natural language; theorem provers; planning, learning, neural nets; use of AI languages. Prerequisite:CSCI\u00a06212. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "ai",
-        "expert systems",
         "calculus",
-        "knowledge representation"
+        "ai",
+        "knowledge representation",
+        "expert systems"
       ]
     },
     {
@@ -388,11 +388,11 @@
       "topics": [
         "operating system security",
         "authentication systems",
-        "database security",
+        "cryptography",
         "security",
         "database",
         "risk analysis",
-        "cryptography"
+        "database security"
       ]
     },
     {
@@ -403,10 +403,10 @@
       "description": "Functional description of cryptographic primitives; risk analysis; design principles; policy models; assurance; malicious logic. Restricted to graduate students. (Spring, Every year)",
       "has_prerequisites": false,
       "topics": [
-        "policy models",
         "risk analysis",
-        "logic",
-        "design principles"
+        "design principles",
+        "policy models",
+        "logic"
       ]
     },
     {
@@ -417,12 +417,12 @@
       "description": "Security protocols and applications in networks; packet-level communication security systems; network authentication; network attacks; intrusion detection systems and firewalls. Prerequisites:CSCI\u00a04431. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
+        "network attacks",
+        "security",
+        "packet-level communication security systems",
         "intrusion detection systems",
         "network authentication",
-        "networks",
-        "network attacks",
-        "packet-level communication security systems",
-        "security"
+        "networks"
       ]
     },
     {
@@ -433,12 +433,12 @@
       "description": "Security protocols and applications in networks; packet level communication security systems; network authentication; intrusion detection systems and firewalls; network attacks. Corequisites:CSCI\u00a06431. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
+        "network attacks",
+        "security",
         "intrusion detection systems",
         "network authentication",
-        "networks",
-        "network attacks",
         "packet level communication security systems",
-        "security"
+        "networks"
       ]
     },
     {
@@ -449,8 +449,8 @@
       "description": "Graphics primitives; 2D, 3D, and viewing transformations; hierarchical modeling and animation; illumination and shading; texture mapping; shaders; visibility and collision detection; sampling and anti-aliasing; global illumination; projects using OpenGL graphics API. May be taken for graduate credit. Prerequisites:CSCI\u00a02113orCSCI\u00a06221. (Spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "graphics",
-        "hierarchical modeling"
+        "hierarchical modeling",
+        "graphics"
       ]
     },
     {
@@ -483,8 +483,8 @@
       "topics": [
         "big data",
         "ai",
-        "a data set",
-        "programming systems"
+        "programming systems",
+        "a data set"
       ]
     },
     {
@@ -495,8 +495,8 @@
       "description": "The state of the art of natural language parsing and semantic understanding by computer systems. Review of formal, context-free, and transformational grammars and parsing. Augmented transition networks: problems of complexity, semantics, and context. Deterministic parsing and semantic parsing. Prerequisite:CSCI\u00a06511.",
       "has_prerequisites": true,
       "topics": [
-        "augmented transition networks",
         "computer systems",
+        "augmented transition networks",
         "networks"
       ]
     },
@@ -531,8 +531,8 @@
       "topics": [
         "algorithms",
         "data streams",
-        "machine learning",
-        "theory"
+        "theory",
+        "machine learning"
       ]
     },
     {
@@ -543,14 +543,14 @@
       "description": "Basics of computer systems and system usage: command line, containers, version control, and VMs. Basic data structures, and tools for the analysis of algorithms. Restricted to students whose letter of admission stated that the course is required. (Fall, Every year)",
       "has_prerequisites": false,
       "topics": [
-        "system usage",
-        "version control",
         "ai",
-        "computer systems",
         "basic data structures",
+        "system usage",
         "algorithms",
+        "computer systems",
         "the analysis",
-        "data structures"
+        "data structures",
+        "version control"
       ]
     },
     {
@@ -562,12 +562,12 @@
       "has_prerequisites": false,
       "topics": [
         "theory",
-        "discrete math",
         "optimization",
         "algorithms",
-        "oop",
         "calculus",
-        "data structures"
+        "discrete math",
+        "data structures",
+        "oop"
       ]
     },
     {
@@ -579,8 +579,8 @@
       "has_prerequisites": false,
       "topics": [
         "object-oriented, procedural, functional, and concurrent software design paradigms",
-        "design patterns",
-        "software life cycle concepts"
+        "software life cycle concepts",
+        "design patterns"
       ]
     },
     {
@@ -591,16 +591,16 @@
       "description": "The life-cycle model. Requirements and specifications. Design models, structured and object-oriented design. Program development, PDL\u2019s tools, configuration control. Program, unit, and integration testing. Program verification. Other development models. Development metrics. Computer-aided software engineering (CASE). Prerequisites:CSCI\u00a06221andCSCI\u00a06212. (Fall and spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "testing",
-        "ai",
-        "structured and object-oriented design",
         "software engineering",
-        "other development models",
         "computer-aided software engineering",
-        "the life-cycle model",
-        "program development",
+        "ai",
+        "testing",
+        "other development models",
         "development metrics",
-        "design models"
+        "the life-cycle model",
+        "structured and object-oriented design",
+        "design models",
+        "program development"
       ]
     },
     {
@@ -611,11 +611,11 @@
       "description": "Object-oriented systems, software reusability, software modularity, top\u2013down and bottom\u2013up approaches, object classification, genericity, metaprogramming, concurrent object-oriented programming languages. Prerequisite:CSCI\u00a06221.",
       "has_prerequisites": true,
       "topics": [
-        "programming languages",
+        "usability",
         "software modularity",
         "object-oriented systems",
         "software reusability",
-        "usability"
+        "programming languages"
       ]
     },
     {
@@ -626,8 +626,8 @@
       "description": "Component-based software development for enterprise applications. Component models, multi-tier architecture. Specific case studies may include topics such as Enterprise Java Beans, DCOM, and COBRA. Prerequisite:CSCI\u00a06221.",
       "has_prerequisites": true,
       "topics": [
-        "component-based software development",
-        "component models"
+        "component models",
+        "component-based software development"
       ]
     },
     {
@@ -639,10 +639,10 @@
       "has_prerequisites": false,
       "topics": [
         "quantum computing",
-        "linear algebra",
-        "quantum algorithms and protocols, epr paradox",
         "algorithms",
-        "standard circuit model"
+        "standard circuit model",
+        "linear algebra",
+        "quantum algorithms and protocols, epr paradox"
       ]
     },
     {
@@ -653,14 +653,14 @@
       "description": "System administration for the stand-alone system or small networks; installation of two or more UNIX variants (Linux, FreeBSD, Solaris) hardware platforms; configuration of mail, name services, and other network utilities; backup and recovery, security and ethics. Students cannot receive credit for both CSCI 4418 taken while an undergraduate andCSCI\u00a06418taken while a graduate student. Students in the combined BS/MS program cannot receive credit for both CSCI 4418 andCSCI\u00a06418. Prerequisites:CSCI\u00a06114; orCSCI\u00a06010andCSCI\u00a06011. (Fall, spring, and summer, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "ux",
-        "ai",
         "small networks",
-        "networks",
+        "ai",
+        "ux",
+        "other network utilities",
         "security",
         "system administration",
-        "other network utilities",
-        "the stand-alone system"
+        "the stand-alone system",
+        "networks"
       ]
     },
     {
@@ -672,11 +672,11 @@
       "has_prerequisites": true,
       "topics": [
         "tolerance algorithms",
+        "distributed systems",
         "fundamental distributed systems concepts",
         "algorithms",
         "cloud computing",
-        "algorithmic and implementation challenges",
-        "distributed systems"
+        "algorithmic and implementation challenges"
       ]
     },
     {
@@ -687,14 +687,14 @@
       "description": "Concepts in database systems. Relational database design. Editing, report generation, updating, schema refinement, tuning. Construction of database management systems. Conceptual and logical design of a database. Prerequisite:CSCI\u00a06441.",
       "has_prerequisites": true,
       "topics": [
-        "logic",
-        "conceptual and logical design",
+        "a database",
+        "database management systems",
+        "database systems",
         "database",
         "relational database design",
-        "a database",
-        "database systems",
-        "database management systems",
-        "database management"
+        "database management",
+        "conceptual and logical design",
+        "logic"
       ]
     },
     {
@@ -717,12 +717,12 @@
       "description": "Concepts in processor, system, and network architectures; architecture of pipeline, superscalar, and VLIW/EPIC processors; multiprocessors and interconnection networks; cache coherence and memory subsystem design for multiprocessor architectures; parallel and distributed system architecture; internetworking. Restricted to graduate students. (Fall, spring, and summer, Every year)",
       "has_prerequisites": false,
       "topics": [
-        "network architectures",
-        "networks",
-        "memory subsystem design",
-        "system",
+        "parallel and distributed system architecture",
         "interconnection networks",
-        "parallel and distributed system architecture"
+        "system",
+        "network architectures",
+        "memory subsystem design",
+        "networks"
       ]
     },
     {
@@ -733,9 +733,9 @@
       "description": "Roles, issues, and governance of cyber security in the federal government. Overview of the technical aspects of cyber security including federally developed cybersecurity standards and frameworks and government and industry initiatives. Prerequisites: Permission of the instructor. (Spring and fall, Every year)",
       "has_prerequisites": false,
       "topics": [
-        "cybersecurity",
+        "frameworks",
         "security",
-        "frameworks"
+        "cybersecurity"
       ]
     },
     {
@@ -757,11 +757,11 @@
       "description": "Advanced technical topics in e-commerce security. Key security threats. Authentication and authorization models, directory services, cloud based IAM, federated identity. Public key cryptography and PKI. Mobile payment methods, digital currencies, blockchain. Technologies and applications for securing web commerce. Web service security standards. Prerequisites: CS 4531 or CS 6531. (Fall and spring, Every year)",
       "has_prerequisites": true,
       "topics": [
-        "authentication and authorization models",
         "ai",
+        "cryptography",
         "security",
-        "blockchain",
-        "cryptography"
+        "authentication and authorization models",
+        "blockchain"
       ]
     },
     {
@@ -772,11 +772,11 @@
       "description": "Algorithmic aspects of computer graphics; 3D viewing transformation; shape modeling; shading and illumination models; visible-surface determination; curves and surfaces; sampling and aliasing; global illumination, ray tracing and radiosity; shadows; image manipulation and texture mapping; procedural models. (Spring, Every year)",
       "has_prerequisites": false,
       "topics": [
-        "graphics",
-        "shape modeling",
+        "algorithmic aspects",
         "illumination models",
         "procedural models",
-        "algorithmic aspects"
+        "shape modeling",
+        "graphics"
       ]
     },
     {
@@ -787,12 +787,12 @@
       "description": "History, theory, and development of multimedia concepts. Hardware components, platforms, and authoring tools. Scientific, technical, and cognitive foundations of various media including text, sound, graphics, and video. Interface design. Use of a media taxonomy as a design and evaluation tool. Completion of a multimedia portfolio required. Prerequisite:CSCI\u00a06221.",
       "has_prerequisites": true,
       "topics": [
-        "graphics",
+        "a design and evaluation tool",
+        "hardware components",
+        "development",
         "theory",
         "interface design",
-        "a design and evaluation tool",
-        "development",
-        "hardware components"
+        "graphics"
       ]
     },
     {
@@ -869,9 +869,9 @@
       "description": "Cross-disciplinary perspective on topics ranging from an introduction and overview of standard data science tools through to frontier research topics in real-world systems. R is introduced.",
       "has_prerequisites": false,
       "topics": [
-        "real-world systems",
         "standard data science tools",
-        "data science"
+        "data science",
+        "real-world systems"
       ]
     },
     {
@@ -882,12 +882,12 @@
       "description": "Working with data and code to engage data science questions. Students develop coding, data visualization, and data presentation skills. Prerequisites:DATS\u00a01001; andSTAT\u00a01051orSTAT\u00a01053orSTAT\u00a01111orSTAT\u00a01127.",
       "has_prerequisites": true,
       "topics": [
-        "data science questions",
-        "data science",
+        "visualization",
         "data presentation skills",
+        "data science",
         "data",
         "data visualization",
-        "visualization"
+        "data science questions"
       ]
     },
     {
@@ -900,8 +900,8 @@
       "topics": [
         "data mining",
         "implementation techniques",
-        "algorithms",
         "data",
+        "algorithms",
         "data mining techniques"
       ]
     },
@@ -913,12 +913,12 @@
       "description": "Fundamental concepts of databases and data warehousing. Database management; extract, transform, load (ETL) processes; and SQL. Ethical considerations, including privacy, data stewardship, and database security Prerequisites:CSCI\u00a01012andDATS\u00a01001.",
       "has_prerequisites": true,
       "topics": [
-        "databases",
         "database security prerequisites",
-        "data warehousing",
-        "security",
-        "database",
         "data stewardship",
+        "security",
+        "data warehousing",
+        "database",
+        "databases",
         "database management"
       ]
     },
@@ -957,8 +957,8 @@
       "description": "Basic techniques of data science. Algorithms for data mining, basics of statistical modeling, and concepts, abstractions, and practical techniques.",
       "has_prerequisites": false,
       "topics": [
-        "algorithms",
         "data mining",
+        "algorithms",
         "statistical modeling",
         "data science"
       ]
@@ -971,10 +971,10 @@
       "description": "Fundamentals and practical applications of data warehousing, including planning requirements, infrastructure, design, and maintenance. Prerequisites:STAT\u00a02118or permission of the instructor. Recommended background: An undergraduate degree with a strong background in science, mathematics, or statistics.",
       "has_prerequisites": true,
       "topics": [
-        "statistics",
         "infrastructure",
-        "data warehousing",
+        "statistics",
         "ai",
+        "data warehousing",
         "design"
       ]
     },
@@ -987,8 +987,8 @@
       "has_prerequisites": false,
       "topics": [
         "data mining",
-        "cluster analysis",
         "association analysis",
+        "cluster analysis",
         "various data mining techniques"
       ]
     },
@@ -1001,10 +1001,10 @@
       "has_prerequisites": true,
       "topics": [
         "theory",
-        "algorithm design",
         "optimization",
+        "probability",
         "machine learning",
-        "probability"
+        "algorithm design"
       ]
     },
     {
@@ -1015,16 +1015,16 @@
       "description": "Focus on the implementation of state-of-the-art deep learning techniques on GPUs, first through presenting and implementing deep network architectures, then by describing how networks can be trained and analyzed within frameworks. Prerequisites:DATS\u00a06101. Recommended background: Prior completion of any one ofMATH\u00a02233or equivalent; time series modeling and analysis; machine learning; or linear algebra and stochastic system.",
       "has_prerequisites": true,
       "topics": [
-        "linear algebra",
-        "deep learning",
-        "stochastic system",
         "ai",
         "analysis",
-        "networks",
-        "frameworks",
-        "machine learning",
         "deep network architectures",
-        "the implementation"
+        "machine learning",
+        "stochastic system",
+        "frameworks",
+        "the implementation",
+        "deep learning",
+        "linear algebra",
+        "networks"
       ]
     },
     {
@@ -1044,9 +1044,9 @@
       "description": "Fundamentals of cartography; geographic data structure and geographic information systems. Same As:GEOG\u00a06304.",
       "has_prerequisites": false,
       "topics": [
+        "information systems",
         "geographic data structure",
-        "geographic information systems",
-        "information systems"
+        "geographic information systems"
       ]
     },
     {
@@ -1080,9 +1080,9 @@
       "has_prerequisites": true,
       "topics": [
         "data visualization",
-        "graphics",
         "visualization",
-        "data science"
+        "data science",
+        "graphics"
       ]
     },
     {
@@ -1093,8 +1093,8 @@
       "description": "Topics vary by semester. May be repeated for credit provided topic differs. See department for more details. Restricted to students in the master\u2019s and graduate certificate in data science programs. Restricted to students in the master's and graduate certificate programs in data science. Prerequisites:DATS\u00a06101or permission of the instructor.",
       "has_prerequisites": true,
       "topics": [
-        "ai",
         "data science programs",
+        "ai",
         "data science"
       ]
     },
@@ -1154,9 +1154,9 @@
       "description": "Practical application of the knowledge and skills acquired during the master\u2019s program. Capstone team projects are chosen in consultation with the instructor. In addition to the specific prerequisite courses, completion of five pre-approved data science courses is required prior to enrollment. Restricted to students in their final semester of the MS in data science program. Prerequisites:DATS\u00a06101,DATS\u00a06102andDATS\u00a06103.",
       "has_prerequisites": true,
       "topics": [
-        "data science program",
         "five pre-approved data science courses",
-        "data science"
+        "data science",
+        "data science program"
       ]
     },
     {
@@ -1616,352 +1616,16 @@
       "name": "Awl, A"
     },
     {
-      "id": "topic_mpc_implementation",
-      "label": "mpc_implementation",
-      "type": "topic",
-      "name": "mpc implementation"
-    },
-    {
-      "id": "topic_database_application_design",
-      "label": "database_application_design",
-      "type": "topic",
-      "name": "database application design"
-    },
-    {
       "id": "topic_parallel_and_distributed_system_architecture",
       "label": "parallel_and_distributed_system_architecture",
       "type": "topic",
       "name": "parallel and distributed system architecture"
     },
     {
-      "id": "topic_software_engineering_principles",
-      "label": "software_engineering_principles",
+      "id": "topic_design_tool",
+      "label": "design_tool",
       "type": "topic",
-      "name": "software engineering principles"
-    },
-    {
-      "id": "topic_large-scale_file_structures",
-      "label": "large-scale_file_structures",
-      "type": "topic",
-      "name": "large-scale file structures"
-    },
-    {
-      "id": "topic_window_systems",
-      "label": "window_systems",
-      "type": "topic",
-      "name": "window systems"
-    },
-    {
-      "id": "topic_stochastic_system",
-      "label": "stochastic_system",
-      "type": "topic",
-      "name": "stochastic system"
-    },
-    {
-      "id": "topic_application_development",
-      "label": "application_development",
-      "type": "topic",
-      "name": "application development"
-    },
-    {
-      "id": "topic_development_frameworks",
-      "label": "development_frameworks",
-      "type": "topic",
-      "name": "development frameworks"
-    },
-    {
-      "id": "topic_modern_operating_systems",
-      "label": "modern_operating_systems",
-      "type": "topic",
-      "name": "modern operating systems"
-    },
-    {
-      "id": "topic_posix_systems",
-      "label": "posix_systems",
-      "type": "topic",
-      "name": "posix systems"
-    },
-    {
-      "id": "topic_interdisciplinary_computing_and_data_science_applications",
-      "label": "interdisciplinary_computing_and_data_science_applications",
-      "type": "topic",
-      "name": "interdisciplinary computing and data science applications"
-    },
-    {
-      "id": "topic_stochastic_systems",
-      "label": "stochastic_systems",
-      "type": "topic",
-      "name": "stochastic systems"
-    },
-    {
-      "id": "topic_practical_design",
-      "label": "practical_design",
-      "type": "topic",
-      "name": "practical design"
-    },
-    {
-      "id": "topic_cloud_application_design_guidelines",
-      "label": "cloud_application_design_guidelines",
-      "type": "topic",
-      "name": "cloud application design guidelines"
-    },
-    {
-      "id": "topic_authentication_and_authorization_models",
-      "label": "authentication_and_authorization_models",
-      "type": "topic",
-      "name": "authentication and authorization models"
-    },
-    {
-      "id": "topic_data_compression",
-      "label": "data_compression",
-      "type": "topic",
-      "name": "data compression"
-    },
-    {
-      "id": "topic_various_data_mining_techniques",
-      "label": "various_data_mining_techniques",
-      "type": "topic",
-      "name": "various data mining techniques"
-    },
-    {
-      "id": "topic_computer_networks",
-      "label": "computer_networks",
-      "type": "topic",
-      "name": "computer networks"
-    },
-    {
-      "id": "topic_design_models",
-      "label": "design_models",
-      "type": "topic",
-      "name": "design models"
-    },
-    {
-      "id": "topic_the_analysis",
-      "label": "the_analysis",
-      "type": "topic",
-      "name": "the analysis"
-    },
-    {
-      "id": "topic_ai",
-      "label": "ai",
-      "type": "topic",
-      "name": "ai"
-    },
-    {
-      "id": "topic_data_presentations",
-      "label": "data_presentations",
-      "type": "topic",
-      "name": "data presentations"
-    },
-    {
-      "id": "topic_enterprise_corporate_data",
-      "label": "enterprise_corporate_data",
-      "type": "topic",
-      "name": "enterprise corporate data"
-    },
-    {
-      "id": "topic_the_data_science_program",
-      "label": "the_data_science_program",
-      "type": "topic",
-      "name": "the data science program"
-    },
-    {
-      "id": "topic_database_systems",
-      "label": "database_systems",
-      "type": "topic",
-      "name": "database systems"
-    },
-    {
-      "id": "topic_procedural_models",
-      "label": "procedural_models",
-      "type": "topic",
-      "name": "procedural models"
-    },
-    {
-      "id": "topic_data_representation,_memory,_output_and_input,_cpu",
-      "label": "data_representation,_memory,_output_and_input,_cpu",
-      "type": "topic",
-      "name": "data representation, memory, output and input, cpu"
-    },
-    {
-      "id": "topic_cloud_computing",
-      "label": "cloud_computing",
-      "type": "topic",
-      "name": "cloud computing"
-    },
-    {
-      "id": "topic_testing",
-      "label": "testing",
-      "type": "topic",
-      "name": "testing"
-    },
-    {
-      "id": "topic_standard_data_science_tools",
-      "label": "standard_data_science_tools",
-      "type": "topic",
-      "name": "standard data science tools"
-    },
-    {
-      "id": "topic_network_attacks",
-      "label": "network_attacks",
-      "type": "topic",
-      "name": "network attacks"
-    },
-    {
-      "id": "topic_expert_systems",
-      "label": "expert_systems",
-      "type": "topic",
-      "name": "expert systems"
-    },
-    {
-      "id": "topic_control_structures",
-      "label": "control_structures",
-      "type": "topic",
-      "name": "control structures"
-    },
-    {
-      "id": "topic_network_flow",
-      "label": "network_flow",
-      "type": "topic",
-      "name": "network flow"
-    },
-    {
-      "id": "topic_application_development_and_software_testing",
-      "label": "application_development_and_software_testing",
-      "type": "topic",
-      "name": "application development and software testing"
-    },
-    {
-      "id": "topic_program_development",
-      "label": "program_development",
-      "type": "topic",
-      "name": "program development"
-    },
-    {
-      "id": "topic_client\u2013server_model",
-      "label": "client\u2013server_model",
-      "type": "topic",
-      "name": "client\u2013server model"
-    },
-    {
-      "id": "topic_formal_methods",
-      "label": "formal_methods",
-      "type": "topic",
-      "name": "formal methods"
-    },
-    {
-      "id": "topic_commonly_used_text_analysis_techniques",
-      "label": "commonly_used_text_analysis_techniques",
-      "type": "topic",
-      "name": "commonly used text analysis techniques"
-    },
-    {
-      "id": "topic_synchronization",
-      "label": "synchronization",
-      "type": "topic",
-      "name": "synchronization"
-    },
-    {
-      "id": "topic_networks",
-      "label": "networks",
-      "type": "topic",
-      "name": "networks"
-    },
-    {
-      "id": "topic_the_life-cycle_model",
-      "label": "the_life-cycle_model",
-      "type": "topic",
-      "name": "the life-cycle model"
-    },
-    {
-      "id": "topic_association_analysis",
-      "label": "association_analysis",
-      "type": "topic",
-      "name": "association analysis"
-    },
-    {
-      "id": "topic_medical_databases",
-      "label": "medical_databases",
-      "type": "topic",
-      "name": "medical databases"
-    },
-    {
-      "id": "topic_usability",
-      "label": "usability",
-      "type": "topic",
-      "name": "usability"
-    },
-    {
-      "id": "topic_ux",
-      "label": "ux",
-      "type": "topic",
-      "name": "ux"
-    },
-    {
-      "id": "topic_database_use",
-      "label": "database_use",
-      "type": "topic",
-      "name": "database use"
-    },
-    {
-      "id": "topic_network_programming_interfaces",
-      "label": "network_programming_interfaces",
-      "type": "topic",
-      "name": "network programming interfaces"
-    },
-    {
-      "id": "topic_real-time_software_and_hardware_issues",
-      "label": "real-time_software_and_hardware_issues",
-      "type": "topic",
-      "name": "real-time software and hardware issues"
-    },
-    {
-      "id": "topic_a_software_system",
-      "label": "a_software_system",
-      "type": "topic",
-      "name": "a software system"
-    },
-    {
-      "id": "topic_graph_algorithms",
-      "label": "graph_algorithms",
-      "type": "topic",
-      "name": "graph algorithms"
-    },
-    {
-      "id": "topic_calculus",
-      "label": "calculus",
-      "type": "topic",
-      "name": "calculus"
-    },
-    {
-      "id": "topic_physical_data_analysis",
-      "label": "physical_data_analysis",
-      "type": "topic",
-      "name": "physical data analysis"
-    },
-    {
-      "id": "topic_data_encryption",
-      "label": "data_encryption",
-      "type": "topic",
-      "name": "data encryption"
-    },
-    {
-      "id": "topic_sound_design",
-      "label": "sound_design",
-      "type": "topic",
-      "name": "sound design"
-    },
-    {
-      "id": "topic_a_design_and_evaluation_tool",
-      "label": "a_design_and_evaluation_tool",
-      "type": "topic",
-      "name": "a design and evaluation tool"
-    },
-    {
-      "id": "topic_large_data",
-      "label": "large_data",
-      "type": "topic",
-      "name": "large data"
+      "name": "design tool"
     },
     {
       "id": "topic_fundamental_distributed_systems_concepts",
@@ -1970,268 +1634,82 @@
       "name": "fundamental distributed systems concepts"
     },
     {
-      "id": "topic_computer_database_systems",
-      "label": "computer_database_systems",
-      "type": "topic",
-      "name": "computer database systems"
-    },
-    {
-      "id": "topic_interactive_software",
-      "label": "interactive_software",
-      "type": "topic",
-      "name": "interactive software"
-    },
-    {
-      "id": "topic_microcomputer_hardware",
-      "label": "microcomputer_hardware",
-      "type": "topic",
-      "name": "microcomputer hardware"
-    },
-    {
-      "id": "topic_data_streams",
-      "label": "data_streams",
-      "type": "topic",
-      "name": "data streams"
-    },
-    {
-      "id": "topic_data_models",
-      "label": "data_models",
-      "type": "topic",
-      "name": "data models"
-    },
-    {
-      "id": "topic_system_usage",
-      "label": "system_usage",
-      "type": "topic",
-      "name": "system usage"
-    },
-    {
-      "id": "topic_authentication_systems",
-      "label": "authentication_systems",
-      "type": "topic",
-      "name": "authentication systems"
-    },
-    {
-      "id": "topic_structure",
-      "label": "structure",
-      "type": "topic",
-      "name": "structure"
-    },
-    {
-      "id": "topic_very-large-scale_distributed_development_techniques",
-      "label": "very-large-scale_distributed_development_techniques",
-      "type": "topic",
-      "name": "very-large-scale distributed development techniques"
-    },
-    {
-      "id": "topic_network_authentication",
-      "label": "network_authentication",
-      "type": "topic",
-      "name": "network authentication"
-    },
-    {
-      "id": "topic_all_computer_systems",
-      "label": "all_computer_systems",
-      "type": "topic",
-      "name": "all computer systems"
-    },
-    {
-      "id": "topic_reasoning",
-      "label": "reasoning",
-      "type": "topic",
-      "name": "reasoning"
-    },
-    {
-      "id": "topic_implementation_techniques",
-      "label": "implementation_techniques",
-      "type": "topic",
-      "name": "implementation techniques"
-    },
-    {
-      "id": "topic_oop",
-      "label": "oop",
-      "type": "topic",
-      "name": "oop"
-    },
-    {
-      "id": "topic_the_hardware",
-      "label": "the_hardware",
-      "type": "topic",
-      "name": "the hardware"
-    },
-    {
-      "id": "topic_available_software_tools",
-      "label": "available_software_tools",
-      "type": "topic",
-      "name": "available software tools"
-    },
-    {
-      "id": "topic_statistics",
-      "label": "statistics",
-      "type": "topic",
-      "name": "statistics"
-    },
-    {
-      "id": "topic_software_modularity",
-      "label": "software_modularity",
-      "type": "topic",
-      "name": "software modularity"
-    },
-    {
-      "id": "topic_design_principles",
-      "label": "design_principles",
-      "type": "topic",
-      "name": "design principles"
-    },
-    {
-      "id": "topic_data_science_program",
-      "label": "data_science_program",
-      "type": "topic",
-      "name": "data science program"
-    },
-    {
-      "id": "topic_structure_form_motion",
-      "label": "structure_form_motion",
-      "type": "topic",
-      "name": "structure form motion"
-    },
-    {
-      "id": "topic_core_computer_science_data_structures",
-      "label": "core_computer_science_data_structures",
-      "type": "topic",
-      "name": "core computer science data structures"
-    },
-    {
-      "id": "topic_social_analysis_skills",
-      "label": "social_analysis_skills",
-      "type": "topic",
-      "name": "social analysis skills"
-    },
-    {
-      "id": "topic_memory_design",
-      "label": "memory_design",
-      "type": "topic",
-      "name": "memory design"
-    },
-    {
-      "id": "topic_database_security_prerequisites",
-      "label": "database_security_prerequisites",
-      "type": "topic",
-      "name": "database security prerequisites"
-    },
-    {
-      "id": "topic_data_science",
-      "label": "data_science",
-      "type": "topic",
-      "name": "data science"
-    },
-    {
-      "id": "topic_data_analysis",
-      "label": "data_analysis",
-      "type": "topic",
-      "name": "data analysis"
-    },
-    {
-      "id": "topic_data_warehousing",
-      "label": "data_warehousing",
-      "type": "topic",
-      "name": "data warehousing"
-    },
-    {
-      "id": "topic_statistical_modeling",
-      "label": "statistical_modeling",
-      "type": "topic",
-      "name": "statistical modeling"
-    },
-    {
-      "id": "topic_programming_languages",
-      "label": "programming_languages",
-      "type": "topic",
-      "name": "programming languages"
-    },
-    {
-      "id": "topic_program_performance_models",
-      "label": "program_performance_models",
-      "type": "topic",
-      "name": "program performance models"
-    },
-    {
-      "id": "topic_cryptography",
-      "label": "cryptography",
-      "type": "topic",
-      "name": "cryptography"
-    },
-    {
-      "id": "topic_computer_operating_systems",
-      "label": "computer_operating_systems",
-      "type": "topic",
-      "name": "computer operating systems"
-    },
-    {
-      "id": "topic_object-oriented_systems",
-      "label": "object-oriented_systems",
-      "type": "topic",
-      "name": "object-oriented systems"
-    },
-    {
-      "id": "topic_design",
-      "label": "design",
-      "type": "topic",
-      "name": "design"
-    },
-    {
-      "id": "topic_design_patterns",
-      "label": "design_patterns",
-      "type": "topic",
-      "name": "design patterns"
-    },
-    {
-      "id": "topic_hierarchical_models",
-      "label": "hierarchical_models",
-      "type": "topic",
-      "name": "hierarchical models"
-    },
-    {
-      "id": "topic_economic_analysis",
-      "label": "economic_analysis",
-      "type": "topic",
-      "name": "economic analysis"
-    },
-    {
-      "id": "topic_data",
-      "label": "data",
-      "type": "topic",
-      "name": "data"
-    },
-    {
-      "id": "topic_continuous_system_simulation",
-      "label": "continuous_system_simulation",
-      "type": "topic",
-      "name": "continuous system simulation"
-    },
-    {
       "id": "topic_object-oriented_software",
       "label": "object-oriented_software",
       "type": "topic",
       "name": "object-oriented software"
     },
     {
-      "id": "topic_conceptual_and_logical_design",
-      "label": "conceptual_and_logical_design",
+      "id": "topic_system",
+      "label": "system",
       "type": "topic",
-      "name": "conceptual and logical design"
+      "name": "system"
     },
     {
-      "id": "topic_system_calls",
-      "label": "system_calls",
+      "id": "topic_risk_analysis",
+      "label": "risk_analysis",
       "type": "topic",
-      "name": "system calls"
+      "name": "risk analysis"
     },
     {
-      "id": "topic_development_metrics",
-      "label": "development_metrics",
+      "id": "topic_data_mining_techniques",
+      "label": "data_mining_techniques",
       "type": "topic",
-      "name": "development metrics"
+      "name": "data mining techniques"
+    },
+    {
+      "id": "topic_computer-aided_software_engineering",
+      "label": "computer-aided_software_engineering",
+      "type": "topic",
+      "name": "computer-aided software engineering"
+    },
+    {
+      "id": "topic_real-world_systems",
+      "label": "real-world_systems",
+      "type": "topic",
+      "name": "real-world systems"
+    },
+    {
+      "id": "topic_web_development",
+      "label": "web_development",
+      "type": "topic",
+      "name": "web development"
+    },
+    {
+      "id": "topic_core_data_structures",
+      "label": "core_data_structures",
+      "type": "topic",
+      "name": "core data structures"
+    },
+    {
+      "id": "topic_complex_computer_systems",
+      "label": "complex_computer_systems",
+      "type": "topic",
+      "name": "complex computer systems"
+    },
+    {
+      "id": "topic_approximation_algorithms",
+      "label": "approximation_algorithms",
+      "type": "topic",
+      "name": "approximation algorithms"
+    },
+    {
+      "id": "topic_various_data_mining_techniques",
+      "label": "various_data_mining_techniques",
+      "type": "topic",
+      "name": "various data mining techniques"
+    },
+    {
+      "id": "topic_natural_language_data",
+      "label": "natural_language_data",
+      "type": "topic",
+      "name": "natural language data"
+    },
+    {
+      "id": "topic_graph_theory",
+      "label": "graph_theory",
+      "type": "topic",
+      "name": "graph theory"
     },
     {
       "id": "topic_back-end_server_development",
@@ -2240,166 +1718,94 @@
       "name": "back-end server development"
     },
     {
-      "id": "topic_front_end_design",
-      "label": "front_end_design",
+      "id": "topic_physical_systems",
+      "label": "physical_systems",
       "type": "topic",
-      "name": "front end design"
+      "name": "physical systems"
     },
     {
-      "id": "topic_databases",
-      "label": "databases",
+      "id": "topic_hierarchical_modeling",
+      "label": "hierarchical_modeling",
       "type": "topic",
-      "name": "databases"
+      "name": "hierarchical modeling"
     },
     {
-      "id": "topic_ethical_frameworks",
-      "label": "ethical_frameworks",
+      "id": "topic_cluster_analysis",
+      "label": "cluster_analysis",
       "type": "topic",
-      "name": "ethical frameworks"
+      "name": "cluster analysis"
     },
     {
-      "id": "topic_information_systems",
-      "label": "information_systems",
+      "id": "topic_large_data",
+      "label": "large_data",
       "type": "topic",
-      "name": "information systems"
+      "name": "large data"
     },
     {
-      "id": "topic_database",
-      "label": "database",
+      "id": "topic_algorithm_performance_analysis",
+      "label": "algorithm_performance_analysis",
       "type": "topic",
-      "name": "database"
+      "name": "algorithm performance analysis"
     },
     {
-      "id": "topic_index_structures",
-      "label": "index_structures",
+      "id": "topic_hierarchical_memory_systems",
+      "label": "hierarchical_memory_systems",
       "type": "topic",
-      "name": "index structures"
+      "name": "hierarchical memory systems"
     },
     {
-      "id": "topic_design_procedures",
-      "label": "design_procedures",
+      "id": "topic_practical_design",
+      "label": "practical_design",
       "type": "topic",
-      "name": "design procedures"
+      "name": "practical design"
     },
     {
-      "id": "topic_time-series_datasets",
-      "label": "time-series_datasets",
+      "id": "topic_computer_operating_systems",
+      "label": "computer_operating_systems",
       "type": "topic",
-      "name": "time-series datasets"
+      "name": "computer operating systems"
     },
     {
-      "id": "topic_software_patterns",
-      "label": "software_patterns",
+      "id": "topic_database_access",
+      "label": "database_access",
       "type": "topic",
-      "name": "software patterns"
+      "name": "database access"
     },
     {
-      "id": "topic_geographic_information_systems",
-      "label": "geographic_information_systems",
+      "id": "topic_basic_data_structures",
+      "label": "basic_data_structures",
       "type": "topic",
-      "name": "geographic information systems"
+      "name": "basic data structures"
     },
     {
-      "id": "topic_component-based_software_development",
-      "label": "component-based_software_development",
+      "id": "topic_data_stewardship",
+      "label": "data_stewardship",
       "type": "topic",
-      "name": "component-based software development"
+      "name": "data stewardship"
     },
     {
-      "id": "topic_physical_science_data",
-      "label": "physical_science_data",
+      "id": "topic_structures",
+      "label": "structures",
       "type": "topic",
-      "name": "physical science data"
+      "name": "structures"
     },
     {
-      "id": "topic_frameworks",
-      "label": "frameworks",
+      "id": "topic_hierarchical_models",
+      "label": "hierarchical_models",
       "type": "topic",
-      "name": "frameworks"
+      "name": "hierarchical models"
     },
     {
-      "id": "topic_data_acquisition",
-      "label": "data_acquisition",
+      "id": "topic_structured_and_object-oriented_design",
+      "label": "structured_and_object-oriented_design",
       "type": "topic",
-      "name": "data acquisition"
+      "name": "structured and object-oriented design"
     },
     {
-      "id": "topic_algorithmic_and_implementation_challenges",
-      "label": "algorithmic_and_implementation_challenges",
+      "id": "topic_test_data",
+      "label": "test_data",
       "type": "topic",
-      "name": "algorithmic and implementation challenges"
-    },
-    {
-      "id": "topic_policy_analysis_skills",
-      "label": "policy_analysis_skills",
-      "type": "topic",
-      "name": "policy analysis skills"
-    },
-    {
-      "id": "topic_database_applications",
-      "label": "database_applications",
-      "type": "topic",
-      "name": "database applications"
-    },
-    {
-      "id": "topic_blockchain",
-      "label": "blockchain",
-      "type": "topic",
-      "name": "blockchain"
-    },
-    {
-      "id": "topic_data_structures",
-      "label": "data_structures",
-      "type": "topic",
-      "name": "data structures"
-    },
-    {
-      "id": "topic_linear_algebra",
-      "label": "linear_algebra",
-      "type": "topic",
-      "name": "linear algebra"
-    },
-    {
-      "id": "topic_network_measurements",
-      "label": "network_measurements",
-      "type": "topic",
-      "name": "network measurements"
-    },
-    {
-      "id": "topic_formal_development_process",
-      "label": "formal_development_process",
-      "type": "topic",
-      "name": "formal development process"
-    },
-    {
-      "id": "topic_network_controls",
-      "label": "network_controls",
-      "type": "topic",
-      "name": "network controls"
-    },
-    {
-      "id": "topic_natural_language_processing",
-      "label": "natural_language_processing",
-      "type": "topic",
-      "name": "natural language processing"
-    },
-    {
-      "id": "topic_data_science_questions",
-      "label": "data_science_questions",
-      "type": "topic",
-      "name": "data science questions"
-    },
-    {
-      "id": "topic_analysis",
-      "label": "analysis",
-      "type": "topic",
-      "name": "analysis"
-    },
-    {
-      "id": "topic_large_software_systems",
-      "label": "large_software_systems",
-      "type": "topic",
-      "name": "large software systems"
+      "name": "test data"
     },
     {
       "id": "topic_hardware_components",
@@ -2408,22 +1814,388 @@
       "name": "hardware components"
     },
     {
-      "id": "topic_hardware",
-      "label": "hardware",
+      "id": "topic_program_performance_models",
+      "label": "program_performance_models",
       "type": "topic",
-      "name": "hardware"
+      "name": "program performance models"
     },
     {
-      "id": "topic_statistical,_syntactic,_and_logical_analysis",
-      "label": "statistical,_syntactic,_and_logical_analysis",
+      "id": "topic_geographic_data_structure",
+      "label": "geographic_data_structure",
       "type": "topic",
-      "name": "statistical, syntactic, and logical analysis"
+      "name": "geographic data structure"
     },
     {
-      "id": "topic_time_series_analysis",
-      "label": "time_series_analysis",
+      "id": "topic_physical_science_data",
+      "label": "physical_science_data",
       "type": "topic",
-      "name": "time series analysis"
+      "name": "physical science data"
+    },
+    {
+      "id": "topic_algorithm_techniques",
+      "label": "algorithm_techniques",
+      "type": "topic",
+      "name": "algorithm techniques"
+    },
+    {
+      "id": "topic_linear_models",
+      "label": "linear_models",
+      "type": "topic",
+      "name": "linear models"
+    },
+    {
+      "id": "topic_algorithmic_and_implementation_challenges",
+      "label": "algorithmic_and_implementation_challenges",
+      "type": "topic",
+      "name": "algorithmic and implementation challenges"
+    },
+    {
+      "id": "topic_cross-platform_development",
+      "label": "cross-platform_development",
+      "type": "topic",
+      "name": "cross-platform development"
+    },
+    {
+      "id": "topic_neural_networks",
+      "label": "neural_networks",
+      "type": "topic",
+      "name": "neural networks"
+    },
+    {
+      "id": "topic_tolerance_algorithms",
+      "label": "tolerance_algorithms",
+      "type": "topic",
+      "name": "tolerance algorithms"
+    },
+    {
+      "id": "topic_data_science",
+      "label": "data_science",
+      "type": "topic",
+      "name": "data science"
+    },
+    {
+      "id": "topic_skill_development",
+      "label": "skill_development",
+      "type": "topic",
+      "name": "skill development"
+    },
+    {
+      "id": "topic_circuit_design",
+      "label": "circuit_design",
+      "type": "topic",
+      "name": "circuit design"
+    },
+    {
+      "id": "topic_economic_analysis",
+      "label": "economic_analysis",
+      "type": "topic",
+      "name": "economic analysis"
+    },
+    {
+      "id": "topic_knowledge_representation",
+      "label": "knowledge_representation",
+      "type": "topic",
+      "name": "knowledge representation"
+    },
+    {
+      "id": "topic_data_warehousing",
+      "label": "data_warehousing",
+      "type": "topic",
+      "name": "data warehousing"
+    },
+    {
+      "id": "topic_the_hardware",
+      "label": "the_hardware",
+      "type": "topic",
+      "name": "the hardware"
+    },
+    {
+      "id": "topic_robotics",
+      "label": "robotics",
+      "type": "topic",
+      "name": "robotics"
+    },
+    {
+      "id": "topic_programming_systems",
+      "label": "programming_systems",
+      "type": "topic",
+      "name": "programming systems"
+    },
+    {
+      "id": "topic_data",
+      "label": "data",
+      "type": "topic",
+      "name": "data"
+    },
+    {
+      "id": "topic_developments",
+      "label": "developments",
+      "type": "topic",
+      "name": "developments"
+    },
+    {
+      "id": "topic_oop",
+      "label": "oop",
+      "type": "topic",
+      "name": "oop"
+    },
+    {
+      "id": "topic_distributed_systems",
+      "label": "distributed_systems",
+      "type": "topic",
+      "name": "distributed systems"
+    },
+    {
+      "id": "topic_control_structures",
+      "label": "control_structures",
+      "type": "topic",
+      "name": "control structures"
+    },
+    {
+      "id": "topic_computer_database_systems",
+      "label": "computer_database_systems",
+      "type": "topic",
+      "name": "computer database systems"
+    },
+    {
+      "id": "topic_quantum_algorithms_and_protocols,_epr_paradox",
+      "label": "quantum_algorithms_and_protocols,_epr_paradox",
+      "type": "topic",
+      "name": "quantum algorithms and protocols, epr paradox"
+    },
+    {
+      "id": "topic_enterprise_corporate_data",
+      "label": "enterprise_corporate_data",
+      "type": "topic",
+      "name": "enterprise corporate data"
+    },
+    {
+      "id": "topic_probability",
+      "label": "probability",
+      "type": "topic",
+      "name": "probability"
+    },
+    {
+      "id": "topic_discrete_structures",
+      "label": "discrete_structures",
+      "type": "topic",
+      "name": "discrete structures"
+    },
+    {
+      "id": "topic_deep_learning",
+      "label": "deep_learning",
+      "type": "topic",
+      "name": "deep learning"
+    },
+    {
+      "id": "topic_relational_database_systems",
+      "label": "relational_database_systems",
+      "type": "topic",
+      "name": "relational database systems"
+    },
+    {
+      "id": "topic_secure_software",
+      "label": "secure_software",
+      "type": "topic",
+      "name": "secure software"
+    },
+    {
+      "id": "topic_visualization",
+      "label": "visualization",
+      "type": "topic",
+      "name": "visualization"
+    },
+    {
+      "id": "topic_data_presentation_skills",
+      "label": "data_presentation_skills",
+      "type": "topic",
+      "name": "data presentation skills"
+    },
+    {
+      "id": "topic_network_security",
+      "label": "network_security",
+      "type": "topic",
+      "name": "network security"
+    },
+    {
+      "id": "topic_operating_system_design",
+      "label": "operating_system_design",
+      "type": "topic",
+      "name": "operating system design"
+    },
+    {
+      "id": "topic_algorithms",
+      "label": "algorithms",
+      "type": "topic",
+      "name": "algorithms"
+    },
+    {
+      "id": "topic_biological_systems",
+      "label": "biological_systems",
+      "type": "topic",
+      "name": "biological systems"
+    },
+    {
+      "id": "topic_programming_and_data_structures",
+      "label": "programming_and_data_structures",
+      "type": "topic",
+      "name": "programming and data structures"
+    },
+    {
+      "id": "topic_a_software_package",
+      "label": "a_software_package",
+      "type": "topic",
+      "name": "a software package"
+    },
+    {
+      "id": "topic_application_development",
+      "label": "application_development",
+      "type": "topic",
+      "name": "application development"
+    },
+    {
+      "id": "topic_microcomputer_hardware",
+      "label": "microcomputer_hardware",
+      "type": "topic",
+      "name": "microcomputer hardware"
+    },
+    {
+      "id": "topic_information_systems",
+      "label": "information_systems",
+      "type": "topic",
+      "name": "information systems"
+    },
+    {
+      "id": "topic_security",
+      "label": "security",
+      "type": "topic",
+      "name": "security"
+    },
+    {
+      "id": "topic_design_principles",
+      "label": "design_principles",
+      "type": "topic",
+      "name": "design principles"
+    },
+    {
+      "id": "topic_object-oriented,_procedural,_functional,_and_concurrent_software_design_paradigms",
+      "label": "object-oriented,_procedural,_functional,_and_concurrent_software_design_paradigms",
+      "type": "topic",
+      "name": "object-oriented, procedural, functional, and concurrent software design paradigms"
+    },
+    {
+      "id": "topic_all_computer_systems",
+      "label": "all_computer_systems",
+      "type": "topic",
+      "name": "all computer systems"
+    },
+    {
+      "id": "topic_ai",
+      "label": "ai",
+      "type": "topic",
+      "name": "ai"
+    },
+    {
+      "id": "topic_system_performance",
+      "label": "system_performance",
+      "type": "topic",
+      "name": "system performance"
+    },
+    {
+      "id": "topic_protein_structure",
+      "label": "protein_structure",
+      "type": "topic",
+      "name": "protein structure"
+    },
+    {
+      "id": "topic_reasoning",
+      "label": "reasoning",
+      "type": "topic",
+      "name": "reasoning"
+    },
+    {
+      "id": "topic_data_compression",
+      "label": "data_compression",
+      "type": "topic",
+      "name": "data compression"
+    },
+    {
+      "id": "topic_interconnection_networks",
+      "label": "interconnection_networks",
+      "type": "topic",
+      "name": "interconnection networks"
+    },
+    {
+      "id": "topic_software_specification",
+      "label": "software_specification",
+      "type": "topic",
+      "name": "software specification"
+    },
+    {
+      "id": "topic_design",
+      "label": "design",
+      "type": "topic",
+      "name": "design"
+    },
+    {
+      "id": "topic_commercial_software",
+      "label": "commercial_software",
+      "type": "topic",
+      "name": "commercial software"
+    },
+    {
+      "id": "topic_analysis",
+      "label": "analysis",
+      "type": "topic",
+      "name": "analysis"
+    },
+    {
+      "id": "topic_theory",
+      "label": "theory",
+      "type": "topic",
+      "name": "theory"
+    },
+    {
+      "id": "topic_databases",
+      "label": "databases",
+      "type": "topic",
+      "name": "databases"
+    },
+    {
+      "id": "topic_discrete_math",
+      "label": "discrete_math",
+      "type": "topic",
+      "name": "discrete math"
+    },
+    {
+      "id": "topic_algorithm_performance_prediction",
+      "label": "algorithm_performance_prediction",
+      "type": "topic",
+      "name": "algorithm performance prediction"
+    },
+    {
+      "id": "topic_wireless_networks",
+      "label": "wireless_networks",
+      "type": "topic",
+      "name": "wireless networks"
+    },
+    {
+      "id": "topic_database_application_design",
+      "label": "database_application_design",
+      "type": "topic",
+      "name": "database application design"
+    },
+    {
+      "id": "topic_network_programming_interfaces",
+      "label": "network_programming_interfaces",
+      "type": "topic",
+      "name": "network programming interfaces"
+    },
+    {
+      "id": "topic_network_controls",
+      "label": "network_controls",
+      "type": "topic",
+      "name": "network controls"
     },
     {
       "id": "topic_five_pre-approved_data_science_courses",
@@ -2438,136 +2210,10 @@
       "name": "software systems"
     },
     {
-      "id": "topic_computer_systems",
-      "label": "computer_systems",
+      "id": "topic_data_representation,_memory,_output_and_input,_cpu",
+      "label": "data_representation,_memory,_output_and_input,_cpu",
       "type": "topic",
-      "name": "computer systems"
-    },
-    {
-      "id": "topic_data_presentation_skills",
-      "label": "data_presentation_skills",
-      "type": "topic",
-      "name": "data presentation skills"
-    },
-    {
-      "id": "topic_augmented_transition_networks",
-      "label": "augmented_transition_networks",
-      "type": "topic",
-      "name": "augmented transition networks"
-    },
-    {
-      "id": "topic_natural_language_data",
-      "label": "natural_language_data",
-      "type": "topic",
-      "name": "natural language data"
-    },
-    {
-      "id": "topic_system_testing",
-      "label": "system_testing",
-      "type": "topic",
-      "name": "system testing"
-    },
-    {
-      "id": "topic_hierarchical_modeling",
-      "label": "hierarchical_modeling",
-      "type": "topic",
-      "name": "hierarchical modeling"
-    },
-    {
-      "id": "topic_other_network_utilities",
-      "label": "other_network_utilities",
-      "type": "topic",
-      "name": "other network utilities"
-    },
-    {
-      "id": "topic_some_estimation_algorithms",
-      "label": "some_estimation_algorithms",
-      "type": "topic",
-      "name": "some estimation algorithms"
-    },
-    {
-      "id": "topic_approximation_algorithms",
-      "label": "approximation_algorithms",
-      "type": "topic",
-      "name": "approximation algorithms"
-    },
-    {
-      "id": "topic_core_data_structures",
-      "label": "core_data_structures",
-      "type": "topic",
-      "name": "core data structures"
-    },
-    {
-      "id": "topic_functional_and_object-oriented_computational_models",
-      "label": "functional_and_object-oriented_computational_models",
-      "type": "topic",
-      "name": "functional and object-oriented computational models"
-    },
-    {
-      "id": "topic_deep_learning",
-      "label": "deep_learning",
-      "type": "topic",
-      "name": "deep learning"
-    },
-    {
-      "id": "topic_modeling",
-      "label": "modeling",
-      "type": "topic",
-      "name": "modeling"
-    },
-    {
-      "id": "topic_design_methodology",
-      "label": "design_methodology",
-      "type": "topic",
-      "name": "design methodology"
-    },
-    {
-      "id": "topic_software",
-      "label": "software",
-      "type": "topic",
-      "name": "software"
-    },
-    {
-      "id": "topic_the_implementation",
-      "label": "the_implementation",
-      "type": "topic",
-      "name": "the implementation"
-    },
-    {
-      "id": "topic_small_networks",
-      "label": "small_networks",
-      "type": "topic",
-      "name": "small networks"
-    },
-    {
-      "id": "topic_digital_logic_and_circuit_design,_computer_organization,_assembly_programming,_translation,_memory_design,_pipelined_and_superscalar_architectures,_multiprocessing,_program_performance",
-      "label": "digital_logic_and_circuit_design,_computer_organization,_assembly_programming,_translation,_memory_design,_pipelined_and_superscalar_architectures,_multiprocessing,_program_performance",
-      "type": "topic",
-      "name": "digital logic and circuit design, computer organization, assembly programming, translation, memory design, pipelined and superscalar architectures, multiprocessing, program performance"
-    },
-    {
-      "id": "topic_security",
-      "label": "security",
-      "type": "topic",
-      "name": "security"
-    },
-    {
-      "id": "topic_protein_structure",
-      "label": "protein_structure",
-      "type": "topic",
-      "name": "protein structure"
-    },
-    {
-      "id": "topic_intrusion_detection_systems",
-      "label": "intrusion_detection_systems",
-      "type": "topic",
-      "name": "intrusion detection systems"
-    },
-    {
-      "id": "topic_algebraic_structures",
-      "label": "algebraic_structures",
-      "type": "topic",
-      "name": "algebraic structures"
+      "name": "data representation, memory, output and input, cpu"
     },
     {
       "id": "topic_software_requirements",
@@ -2576,862 +2222,16 @@
       "name": "software requirements"
     },
     {
-      "id": "topic_system_administration",
-      "label": "system_administration",
+      "id": "topic_posix_systems",
+      "label": "posix_systems",
       "type": "topic",
-      "name": "system administration"
+      "name": "posix systems"
     },
     {
-      "id": "topic_dictionary_and_thesaurus_systems",
-      "label": "dictionary_and_thesaurus_systems",
+      "id": "topic_design_procedures",
+      "label": "design_procedures",
       "type": "topic",
-      "name": "dictionary and thesaurus systems"
-    },
-    {
-      "id": "topic_operating_system_security",
-      "label": "operating_system_security",
-      "type": "topic",
-      "name": "operating system security"
-    },
-    {
-      "id": "topic_web_document_systems",
-      "label": "web_document_systems",
-      "type": "topic",
-      "name": "web document systems"
-    },
-    {
-      "id": "topic_the_design",
-      "label": "the_design",
-      "type": "topic",
-      "name": "the design"
-    },
-    {
-      "id": "topic_algorithm_design",
-      "label": "algorithm_design",
-      "type": "topic",
-      "name": "algorithm design"
-    },
-    {
-      "id": "topic_theoretical_analysis",
-      "label": "theoretical_analysis",
-      "type": "topic",
-      "name": "theoretical analysis"
-    },
-    {
-      "id": "topic_compilers",
-      "label": "compilers",
-      "type": "topic",
-      "name": "compilers"
-    },
-    {
-      "id": "topic_datasets",
-      "label": "datasets",
-      "type": "topic",
-      "name": "datasets"
-    },
-    {
-      "id": "topic_algorithms",
-      "label": "algorithms",
-      "type": "topic",
-      "name": "algorithms"
-    },
-    {
-      "id": "topic_database_security",
-      "label": "database_security",
-      "type": "topic",
-      "name": "database security"
-    },
-    {
-      "id": "topic_signal_processing",
-      "label": "signal_processing",
-      "type": "topic",
-      "name": "signal processing"
-    },
-    {
-      "id": "topic_storage_systems",
-      "label": "storage_systems",
-      "type": "topic",
-      "name": "storage systems"
-    },
-    {
-      "id": "topic_database_management",
-      "label": "database_management",
-      "type": "topic",
-      "name": "database management"
-    },
-    {
-      "id": "topic_a_software_package",
-      "label": "a_software_package",
-      "type": "topic",
-      "name": "a software package"
-    },
-    {
-      "id": "topic_networking",
-      "label": "networking",
-      "type": "topic",
-      "name": "networking"
-    },
-    {
-      "id": "topic_mobile_device_development",
-      "label": "mobile_device_development",
-      "type": "topic",
-      "name": "mobile device development"
-    },
-    {
-      "id": "topic_systems_programming",
-      "label": "systems_programming",
-      "type": "topic",
-      "name": "systems programming"
-    },
-    {
-      "id": "topic_object_oriented_programming",
-      "label": "object_oriented_programming",
-      "type": "topic",
-      "name": "object oriented programming"
-    },
-    {
-      "id": "topic_discrete_structures",
-      "label": "discrete_structures",
-      "type": "topic",
-      "name": "discrete structures"
-    },
-    {
-      "id": "topic_model_validation",
-      "label": "model_validation",
-      "type": "topic",
-      "name": "model validation"
-    },
-    {
-      "id": "topic_file_system_access",
-      "label": "file_system_access",
-      "type": "topic",
-      "name": "file system access"
-    },
-    {
-      "id": "topic_how_operating_system\u2019s_components",
-      "label": "how_operating_system\u2019s_components",
-      "type": "topic",
-      "name": "how operating system\u2019s components"
-    },
-    {
-      "id": "topic_visualization",
-      "label": "visualization",
-      "type": "topic",
-      "name": "visualization"
-    },
-    {
-      "id": "topic_software_metrics",
-      "label": "software_metrics",
-      "type": "topic",
-      "name": "software metrics"
-    },
-    {
-      "id": "topic_skill_development",
-      "label": "skill_development",
-      "type": "topic",
-      "name": "skill development"
-    },
-    {
-      "id": "topic_interactive_systems",
-      "label": "interactive_systems",
-      "type": "topic",
-      "name": "interactive systems"
-    },
-    {
-      "id": "topic_circuit_design",
-      "label": "circuit_design",
-      "type": "topic",
-      "name": "circuit design"
-    },
-    {
-      "id": "topic_modern_database_systems",
-      "label": "modern_database_systems",
-      "type": "topic",
-      "name": "modern database systems"
-    },
-    {
-      "id": "topic_concurrency",
-      "label": "concurrency",
-      "type": "topic",
-      "name": "concurrency"
-    },
-    {
-      "id": "topic_algorithm_techniques",
-      "label": "algorithm_techniques",
-      "type": "topic",
-      "name": "algorithm techniques"
-    },
-    {
-      "id": "topic_temporal_anti-aliasing:_hidden-surface_algorithms",
-      "label": "temporal_anti-aliasing:_hidden-surface_algorithms",
-      "type": "topic",
-      "name": "temporal anti-aliasing: hidden-surface algorithms"
-    },
-    {
-      "id": "topic_mathematical_structures",
-      "label": "mathematical_structures",
-      "type": "topic",
-      "name": "mathematical structures"
-    },
-    {
-      "id": "topic_automata_theory",
-      "label": "automata_theory",
-      "type": "topic",
-      "name": "automata theory"
-    },
-    {
-      "id": "topic_model_evaluation",
-      "label": "model_evaluation",
-      "type": "topic",
-      "name": "model evaluation"
-    },
-    {
-      "id": "topic_formal_analysis",
-      "label": "formal_analysis",
-      "type": "topic",
-      "name": "formal analysis"
-    },
-    {
-      "id": "topic_small-world_networks",
-      "label": "small-world_networks",
-      "type": "topic",
-      "name": "small-world networks"
-    },
-    {
-      "id": "topic_software_copyrights",
-      "label": "software_copyrights",
-      "type": "topic",
-      "name": "software copyrights"
-    },
-    {
-      "id": "topic_object-oriented,_procedural,_functional,_and_concurrent_software_design_paradigms",
-      "label": "object-oriented,_procedural,_functional,_and_concurrent_software_design_paradigms",
-      "type": "topic",
-      "name": "object-oriented, procedural, functional, and concurrent software design paradigms"
-    },
-    {
-      "id": "topic_development",
-      "label": "development",
-      "type": "topic",
-      "name": "development"
-    },
-    {
-      "id": "topic_data_science_majors",
-      "label": "data_science_majors",
-      "type": "topic",
-      "name": "data science majors"
-    },
-    {
-      "id": "topic_boolean_networks",
-      "label": "boolean_networks",
-      "type": "topic",
-      "name": "boolean networks"
-    },
-    {
-      "id": "topic_relational_database_management_systems",
-      "label": "relational_database_management_systems",
-      "type": "topic",
-      "name": "relational database management systems"
-    },
-    {
-      "id": "topic_geographic_data_structure",
-      "label": "geographic_data_structure",
-      "type": "topic",
-      "name": "geographic data structure"
-    },
-    {
-      "id": "topic_cluster_analysis",
-      "label": "cluster_analysis",
-      "type": "topic",
-      "name": "cluster analysis"
-    },
-    {
-      "id": "topic_biological_systems",
-      "label": "biological_systems",
-      "type": "topic",
-      "name": "biological systems"
-    },
-    {
-      "id": "topic_optimization",
-      "label": "optimization",
-      "type": "topic",
-      "name": "optimization"
-    },
-    {
-      "id": "topic_data_types",
-      "label": "data_types",
-      "type": "topic",
-      "name": "data types"
-    },
-    {
-      "id": "topic_probability",
-      "label": "probability",
-      "type": "topic",
-      "name": "probability"
-    },
-    {
-      "id": "topic_graph_theory",
-      "label": "graph_theory",
-      "type": "topic",
-      "name": "graph theory"
-    },
-    {
-      "id": "topic_cloud_application_design",
-      "label": "cloud_application_design",
-      "type": "topic",
-      "name": "cloud application design"
-    },
-    {
-      "id": "topic_working_systems",
-      "label": "working_systems",
-      "type": "topic",
-      "name": "working systems"
-    },
-    {
-      "id": "topic_programming_systems",
-      "label": "programming_systems",
-      "type": "topic",
-      "name": "programming systems"
-    },
-    {
-      "id": "topic_virtual_memory_systems",
-      "label": "virtual_memory_systems",
-      "type": "topic",
-      "name": "virtual memory systems"
-    },
-    {
-      "id": "topic_physical_systems",
-      "label": "physical_systems",
-      "type": "topic",
-      "name": "physical systems"
-    },
-    {
-      "id": "topic_memory_subsystem_design",
-      "label": "memory_subsystem_design",
-      "type": "topic",
-      "name": "memory subsystem design"
-    },
-    {
-      "id": "topic_knowledge_representation",
-      "label": "knowledge_representation",
-      "type": "topic",
-      "name": "knowledge representation"
-    },
-    {
-      "id": "topic_algorithmic_rather_than_hardware_aspects",
-      "label": "algorithmic_rather_than_hardware_aspects",
-      "type": "topic",
-      "name": "algorithmic rather than hardware aspects"
-    },
-    {
-      "id": "topic_data_representation",
-      "label": "data_representation",
-      "type": "topic",
-      "name": "data representation"
-    },
-    {
-      "id": "topic_models",
-      "label": "models",
-      "type": "topic",
-      "name": "models"
-    },
-    {
-      "id": "topic_leverage_natural_language_data",
-      "label": "leverage_natural_language_data",
-      "type": "topic",
-      "name": "leverage natural language data"
-    },
-    {
-      "id": "topic_database_access",
-      "label": "database_access",
-      "type": "topic",
-      "name": "database access"
-    },
-    {
-      "id": "topic_networked_computing",
-      "label": "networked_computing",
-      "type": "topic",
-      "name": "networked computing"
-    },
-    {
-      "id": "topic_programming_and_data_structures",
-      "label": "programming_and_data_structures",
-      "type": "topic",
-      "name": "programming and data structures"
-    },
-    {
-      "id": "topic_reinforcement_learning",
-      "label": "reinforcement_learning",
-      "type": "topic",
-      "name": "reinforcement learning"
-    },
-    {
-      "id": "topic_programming_techniques_and_software_development",
-      "label": "programming_techniques_and_software_development",
-      "type": "topic",
-      "name": "programming techniques and software development"
-    },
-    {
-      "id": "topic_data_visualization",
-      "label": "data_visualization",
-      "type": "topic",
-      "name": "data visualization"
-    },
-    {
-      "id": "topic_linear_models",
-      "label": "linear_models",
-      "type": "topic",
-      "name": "linear models"
-    },
-    {
-      "id": "topic_deep_network_architectures",
-      "label": "deep_network_architectures",
-      "type": "topic",
-      "name": "deep network architectures"
-    },
-    {
-      "id": "topic_discrete_math",
-      "label": "discrete_math",
-      "type": "topic",
-      "name": "discrete math"
-    },
-    {
-      "id": "topic_illumination_models",
-      "label": "illumination_models",
-      "type": "topic",
-      "name": "illumination models"
-    },
-    {
-      "id": "topic_structured_programming",
-      "label": "structured_programming",
-      "type": "topic",
-      "name": "structured programming"
-    },
-    {
-      "id": "topic_distributed_systems",
-      "label": "distributed_systems",
-      "type": "topic",
-      "name": "distributed systems"
-    },
-    {
-      "id": "topic_software_development",
-      "label": "software_development",
-      "type": "topic",
-      "name": "software development"
-    },
-    {
-      "id": "topic_interface_design",
-      "label": "interface_design",
-      "type": "topic",
-      "name": "interface design"
-    },
-    {
-      "id": "topic_real-world_systems",
-      "label": "real-world_systems",
-      "type": "topic",
-      "name": "real-world systems"
-    },
-    {
-      "id": "topic_software_packages",
-      "label": "software_packages",
-      "type": "topic",
-      "name": "software packages"
-    },
-    {
-      "id": "topic_other_development_models",
-      "label": "other_development_models",
-      "type": "topic",
-      "name": "other development models"
-    },
-    {
-      "id": "topic_secure_software",
-      "label": "secure_software",
-      "type": "topic",
-      "name": "secure software"
-    },
-    {
-      "id": "topic_quantum_computing",
-      "label": "quantum_computing",
-      "type": "topic",
-      "name": "quantum computing"
-    },
-    {
-      "id": "topic_computer_architecture",
-      "label": "computer_architecture",
-      "type": "topic",
-      "name": "computer architecture"
-    },
-    {
-      "id": "topic_greedy_algorithms",
-      "label": "greedy_algorithms",
-      "type": "topic",
-      "name": "greedy algorithms"
-    },
-    {
-      "id": "topic_policy_models",
-      "label": "policy_models",
-      "type": "topic",
-      "name": "policy models"
-    },
-    {
-      "id": "topic_world_modeling",
-      "label": "world_modeling",
-      "type": "topic",
-      "name": "world modeling"
-    },
-    {
-      "id": "topic_shape_modeling",
-      "label": "shape_modeling",
-      "type": "topic",
-      "name": "shape modeling"
-    },
-    {
-      "id": "topic_packet-level_communication_security_systems",
-      "label": "packet-level_communication_security_systems",
-      "type": "topic",
-      "name": "packet-level communication security systems"
-    },
-    {
-      "id": "topic_web_development",
-      "label": "web_development",
-      "type": "topic",
-      "name": "web development"
-    },
-    {
-      "id": "topic_data_flow_testing",
-      "label": "data_flow_testing",
-      "type": "topic",
-      "name": "data flow testing"
-    },
-    {
-      "id": "topic_algorithmic_aspects",
-      "label": "algorithmic_aspects",
-      "type": "topic",
-      "name": "algorithmic aspects"
-    },
-    {
-      "id": "topic_relational_database_systems",
-      "label": "relational_database_systems",
-      "type": "topic",
-      "name": "relational database systems"
-    },
-    {
-      "id": "topic_component_models",
-      "label": "component_models",
-      "type": "topic",
-      "name": "component models"
-    },
-    {
-      "id": "topic_neural_networks",
-      "label": "neural_networks",
-      "type": "topic",
-      "name": "neural networks"
-    },
-    {
-      "id": "topic_data_mining_techniques",
-      "label": "data_mining_techniques",
-      "type": "topic",
-      "name": "data mining techniques"
-    },
-    {
-      "id": "topic_system_performance",
-      "label": "system_performance",
-      "type": "topic",
-      "name": "system performance"
-    },
-    {
-      "id": "topic_commercial_software",
-      "label": "commercial_software",
-      "type": "topic",
-      "name": "commercial software"
-    },
-    {
-      "id": "topic_the_stand-alone_system",
-      "label": "the_stand-alone_system",
-      "type": "topic",
-      "name": "the stand-alone system"
-    },
-    {
-      "id": "topic_quantum_algorithms_and_protocols,_epr_paradox",
-      "label": "quantum_algorithms_and_protocols,_epr_paradox",
-      "type": "topic",
-      "name": "quantum algorithms and protocols, epr paradox"
-    },
-    {
-      "id": "topic_basic_data_structures",
-      "label": "basic_data_structures",
-      "type": "topic",
-      "name": "basic data structures"
-    },
-    {
-      "id": "topic_tolerance_algorithms",
-      "label": "tolerance_algorithms",
-      "type": "topic",
-      "name": "tolerance algorithms"
-    },
-    {
-      "id": "topic_data_mining",
-      "label": "data_mining",
-      "type": "topic",
-      "name": "data mining"
-    },
-    {
-      "id": "topic_client-server_programming,_web_development",
-      "label": "client-server_programming,_web_development",
-      "type": "topic",
-      "name": "client-server programming, web development"
-    },
-    {
-      "id": "topic_software_reusability",
-      "label": "software_reusability",
-      "type": "topic",
-      "name": "software reusability"
-    },
-    {
-      "id": "topic_database_management_systems",
-      "label": "database_management_systems",
-      "type": "topic",
-      "name": "database management systems"
-    },
-    {
-      "id": "topic_debugging",
-      "label": "debugging",
-      "type": "topic",
-      "name": "debugging"
-    },
-    {
-      "id": "topic_robotics",
-      "label": "robotics",
-      "type": "topic",
-      "name": "robotics"
-    },
-    {
-      "id": "topic_system_integration",
-      "label": "system_integration",
-      "type": "topic",
-      "name": "system integration"
-    },
-    {
-      "id": "topic_network_applications",
-      "label": "network_applications",
-      "type": "topic",
-      "name": "network applications"
-    },
-    {
-      "id": "topic_computer-aided_software_engineering",
-      "label": "computer-aided_software_engineering",
-      "type": "topic",
-      "name": "computer-aided software engineering"
-    },
-    {
-      "id": "topic_relational_database_design",
-      "label": "relational_database_design",
-      "type": "topic",
-      "name": "relational database design"
-    },
-    {
-      "id": "topic_computer-based_information_systems",
-      "label": "computer-based_information_systems",
-      "type": "topic",
-      "name": "computer-based information systems"
-    },
-    {
-      "id": "topic_logic",
-      "label": "logic",
-      "type": "topic",
-      "name": "logic"
-    },
-    {
-      "id": "topic_structures",
-      "label": "structures",
-      "type": "topic",
-      "name": "structures"
-    },
-    {
-      "id": "topic_user_interface_design_practices",
-      "label": "user_interface_design_practices",
-      "type": "topic",
-      "name": "user interface design practices"
-    },
-    {
-      "id": "topic_communications_infrastructure",
-      "label": "communications_infrastructure",
-      "type": "topic",
-      "name": "communications infrastructure"
-    },
-    {
-      "id": "topic_interconnection_networks",
-      "label": "interconnection_networks",
-      "type": "topic",
-      "name": "interconnection networks"
-    },
-    {
-      "id": "topic_network_architectures",
-      "label": "network_architectures",
-      "type": "topic",
-      "name": "network architectures"
-    },
-    {
-      "id": "topic_patient_care_and_monitoring_systems",
-      "label": "patient_care_and_monitoring_systems",
-      "type": "topic",
-      "name": "patient care and monitoring systems"
-    },
-    {
-      "id": "topic_structured_and_object-oriented_design",
-      "label": "structured_and_object-oriented_design",
-      "type": "topic",
-      "name": "structured and object-oriented design"
-    },
-    {
-      "id": "topic_network_management",
-      "label": "network_management",
-      "type": "topic",
-      "name": "network management"
-    },
-    {
-      "id": "topic_network_security",
-      "label": "network_security",
-      "type": "topic",
-      "name": "network security"
-    },
-    {
-      "id": "topic_web_page_design",
-      "label": "web_page_design",
-      "type": "topic",
-      "name": "web page design"
-    },
-    {
-      "id": "topic_a_significant_implementation_component",
-      "label": "a_significant_implementation_component",
-      "type": "topic",
-      "name": "a significant implementation component"
-    },
-    {
-      "id": "topic_a_data_set",
-      "label": "a_data_set",
-      "type": "topic",
-      "name": "a data set"
-    },
-    {
-      "id": "topic_software_specification",
-      "label": "software_specification",
-      "type": "topic",
-      "name": "software specification"
-    },
-    {
-      "id": "topic_team_software_development",
-      "label": "team_software_development",
-      "type": "topic",
-      "name": "team software development"
-    },
-    {
-      "id": "topic_operating_systems",
-      "label": "operating_systems",
-      "type": "topic",
-      "name": "operating systems"
-    },
-    {
-      "id": "topic_software_engineering",
-      "label": "software_engineering",
-      "type": "topic",
-      "name": "software engineering"
-    },
-    {
-      "id": "topic_data_stewardship",
-      "label": "data_stewardship",
-      "type": "topic",
-      "name": "data stewardship"
-    },
-    {
-      "id": "topic_algorithmic_performance",
-      "label": "algorithmic_performance",
-      "type": "topic",
-      "name": "algorithmic performance"
-    },
-    {
-      "id": "topic_operating_system_design",
-      "label": "operating_system_design",
-      "type": "topic",
-      "name": "operating system design"
-    },
-    {
-      "id": "topic_complex_computer_systems",
-      "label": "complex_computer_systems",
-      "type": "topic",
-      "name": "complex computer systems"
-    },
-    {
-      "id": "topic_e-mail_systems",
-      "label": "e-mail_systems",
-      "type": "topic",
-      "name": "e-mail systems"
-    },
-    {
-      "id": "topic_software_life_cycle_concepts",
-      "label": "software_life_cycle_concepts",
-      "type": "topic",
-      "name": "software life cycle concepts"
-    },
-    {
-      "id": "topic_cross-platform_development",
-      "label": "cross-platform_development",
-      "type": "topic",
-      "name": "cross-platform development"
-    },
-    {
-      "id": "topic_algorithm_performance_prediction",
-      "label": "algorithm_performance_prediction",
-      "type": "topic",
-      "name": "algorithm performance prediction"
-    },
-    {
-      "id": "topic_cybersecurity",
-      "label": "cybersecurity",
-      "type": "topic",
-      "name": "cybersecurity"
-    },
-    {
-      "id": "topic_computer_vision",
-      "label": "computer_vision",
-      "type": "topic",
-      "name": "computer vision"
-    },
-    {
-      "id": "topic_packet_level_communication_security_systems",
-      "label": "packet_level_communication_security_systems",
-      "type": "topic",
-      "name": "packet level communication security systems"
-    },
-    {
-      "id": "topic_operating_systems_structure",
-      "label": "operating_systems_structure",
-      "type": "topic",
-      "name": "operating systems structure"
-    },
-    {
-      "id": "topic_standard_circuit_model",
-      "label": "standard_circuit_model",
-      "type": "topic",
-      "name": "standard circuit model"
-    },
-    {
-      "id": "topic_graphics",
-      "label": "graphics",
-      "type": "topic",
-      "name": "graphics"
-    },
-    {
-      "id": "topic_research/design_requirements",
-      "label": "research/design_requirements",
-      "type": "topic",
-      "name": "research/design requirements"
-    },
-    {
-      "id": "topic_risk_analysis",
-      "label": "risk_analysis",
-      "type": "topic",
-      "name": "risk analysis"
+      "name": "design procedures"
     },
     {
       "id": "topic_a_database",
@@ -3440,34 +2240,58 @@
       "name": "a database"
     },
     {
-      "id": "topic_digital_computer_systems",
-      "label": "digital_computer_systems",
+      "id": "topic_software_life_cycle_concepts",
+      "label": "software_life_cycle_concepts",
       "type": "topic",
-      "name": "digital computer systems"
+      "name": "software life cycle concepts"
     },
     {
-      "id": "topic_hierarchical_memory_systems",
-      "label": "hierarchical_memory_systems",
+      "id": "topic_synchronization",
+      "label": "synchronization",
       "type": "topic",
-      "name": "hierarchical memory systems"
+      "name": "synchronization"
     },
     {
-      "id": "topic_big_data",
-      "label": "big_data",
+      "id": "topic_virtual_memory_systems",
+      "label": "virtual_memory_systems",
       "type": "topic",
-      "name": "big data"
+      "name": "virtual memory systems"
     },
     {
-      "id": "topic_wireless_networks",
-      "label": "wireless_networks",
+      "id": "topic_software_copyrights",
+      "label": "software_copyrights",
       "type": "topic",
-      "name": "wireless networks"
+      "name": "software copyrights"
     },
     {
-      "id": "topic_systems_software",
-      "label": "systems_software",
+      "id": "topic_greedy_algorithms",
+      "label": "greedy_algorithms",
       "type": "topic",
-      "name": "systems software"
+      "name": "greedy algorithms"
+    },
+    {
+      "id": "topic_interface_design",
+      "label": "interface_design",
+      "type": "topic",
+      "name": "interface design"
+    },
+    {
+      "id": "topic_program_development",
+      "label": "program_development",
+      "type": "topic",
+      "name": "program development"
+    },
+    {
+      "id": "topic_database_use",
+      "label": "database_use",
+      "type": "topic",
+      "name": "database use"
+    },
+    {
+      "id": "topic_programming_techniques_and_software_development",
+      "label": "programming_techniques_and_software_development",
+      "type": "topic",
+      "name": "programming techniques and software development"
     },
     {
       "id": "topic_computational_modeling",
@@ -3476,70 +2300,184 @@
       "name": "computational modeling"
     },
     {
-      "id": "topic_version_control",
-      "label": "version_control",
+      "id": "topic_software",
+      "label": "software",
       "type": "topic",
-      "name": "version control"
+      "name": "software"
     },
     {
-      "id": "topic_different_datasets",
-      "label": "different_datasets",
+      "id": "topic_network_management",
+      "label": "network_management",
       "type": "topic",
-      "name": "different datasets"
+      "name": "network management"
     },
     {
-      "id": "topic_information_retrieval",
-      "label": "information_retrieval",
+      "id": "topic_system_integration",
+      "label": "system_integration",
       "type": "topic",
-      "name": "information retrieval"
+      "name": "system integration"
     },
     {
-      "id": "topic_bayesian_data_analysis",
-      "label": "bayesian_data_analysis",
+      "id": "topic_usability",
+      "label": "usability",
       "type": "topic",
-      "name": "bayesian data analysis"
+      "name": "usability"
     },
     {
-      "id": "topic_systems",
-      "label": "systems",
+      "id": "topic_mpc_implementation",
+      "label": "mpc_implementation",
       "type": "topic",
-      "name": "systems"
+      "name": "mpc implementation"
     },
     {
-      "id": "topic_system",
-      "label": "system",
+      "id": "topic_formal_development_process",
+      "label": "formal_development_process",
       "type": "topic",
-      "name": "system"
+      "name": "formal development process"
     },
     {
-      "id": "topic_open-source_software_development",
-      "label": "open-source_software_development",
+      "id": "topic_large-scale_file_structures",
+      "label": "large-scale_file_structures",
       "type": "topic",
-      "name": "open-source software development"
+      "name": "large-scale file structures"
     },
     {
-      "id": "topic_design_tool",
-      "label": "design_tool",
+      "id": "topic_relational_database_design",
+      "label": "relational_database_design",
       "type": "topic",
-      "name": "design tool"
+      "name": "relational database design"
     },
     {
-      "id": "topic_infrastructure",
-      "label": "infrastructure",
+      "id": "topic_design_models",
+      "label": "design_models",
       "type": "topic",
-      "name": "infrastructure"
+      "name": "design models"
     },
     {
-      "id": "topic_implementation",
-      "label": "implementation",
+      "id": "topic_procedural_models",
+      "label": "procedural_models",
       "type": "topic",
-      "name": "implementation"
+      "name": "procedural models"
     },
     {
-      "id": "topic_test_data",
-      "label": "test_data",
+      "id": "topic_algorithmic_performance",
+      "label": "algorithmic_performance",
       "type": "topic",
-      "name": "test data"
+      "name": "algorithmic performance"
+    },
+    {
+      "id": "topic_interdisciplinary_computing_and_data_science_applications",
+      "label": "interdisciplinary_computing_and_data_science_applications",
+      "type": "topic",
+      "name": "interdisciplinary computing and data science applications"
+    },
+    {
+      "id": "topic_standard_data_science_tools",
+      "label": "standard_data_science_tools",
+      "type": "topic",
+      "name": "standard data science tools"
+    },
+    {
+      "id": "topic_network_applications",
+      "label": "network_applications",
+      "type": "topic",
+      "name": "network applications"
+    },
+    {
+      "id": "topic_leverage_natural_language_data",
+      "label": "leverage_natural_language_data",
+      "type": "topic",
+      "name": "leverage natural language data"
+    },
+    {
+      "id": "topic_other_network_utilities",
+      "label": "other_network_utilities",
+      "type": "topic",
+      "name": "other network utilities"
+    },
+    {
+      "id": "topic_database_security_prerequisites",
+      "label": "database_security_prerequisites",
+      "type": "topic",
+      "name": "database security prerequisites"
+    },
+    {
+      "id": "topic_automata_theory",
+      "label": "automata_theory",
+      "type": "topic",
+      "name": "automata theory"
+    },
+    {
+      "id": "topic_data_science_program",
+      "label": "data_science_program",
+      "type": "topic",
+      "name": "data science program"
+    },
+    {
+      "id": "topic_cloud_application_design_guidelines",
+      "label": "cloud_application_design_guidelines",
+      "type": "topic",
+      "name": "cloud application design guidelines"
+    },
+    {
+      "id": "topic_cloud_computing",
+      "label": "cloud_computing",
+      "type": "topic",
+      "name": "cloud computing"
+    },
+    {
+      "id": "topic_network_measurements",
+      "label": "network_measurements",
+      "type": "topic",
+      "name": "network measurements"
+    },
+    {
+      "id": "topic_index_structures",
+      "label": "index_structures",
+      "type": "topic",
+      "name": "index structures"
+    },
+    {
+      "id": "topic_reinforcement_learning",
+      "label": "reinforcement_learning",
+      "type": "topic",
+      "name": "reinforcement learning"
+    },
+    {
+      "id": "topic_network_flow",
+      "label": "network_flow",
+      "type": "topic",
+      "name": "network flow"
+    },
+    {
+      "id": "topic_digital_logic_and_circuit_design,_computer_organization,_assembly_programming,_translation,_memory_design,_pipelined_and_superscalar_architectures,_multiprocessing,_program_performance",
+      "label": "digital_logic_and_circuit_design,_computer_organization,_assembly_programming,_translation,_memory_design,_pipelined_and_superscalar_architectures,_multiprocessing,_program_performance",
+      "type": "topic",
+      "name": "digital logic and circuit design, computer organization, assembly programming, translation, memory design, pipelined and superscalar architectures, multiprocessing, program performance"
+    },
+    {
+      "id": "topic_ethical_frameworks",
+      "label": "ethical_frameworks",
+      "type": "topic",
+      "name": "ethical frameworks"
+    },
+    {
+      "id": "topic_medical_databases",
+      "label": "medical_databases",
+      "type": "topic",
+      "name": "medical databases"
+    },
+    {
+      "id": "topic_system_administration",
+      "label": "system_administration",
+      "type": "topic",
+      "name": "system administration"
+    },
+    {
+      "id": "topic_time-series_datasets",
+      "label": "time-series_datasets",
+      "type": "topic",
+      "name": "time-series datasets"
     },
     {
       "id": "topic_data_science_programs",
@@ -3548,10 +2486,580 @@
       "name": "data science programs"
     },
     {
-      "id": "topic_theory",
-      "label": "theory",
+      "id": "topic_a_software_system",
+      "label": "a_software_system",
       "type": "topic",
-      "name": "theory"
+      "name": "a software system"
+    },
+    {
+      "id": "topic_signal_processing",
+      "label": "signal_processing",
+      "type": "topic",
+      "name": "signal processing"
+    },
+    {
+      "id": "topic_structured_programming",
+      "label": "structured_programming",
+      "type": "topic",
+      "name": "structured programming"
+    },
+    {
+      "id": "topic_software_metrics",
+      "label": "software_metrics",
+      "type": "topic",
+      "name": "software metrics"
+    },
+    {
+      "id": "topic_available_software_tools",
+      "label": "available_software_tools",
+      "type": "topic",
+      "name": "available software tools"
+    },
+    {
+      "id": "topic_small-world_networks",
+      "label": "small-world_networks",
+      "type": "topic",
+      "name": "small-world networks"
+    },
+    {
+      "id": "topic_data_representation",
+      "label": "data_representation",
+      "type": "topic",
+      "name": "data representation"
+    },
+    {
+      "id": "topic_computer_architecture",
+      "label": "computer_architecture",
+      "type": "topic",
+      "name": "computer architecture"
+    },
+    {
+      "id": "topic_operating_systems_structure",
+      "label": "operating_systems_structure",
+      "type": "topic",
+      "name": "operating systems structure"
+    },
+    {
+      "id": "topic_development",
+      "label": "development",
+      "type": "topic",
+      "name": "development"
+    },
+    {
+      "id": "topic_interactive_systems",
+      "label": "interactive_systems",
+      "type": "topic",
+      "name": "interactive systems"
+    },
+    {
+      "id": "topic_memory_subsystem_design",
+      "label": "memory_subsystem_design",
+      "type": "topic",
+      "name": "memory subsystem design"
+    },
+    {
+      "id": "topic_algorithmic_rather_than_hardware_aspects",
+      "label": "algorithmic_rather_than_hardware_aspects",
+      "type": "topic",
+      "name": "algorithmic rather than hardware aspects"
+    },
+    {
+      "id": "topic_computer_systems",
+      "label": "computer_systems",
+      "type": "topic",
+      "name": "computer systems"
+    },
+    {
+      "id": "topic_commonly_used_text_analysis_techniques",
+      "label": "commonly_used_text_analysis_techniques",
+      "type": "topic",
+      "name": "commonly used text analysis techniques"
+    },
+    {
+      "id": "topic_operating_system_security",
+      "label": "operating_system_security",
+      "type": "topic",
+      "name": "operating system security"
+    },
+    {
+      "id": "topic_time_series_analysis",
+      "label": "time_series_analysis",
+      "type": "topic",
+      "name": "time series analysis"
+    },
+    {
+      "id": "topic_component_models",
+      "label": "component_models",
+      "type": "topic",
+      "name": "component models"
+    },
+    {
+      "id": "topic_authentication_and_authorization_models",
+      "label": "authentication_and_authorization_models",
+      "type": "topic",
+      "name": "authentication and authorization models"
+    },
+    {
+      "id": "topic_database_management",
+      "label": "database_management",
+      "type": "topic",
+      "name": "database management"
+    },
+    {
+      "id": "topic_large_systems",
+      "label": "large_systems",
+      "type": "topic",
+      "name": "large systems"
+    },
+    {
+      "id": "topic_system_usage",
+      "label": "system_usage",
+      "type": "topic",
+      "name": "system usage"
+    },
+    {
+      "id": "topic_linear_algebra",
+      "label": "linear_algebra",
+      "type": "topic",
+      "name": "linear algebra"
+    },
+    {
+      "id": "topic_computer_networks",
+      "label": "computer_networks",
+      "type": "topic",
+      "name": "computer networks"
+    },
+    {
+      "id": "topic_the_life-cycle_model",
+      "label": "the_life-cycle_model",
+      "type": "topic",
+      "name": "the life-cycle model"
+    },
+    {
+      "id": "topic_computer_vision",
+      "label": "computer_vision",
+      "type": "topic",
+      "name": "computer vision"
+    },
+    {
+      "id": "topic_physical_data_analysis",
+      "label": "physical_data_analysis",
+      "type": "topic",
+      "name": "physical data analysis"
+    },
+    {
+      "id": "topic_e-mail_systems",
+      "label": "e-mail_systems",
+      "type": "topic",
+      "name": "e-mail systems"
+    },
+    {
+      "id": "topic_database_security",
+      "label": "database_security",
+      "type": "topic",
+      "name": "database security"
+    },
+    {
+      "id": "topic_database_applications",
+      "label": "database_applications",
+      "type": "topic",
+      "name": "database applications"
+    },
+    {
+      "id": "topic_functional_and_object-oriented_computational_models",
+      "label": "functional_and_object-oriented_computational_models",
+      "type": "topic",
+      "name": "functional and object-oriented computational models"
+    },
+    {
+      "id": "topic_structure_form_motion",
+      "label": "structure_form_motion",
+      "type": "topic",
+      "name": "structure form motion"
+    },
+    {
+      "id": "topic_working_systems",
+      "label": "working_systems",
+      "type": "topic",
+      "name": "working systems"
+    },
+    {
+      "id": "topic_software_engineering",
+      "label": "software_engineering",
+      "type": "topic",
+      "name": "software engineering"
+    },
+    {
+      "id": "topic_small_networks",
+      "label": "small_networks",
+      "type": "topic",
+      "name": "small networks"
+    },
+    {
+      "id": "topic_graph_algorithms",
+      "label": "graph_algorithms",
+      "type": "topic",
+      "name": "graph algorithms"
+    },
+    {
+      "id": "topic_natural_language_processing",
+      "label": "natural_language_processing",
+      "type": "topic",
+      "name": "natural language processing"
+    },
+    {
+      "id": "topic_modeling",
+      "label": "modeling",
+      "type": "topic",
+      "name": "modeling"
+    },
+    {
+      "id": "topic_hardware",
+      "label": "hardware",
+      "type": "topic",
+      "name": "hardware"
+    },
+    {
+      "id": "topic_dictionary_and_thesaurus_systems",
+      "label": "dictionary_and_thesaurus_systems",
+      "type": "topic",
+      "name": "dictionary and thesaurus systems"
+    },
+    {
+      "id": "topic_data_visualization",
+      "label": "data_visualization",
+      "type": "topic",
+      "name": "data visualization"
+    },
+    {
+      "id": "topic_calculus",
+      "label": "calculus",
+      "type": "topic",
+      "name": "calculus"
+    },
+    {
+      "id": "topic_data_encryption",
+      "label": "data_encryption",
+      "type": "topic",
+      "name": "data encryption"
+    },
+    {
+      "id": "topic_the_data_science_program",
+      "label": "the_data_science_program",
+      "type": "topic",
+      "name": "the data science program"
+    },
+    {
+      "id": "topic_social_analysis_skills",
+      "label": "social_analysis_skills",
+      "type": "topic",
+      "name": "social analysis skills"
+    },
+    {
+      "id": "topic_development_frameworks",
+      "label": "development_frameworks",
+      "type": "topic",
+      "name": "development frameworks"
+    },
+    {
+      "id": "topic_ux",
+      "label": "ux",
+      "type": "topic",
+      "name": "ux"
+    },
+    {
+      "id": "topic_client\u2013server_model",
+      "label": "client\u2013server_model",
+      "type": "topic",
+      "name": "client\u2013server model"
+    },
+    {
+      "id": "topic_patient_care_and_monitoring_systems",
+      "label": "patient_care_and_monitoring_systems",
+      "type": "topic",
+      "name": "patient care and monitoring systems"
+    },
+    {
+      "id": "topic_the_analysis",
+      "label": "the_analysis",
+      "type": "topic",
+      "name": "the analysis"
+    },
+    {
+      "id": "topic_models",
+      "label": "models",
+      "type": "topic",
+      "name": "models"
+    },
+    {
+      "id": "topic_data_acquisition",
+      "label": "data_acquisition",
+      "type": "topic",
+      "name": "data acquisition"
+    },
+    {
+      "id": "topic_sound_design",
+      "label": "sound_design",
+      "type": "topic",
+      "name": "sound design"
+    },
+    {
+      "id": "topic_web_page_design",
+      "label": "web_page_design",
+      "type": "topic",
+      "name": "web page design"
+    },
+    {
+      "id": "topic_infrastructure",
+      "label": "infrastructure",
+      "type": "topic",
+      "name": "infrastructure"
+    },
+    {
+      "id": "topic_systems_software",
+      "label": "systems_software",
+      "type": "topic",
+      "name": "systems software"
+    },
+    {
+      "id": "topic_research/design_requirements",
+      "label": "research/design_requirements",
+      "type": "topic",
+      "name": "research/design requirements"
+    },
+    {
+      "id": "topic_client-server_programming,_web_development",
+      "label": "client-server_programming,_web_development",
+      "type": "topic",
+      "name": "client-server programming, web development"
+    },
+    {
+      "id": "topic_temporal_anti-aliasing:_hidden-surface_algorithms",
+      "label": "temporal_anti-aliasing:_hidden-surface_algorithms",
+      "type": "topic",
+      "name": "temporal anti-aliasing: hidden-surface algorithms"
+    },
+    {
+      "id": "topic_graphics",
+      "label": "graphics",
+      "type": "topic",
+      "name": "graphics"
+    },
+    {
+      "id": "topic_software_reusability",
+      "label": "software_reusability",
+      "type": "topic",
+      "name": "software reusability"
+    },
+    {
+      "id": "topic_quantum_computing",
+      "label": "quantum_computing",
+      "type": "topic",
+      "name": "quantum computing"
+    },
+    {
+      "id": "topic_network_authentication",
+      "label": "network_authentication",
+      "type": "topic",
+      "name": "network authentication"
+    },
+    {
+      "id": "topic_relational_database_management_systems",
+      "label": "relational_database_management_systems",
+      "type": "topic",
+      "name": "relational database management systems"
+    },
+    {
+      "id": "topic_memory_design",
+      "label": "memory_design",
+      "type": "topic",
+      "name": "memory design"
+    },
+    {
+      "id": "topic_data_flow_testing",
+      "label": "data_flow_testing",
+      "type": "topic",
+      "name": "data flow testing"
+    },
+    {
+      "id": "topic_expert_systems",
+      "label": "expert_systems",
+      "type": "topic",
+      "name": "expert systems"
+    },
+    {
+      "id": "topic_file_system_access",
+      "label": "file_system_access",
+      "type": "topic",
+      "name": "file system access"
+    },
+    {
+      "id": "topic_object-oriented_systems",
+      "label": "object-oriented_systems",
+      "type": "topic",
+      "name": "object-oriented systems"
+    },
+    {
+      "id": "topic_database_management_systems",
+      "label": "database_management_systems",
+      "type": "topic",
+      "name": "database management systems"
+    },
+    {
+      "id": "topic_database_systems",
+      "label": "database_systems",
+      "type": "topic",
+      "name": "database systems"
+    },
+    {
+      "id": "topic_conceptual_and_logical_design",
+      "label": "conceptual_and_logical_design",
+      "type": "topic",
+      "name": "conceptual and logical design"
+    },
+    {
+      "id": "topic_statistical_modeling",
+      "label": "statistical_modeling",
+      "type": "topic",
+      "name": "statistical modeling"
+    },
+    {
+      "id": "topic_data_science_questions",
+      "label": "data_science_questions",
+      "type": "topic",
+      "name": "data science questions"
+    },
+    {
+      "id": "topic_modern_database_systems",
+      "label": "modern_database_systems",
+      "type": "topic",
+      "name": "modern database systems"
+    },
+    {
+      "id": "topic_software_patterns",
+      "label": "software_patterns",
+      "type": "topic",
+      "name": "software patterns"
+    },
+    {
+      "id": "topic_a_design_and_evaluation_tool",
+      "label": "a_design_and_evaluation_tool",
+      "type": "topic",
+      "name": "a design and evaluation tool"
+    },
+    {
+      "id": "topic_programming_languages",
+      "label": "programming_languages",
+      "type": "topic",
+      "name": "programming languages"
+    },
+    {
+      "id": "topic_packet_level_communication_security_systems",
+      "label": "packet_level_communication_security_systems",
+      "type": "topic",
+      "name": "packet level communication security systems"
+    },
+    {
+      "id": "topic_compilers",
+      "label": "compilers",
+      "type": "topic",
+      "name": "compilers"
+    },
+    {
+      "id": "topic_testing",
+      "label": "testing",
+      "type": "topic",
+      "name": "testing"
+    },
+    {
+      "id": "topic_model_validation",
+      "label": "model_validation",
+      "type": "topic",
+      "name": "model validation"
+    },
+    {
+      "id": "topic_the_stand-alone_system",
+      "label": "the_stand-alone_system",
+      "type": "topic",
+      "name": "the stand-alone system"
+    },
+    {
+      "id": "topic_big_data",
+      "label": "big_data",
+      "type": "topic",
+      "name": "big data"
+    },
+    {
+      "id": "topic_implementation_techniques",
+      "label": "implementation_techniques",
+      "type": "topic",
+      "name": "implementation techniques"
+    },
+    {
+      "id": "topic_datasets",
+      "label": "datasets",
+      "type": "topic",
+      "name": "datasets"
+    },
+    {
+      "id": "topic_mathematical_structures",
+      "label": "mathematical_structures",
+      "type": "topic",
+      "name": "mathematical structures"
+    },
+    {
+      "id": "topic_how_operating_system\u2019s_components",
+      "label": "how_operating_system\u2019s_components",
+      "type": "topic",
+      "name": "how operating system\u2019s components"
+    },
+    {
+      "id": "topic_blockchain",
+      "label": "blockchain",
+      "type": "topic",
+      "name": "blockchain"
+    },
+    {
+      "id": "topic_standard_circuit_model",
+      "label": "standard_circuit_model",
+      "type": "topic",
+      "name": "standard circuit model"
+    },
+    {
+      "id": "topic_window_systems",
+      "label": "window_systems",
+      "type": "topic",
+      "name": "window systems"
+    },
+    {
+      "id": "topic_policy_analysis_skills",
+      "label": "policy_analysis_skills",
+      "type": "topic",
+      "name": "policy analysis skills"
+    },
+    {
+      "id": "topic_deep_network_architectures",
+      "label": "deep_network_architectures",
+      "type": "topic",
+      "name": "deep network architectures"
+    },
+    {
+      "id": "topic_algorithm_design",
+      "label": "algorithm_design",
+      "type": "topic",
+      "name": "algorithm design"
+    },
+    {
+      "id": "topic_data_types",
+      "label": "data_types",
+      "type": "topic",
+      "name": "data types"
+    },
+    {
+      "id": "topic_structure",
+      "label": "structure",
+      "type": "topic",
+      "name": "structure"
     },
     {
       "id": "topic_programming_and_software_development",
@@ -3560,10 +3068,454 @@
       "name": "programming and software development"
     },
     {
-      "id": "topic_developments",
-      "label": "developments",
+      "id": "topic_large_software_systems",
+      "label": "large_software_systems",
       "type": "topic",
-      "name": "developments"
+      "name": "large software systems"
+    },
+    {
+      "id": "topic_digital_computer_systems",
+      "label": "digital_computer_systems",
+      "type": "topic",
+      "name": "digital computer systems"
+    },
+    {
+      "id": "topic_software_packages",
+      "label": "software_packages",
+      "type": "topic",
+      "name": "software packages"
+    },
+    {
+      "id": "topic_mobile_device_development",
+      "label": "mobile_device_development",
+      "type": "topic",
+      "name": "mobile device development"
+    },
+    {
+      "id": "topic_data_models",
+      "label": "data_models",
+      "type": "topic",
+      "name": "data models"
+    },
+    {
+      "id": "topic_design_methodology",
+      "label": "design_methodology",
+      "type": "topic",
+      "name": "design methodology"
+    },
+    {
+      "id": "topic_policy_models",
+      "label": "policy_models",
+      "type": "topic",
+      "name": "policy models"
+    },
+    {
+      "id": "topic_networking",
+      "label": "networking",
+      "type": "topic",
+      "name": "networking"
+    },
+    {
+      "id": "topic_logic",
+      "label": "logic",
+      "type": "topic",
+      "name": "logic"
+    },
+    {
+      "id": "topic_front_end_design",
+      "label": "front_end_design",
+      "type": "topic",
+      "name": "front end design"
+    },
+    {
+      "id": "topic_stochastic_system",
+      "label": "stochastic_system",
+      "type": "topic",
+      "name": "stochastic system"
+    },
+    {
+      "id": "topic_application_development_and_software_testing",
+      "label": "application_development_and_software_testing",
+      "type": "topic",
+      "name": "application development and software testing"
+    },
+    {
+      "id": "topic_theoretical_analysis",
+      "label": "theoretical_analysis",
+      "type": "topic",
+      "name": "theoretical analysis"
+    },
+    {
+      "id": "topic_bayesian_data_analysis",
+      "label": "bayesian_data_analysis",
+      "type": "topic",
+      "name": "bayesian data analysis"
+    },
+    {
+      "id": "topic_network_architectures",
+      "label": "network_architectures",
+      "type": "topic",
+      "name": "network architectures"
+    },
+    {
+      "id": "topic_stochastic_systems",
+      "label": "stochastic_systems",
+      "type": "topic",
+      "name": "stochastic systems"
+    },
+    {
+      "id": "topic_model_evaluation",
+      "label": "model_evaluation",
+      "type": "topic",
+      "name": "model evaluation"
+    },
+    {
+      "id": "topic_real-time_software_and_hardware_issues",
+      "label": "real-time_software_and_hardware_issues",
+      "type": "topic",
+      "name": "real-time software and hardware issues"
+    },
+    {
+      "id": "topic_very-large-scale_distributed_development_techniques",
+      "label": "very-large-scale_distributed_development_techniques",
+      "type": "topic",
+      "name": "very-large-scale distributed development techniques"
+    },
+    {
+      "id": "topic_authentication_systems",
+      "label": "authentication_systems",
+      "type": "topic",
+      "name": "authentication systems"
+    },
+    {
+      "id": "topic_implementation",
+      "label": "implementation",
+      "type": "topic",
+      "name": "implementation"
+    },
+    {
+      "id": "topic_development_metrics",
+      "label": "development_metrics",
+      "type": "topic",
+      "name": "development metrics"
+    },
+    {
+      "id": "topic_design_patterns",
+      "label": "design_patterns",
+      "type": "topic",
+      "name": "design patterns"
+    },
+    {
+      "id": "topic_cybersecurity",
+      "label": "cybersecurity",
+      "type": "topic",
+      "name": "cybersecurity"
+    },
+    {
+      "id": "topic_algorithmic_aspects",
+      "label": "algorithmic_aspects",
+      "type": "topic",
+      "name": "algorithmic aspects"
+    },
+    {
+      "id": "topic_augmented_transition_networks",
+      "label": "augmented_transition_networks",
+      "type": "topic",
+      "name": "augmented transition networks"
+    },
+    {
+      "id": "topic_illumination_models",
+      "label": "illumination_models",
+      "type": "topic",
+      "name": "illumination models"
+    },
+    {
+      "id": "topic_statistical,_syntactic,_and_logical_analysis",
+      "label": "statistical,_syntactic,_and_logical_analysis",
+      "type": "topic",
+      "name": "statistical, syntactic, and logical analysis"
+    },
+    {
+      "id": "topic_data_mining",
+      "label": "data_mining",
+      "type": "topic",
+      "name": "data mining"
+    },
+    {
+      "id": "topic_component-based_software_development",
+      "label": "component-based_software_development",
+      "type": "topic",
+      "name": "component-based software development"
+    },
+    {
+      "id": "topic_frameworks",
+      "label": "frameworks",
+      "type": "topic",
+      "name": "frameworks"
+    },
+    {
+      "id": "topic_the_implementation",
+      "label": "the_implementation",
+      "type": "topic",
+      "name": "the implementation"
+    },
+    {
+      "id": "topic_networks",
+      "label": "networks",
+      "type": "topic",
+      "name": "networks"
+    },
+    {
+      "id": "topic_systems",
+      "label": "systems",
+      "type": "topic",
+      "name": "systems"
+    },
+    {
+      "id": "topic_software_development",
+      "label": "software_development",
+      "type": "topic",
+      "name": "software development"
+    },
+    {
+      "id": "topic_debugging",
+      "label": "debugging",
+      "type": "topic",
+      "name": "debugging"
+    },
+    {
+      "id": "topic_algebraic_structures",
+      "label": "algebraic_structures",
+      "type": "topic",
+      "name": "algebraic structures"
+    },
+    {
+      "id": "topic_optimization",
+      "label": "optimization",
+      "type": "topic",
+      "name": "optimization"
+    },
+    {
+      "id": "topic_networked_computing",
+      "label": "networked_computing",
+      "type": "topic",
+      "name": "networked computing"
+    },
+    {
+      "id": "topic_the_design",
+      "label": "the_design",
+      "type": "topic",
+      "name": "the design"
+    },
+    {
+      "id": "topic_core_computer_science_data_structures",
+      "label": "core_computer_science_data_structures",
+      "type": "topic",
+      "name": "core computer science data structures"
+    },
+    {
+      "id": "topic_concurrency",
+      "label": "concurrency",
+      "type": "topic",
+      "name": "concurrency"
+    },
+    {
+      "id": "topic_data_presentations",
+      "label": "data_presentations",
+      "type": "topic",
+      "name": "data presentations"
+    },
+    {
+      "id": "topic_database",
+      "label": "database",
+      "type": "topic",
+      "name": "database"
+    },
+    {
+      "id": "topic_intrusion_detection_systems",
+      "label": "intrusion_detection_systems",
+      "type": "topic",
+      "name": "intrusion detection systems"
+    },
+    {
+      "id": "topic_systems_programming",
+      "label": "systems_programming",
+      "type": "topic",
+      "name": "systems programming"
+    },
+    {
+      "id": "topic_different_datasets",
+      "label": "different_datasets",
+      "type": "topic",
+      "name": "different datasets"
+    },
+    {
+      "id": "topic_other_development_models",
+      "label": "other_development_models",
+      "type": "topic",
+      "name": "other development models"
+    },
+    {
+      "id": "topic_software_engineering_principles",
+      "label": "software_engineering_principles",
+      "type": "topic",
+      "name": "software engineering principles"
+    },
+    {
+      "id": "topic_packet-level_communication_security_systems",
+      "label": "packet-level_communication_security_systems",
+      "type": "topic",
+      "name": "packet-level communication security systems"
+    },
+    {
+      "id": "topic_interactive_software",
+      "label": "interactive_software",
+      "type": "topic",
+      "name": "interactive software"
+    },
+    {
+      "id": "topic_formal_analysis",
+      "label": "formal_analysis",
+      "type": "topic",
+      "name": "formal analysis"
+    },
+    {
+      "id": "topic_modern_operating_systems",
+      "label": "modern_operating_systems",
+      "type": "topic",
+      "name": "modern operating systems"
+    },
+    {
+      "id": "topic_association_analysis",
+      "label": "association_analysis",
+      "type": "topic",
+      "name": "association analysis"
+    },
+    {
+      "id": "topic_computer-based_information_systems",
+      "label": "computer-based_information_systems",
+      "type": "topic",
+      "name": "computer-based information systems"
+    },
+    {
+      "id": "topic_data_analysis",
+      "label": "data_analysis",
+      "type": "topic",
+      "name": "data analysis"
+    },
+    {
+      "id": "topic_user_interface_design_practices",
+      "label": "user_interface_design_practices",
+      "type": "topic",
+      "name": "user interface design practices"
+    },
+    {
+      "id": "topic_data_structures",
+      "label": "data_structures",
+      "type": "topic",
+      "name": "data structures"
+    },
+    {
+      "id": "topic_network_attacks",
+      "label": "network_attacks",
+      "type": "topic",
+      "name": "network attacks"
+    },
+    {
+      "id": "topic_geographic_information_systems",
+      "label": "geographic_information_systems",
+      "type": "topic",
+      "name": "geographic information systems"
+    },
+    {
+      "id": "topic_software_modularity",
+      "label": "software_modularity",
+      "type": "topic",
+      "name": "software modularity"
+    },
+    {
+      "id": "topic_continuous_system_simulation",
+      "label": "continuous_system_simulation",
+      "type": "topic",
+      "name": "continuous system simulation"
+    },
+    {
+      "id": "topic_open-source_software_development",
+      "label": "open-source_software_development",
+      "type": "topic",
+      "name": "open-source software development"
+    },
+    {
+      "id": "topic_system_testing",
+      "label": "system_testing",
+      "type": "topic",
+      "name": "system testing"
+    },
+    {
+      "id": "topic_statistics",
+      "label": "statistics",
+      "type": "topic",
+      "name": "statistics"
+    },
+    {
+      "id": "topic_object_oriented_programming",
+      "label": "object_oriented_programming",
+      "type": "topic",
+      "name": "object oriented programming"
+    },
+    {
+      "id": "topic_some_estimation_algorithms",
+      "label": "some_estimation_algorithms",
+      "type": "topic",
+      "name": "some estimation algorithms"
+    },
+    {
+      "id": "topic_system_calls",
+      "label": "system_calls",
+      "type": "topic",
+      "name": "system calls"
+    },
+    {
+      "id": "topic_formal_methods",
+      "label": "formal_methods",
+      "type": "topic",
+      "name": "formal methods"
+    },
+    {
+      "id": "topic_a_data_set",
+      "label": "a_data_set",
+      "type": "topic",
+      "name": "a data set"
+    },
+    {
+      "id": "topic_web_document_systems",
+      "label": "web_document_systems",
+      "type": "topic",
+      "name": "web document systems"
+    },
+    {
+      "id": "topic_version_control",
+      "label": "version_control",
+      "type": "topic",
+      "name": "version control"
+    },
+    {
+      "id": "topic_a_significant_implementation_component",
+      "label": "a_significant_implementation_component",
+      "type": "topic",
+      "name": "a significant implementation component"
+    },
+    {
+      "id": "topic_operating_systems",
+      "label": "operating_systems",
+      "type": "topic",
+      "name": "operating systems"
+    },
+    {
+      "id": "topic_information_retrieval",
+      "label": "information_retrieval",
+      "type": "topic",
+      "name": "information retrieval"
     },
     {
       "id": "topic_machine_learning",
@@ -3572,16 +3524,64 @@
       "name": "machine learning"
     },
     {
-      "id": "topic_algorithm_performance_analysis",
-      "label": "algorithm_performance_analysis",
+      "id": "topic_shape_modeling",
+      "label": "shape_modeling",
       "type": "topic",
-      "name": "algorithm performance analysis"
+      "name": "shape modeling"
     },
     {
-      "id": "topic_large_systems",
-      "label": "large_systems",
+      "id": "topic_data_science_majors",
+      "label": "data_science_majors",
       "type": "topic",
-      "name": "large systems"
+      "name": "data science majors"
+    },
+    {
+      "id": "topic_communications_infrastructure",
+      "label": "communications_infrastructure",
+      "type": "topic",
+      "name": "communications infrastructure"
+    },
+    {
+      "id": "topic_cloud_application_design",
+      "label": "cloud_application_design",
+      "type": "topic",
+      "name": "cloud application design"
+    },
+    {
+      "id": "topic_cryptography",
+      "label": "cryptography",
+      "type": "topic",
+      "name": "cryptography"
+    },
+    {
+      "id": "topic_storage_systems",
+      "label": "storage_systems",
+      "type": "topic",
+      "name": "storage systems"
+    },
+    {
+      "id": "topic_team_software_development",
+      "label": "team_software_development",
+      "type": "topic",
+      "name": "team software development"
+    },
+    {
+      "id": "topic_boolean_networks",
+      "label": "boolean_networks",
+      "type": "topic",
+      "name": "boolean networks"
+    },
+    {
+      "id": "topic_data_streams",
+      "label": "data_streams",
+      "type": "topic",
+      "name": "data streams"
+    },
+    {
+      "id": "topic_world_modeling",
+      "label": "world_modeling",
+      "type": "topic",
+      "name": "world modeling"
     }
   ],
   "links": [
@@ -3615,14 +3615,14 @@
     },
     {
       "source": "course_CSCI 1022",
-      "target": "topic_ai",
+      "target": "topic_the_hardware",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 1022",
-      "target": "topic_the_hardware",
+      "target": "topic_ai",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3650,20 +3650,6 @@
     },
     {
       "source": "course_CSCI 1111",
-      "target": "topic_debugging",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 1111",
-      "target": "topic_test_data",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 1111",
       "target": "topic_design",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -3672,6 +3658,20 @@
     {
       "source": "course_CSCI 1111",
       "target": "topic_object_oriented_programming",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 1111",
+      "target": "topic_debugging",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 1111",
+      "target": "topic_test_data",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3692,14 +3692,14 @@
     },
     {
       "source": "course_CSCI 1112",
-      "target": "topic_development",
+      "target": "topic_data_structures",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 1112",
-      "target": "topic_algorithm_performance_prediction",
+      "target": "topic_development",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3713,7 +3713,7 @@
     },
     {
       "source": "course_CSCI 1112",
-      "target": "topic_data_structures",
+      "target": "topic_algorithm_performance_prediction",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3741,21 +3741,7 @@
     },
     {
       "source": "course_CSCI 2113",
-      "target": "topic_software_engineering_principles",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 2113",
-      "target": "topic_application_development",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 2113",
-      "target": "topic_networking",
+      "target": "topic_software_engineering",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3769,13 +3755,6 @@
     },
     {
       "source": "course_CSCI 2113",
-      "target": "topic_programming_languages",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 2113",
       "target": "topic_object_oriented_programming",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -3783,7 +3762,28 @@
     },
     {
       "source": "course_CSCI 2113",
-      "target": "topic_software_engineering",
+      "target": "topic_programming_languages",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 2113",
+      "target": "topic_software_engineering_principles",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 2113",
+      "target": "topic_networking",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 2113",
+      "target": "topic_application_development",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3797,20 +3797,6 @@
     },
     {
       "source": "course_CSCI 2441",
-      "target": "topic_testing",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 2441",
-      "target": "topic_relational_database_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 2441",
       "target": "topic_database_applications",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -3818,7 +3804,21 @@
     },
     {
       "source": "course_CSCI 2441",
+      "target": "topic_testing",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 2441",
       "target": "topic_database",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 2441",
+      "target": "topic_design",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3839,7 +3839,7 @@
     },
     {
       "source": "course_CSCI 2441",
-      "target": "topic_design",
+      "target": "topic_relational_database_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3853,20 +3853,6 @@
     },
     {
       "source": "course_CSCI 2441W",
-      "target": "topic_testing",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 2441W",
-      "target": "topic_relational_database_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 2441W",
       "target": "topic_database_applications",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -3874,7 +3860,21 @@
     },
     {
       "source": "course_CSCI 2441W",
+      "target": "topic_testing",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 2441W",
       "target": "topic_database",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 2441W",
+      "target": "topic_design",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3895,7 +3895,7 @@
     },
     {
       "source": "course_CSCI 2441W",
-      "target": "topic_design",
+      "target": "topic_relational_database_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3923,7 +3923,7 @@
     },
     {
       "source": "course_CSCI 2460",
-      "target": "topic_data_representation",
+      "target": "topic_computer_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3937,14 +3937,14 @@
     },
     {
       "source": "course_CSCI 2460",
-      "target": "topic_operating_systems",
+      "target": "topic_data_representation",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 2460",
-      "target": "topic_computer_systems",
+      "target": "topic_operating_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3972,7 +3972,7 @@
     },
     {
       "source": "course_CSCI 2541",
-      "target": "topic_testing",
+      "target": "topic_database_applications",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -3986,14 +3986,7 @@
     },
     {
       "source": "course_CSCI 2541",
-      "target": "topic_modern_database_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 2541",
-      "target": "topic_database_applications",
+      "target": "topic_testing",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4007,6 +4000,13 @@
     },
     {
       "source": "course_CSCI 2541",
+      "target": "topic_design",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 2541",
       "target": "topic_team_software_development",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -4014,7 +4014,7 @@
     },
     {
       "source": "course_CSCI 2541",
-      "target": "topic_design",
+      "target": "topic_modern_database_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4035,21 +4035,14 @@
     },
     {
       "source": "course_CSCI 2541W",
-      "target": "topic_testing",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 2541W",
-      "target": "topic_relational_database_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 2541W",
       "target": "topic_database_applications",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 2541W",
+      "target": "topic_testing",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4063,6 +4056,13 @@
     },
     {
       "source": "course_CSCI 2541W",
+      "target": "topic_design",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 2541W",
       "target": "topic_team_software_development",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -4070,7 +4070,7 @@
     },
     {
       "source": "course_CSCI 2541W",
-      "target": "topic_design",
+      "target": "topic_relational_database_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4091,7 +4091,7 @@
     },
     {
       "source": "course_CSCI 3212",
-      "target": "topic_optimization",
+      "target": "topic_graph_algorithms",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4105,13 +4105,6 @@
     },
     {
       "source": "course_CSCI 3212",
-      "target": "topic_algorithms",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 3212",
       "target": "topic_greedy_algorithms",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -4119,14 +4112,14 @@
     },
     {
       "source": "course_CSCI 3212",
-      "target": "topic_data_structures",
+      "target": "topic_optimization",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 3212",
-      "target": "topic_graph_algorithms",
+      "target": "topic_algorithms",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4134,6 +4127,13 @@
     {
       "source": "course_CSCI 3212",
       "target": "topic_design",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 3212",
+      "target": "topic_data_structures",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4189,14 +4189,14 @@
     },
     {
       "source": "course_CSCI 3401",
-      "target": "topic_logic",
+      "target": "topic_digital_logic_and_circuit_design,_computer_organization,_assembly_programming,_translation,_memory_design,_pipelined_and_superscalar_architectures,_multiprocessing,_program_performance",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 3401",
-      "target": "topic_digital_logic_and_circuit_design,_computer_organization,_assembly_programming,_translation,_memory_design,_pipelined_and_superscalar_architectures,_multiprocessing,_program_performance",
+      "target": "topic_design",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4210,7 +4210,7 @@
     },
     {
       "source": "course_CSCI 3401",
-      "target": "topic_design",
+      "target": "topic_logic",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4364,13 +4364,6 @@
     },
     {
       "source": "course_CSCI 4237",
-      "target": "topic_interface_design",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4237",
       "target": "topic_debugging",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -4378,7 +4371,14 @@
     },
     {
       "source": "course_CSCI 4237",
-      "target": "topic_user_interface_design_practices",
+      "target": "topic_design",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4237",
+      "target": "topic_interface_design",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4392,7 +4392,7 @@
     },
     {
       "source": "course_CSCI 4237",
-      "target": "topic_design",
+      "target": "topic_user_interface_design_practices",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4420,7 +4420,7 @@
     },
     {
       "source": "course_CSCI 4244",
-      "target": "topic_economic_analysis",
+      "target": "topic_software_engineering",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4434,14 +4434,14 @@
     },
     {
       "source": "course_CSCI 4244",
-      "target": "topic_software_engineering",
+      "target": "topic_design",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 4244",
-      "target": "topic_design",
+      "target": "topic_economic_analysis",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4469,28 +4469,7 @@
     },
     {
       "source": "course_CSCI 4364",
-      "target": "topic_model_evaluation",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4364",
       "target": "topic_statistics",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4364",
-      "target": "topic_linear_algebra",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4364",
-      "target": "topic_algorithms",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4504,7 +4483,28 @@
     },
     {
       "source": "course_CSCI 4364",
+      "target": "topic_algorithms",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4364",
       "target": "topic_linear_models",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4364",
+      "target": "topic_model_evaluation",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4364",
+      "target": "topic_linear_algebra",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4539,28 +4539,7 @@
     },
     {
       "source": "course_CSCI 6364",
-      "target": "topic_model_evaluation",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6364",
       "target": "topic_statistics",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6364",
-      "target": "topic_linear_algebra",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6364",
-      "target": "topic_algorithms",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4574,7 +4553,28 @@
     },
     {
       "source": "course_CSCI 6364",
+      "target": "topic_algorithms",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6364",
       "target": "topic_linear_models",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6364",
+      "target": "topic_model_evaluation",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6364",
+      "target": "topic_linear_algebra",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4588,34 +4588,6 @@
     },
     {
       "source": "course_CSCI 4366",
-      "target": "topic_theory",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4366",
-      "target": "topic_linear_algebra",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4366",
-      "target": "topic_deep_learning",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4366",
-      "target": "topic_software_packages",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4366",
       "target": "topic_neural_networks",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -4623,14 +4595,7 @@
     },
     {
       "source": "course_CSCI 4366",
-      "target": "topic_networks",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4366",
-      "target": "topic_algorithms",
+      "target": "topic_theory",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4644,7 +4609,42 @@
     },
     {
       "source": "course_CSCI 4366",
+      "target": "topic_algorithms",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4366",
       "target": "topic_calculus",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4366",
+      "target": "topic_software_packages",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4366",
+      "target": "topic_deep_learning",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4366",
+      "target": "topic_linear_algebra",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4366",
+      "target": "topic_networks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4665,34 +4665,6 @@
     },
     {
       "source": "course_CSCI 6366",
-      "target": "topic_theory",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6366",
-      "target": "topic_linear_algebra",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6366",
-      "target": "topic_deep_learning",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6366",
-      "target": "topic_software_packages",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6366",
       "target": "topic_neural_networks",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -4700,14 +4672,7 @@
     },
     {
       "source": "course_CSCI 6366",
-      "target": "topic_networks",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6366",
-      "target": "topic_algorithms",
+      "target": "topic_theory",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4721,7 +4686,42 @@
     },
     {
       "source": "course_CSCI 6366",
+      "target": "topic_algorithms",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6366",
       "target": "topic_calculus",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6366",
+      "target": "topic_software_packages",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6366",
+      "target": "topic_deep_learning",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6366",
+      "target": "topic_linear_algebra",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6366",
+      "target": "topic_networks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4742,6 +4742,13 @@
     },
     {
       "source": "course_CSCI 4454",
+      "target": "topic_design",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4454",
       "target": "topic_ux",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -4750,13 +4757,6 @@
     {
       "source": "course_CSCI 4454",
       "target": "topic_implementation",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4454",
-      "target": "topic_design",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4784,13 +4784,6 @@
     },
     {
       "source": "course_CSCI 4455",
-      "target": "topic_modeling",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4455",
       "target": "topic_design",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -4798,7 +4791,7 @@
     },
     {
       "source": "course_CSCI 4455",
-      "target": "topic_real-time_software_and_hardware_issues",
+      "target": "topic_modeling",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4806,6 +4799,13 @@
     {
       "source": "course_CSCI 4455",
       "target": "topic_sound_design",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4455",
+      "target": "topic_real-time_software_and_hardware_issues",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4826,7 +4826,7 @@
     },
     {
       "source": "course_CSCI 4511",
-      "target": "topic_logic",
+      "target": "topic_reasoning",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4840,14 +4840,14 @@
     },
     {
       "source": "course_CSCI 4511",
-      "target": "topic_reasoning",
+      "target": "topic_knowledge_representation",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 4511",
-      "target": "topic_knowledge_representation",
+      "target": "topic_logic",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4868,20 +4868,6 @@
     },
     {
       "source": "course_CSCI 6511",
-      "target": "topic_ai",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6511",
-      "target": "topic_expert_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6511",
       "target": "topic_calculus",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -4889,7 +4875,21 @@
     },
     {
       "source": "course_CSCI 6511",
+      "target": "topic_ai",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6511",
       "target": "topic_knowledge_representation",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6511",
+      "target": "topic_expert_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4924,7 +4924,7 @@
     },
     {
       "source": "course_CSCI 4531",
-      "target": "topic_database_security",
+      "target": "topic_cryptography",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4952,7 +4952,7 @@
     },
     {
       "source": "course_CSCI 4531",
-      "target": "topic_cryptography",
+      "target": "topic_database_security",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -4966,13 +4966,6 @@
     },
     {
       "source": "course_CSCI 6531",
-      "target": "topic_policy_models",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6531",
       "target": "topic_risk_analysis",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -4980,14 +4973,21 @@
     },
     {
       "source": "course_CSCI 6531",
-      "target": "topic_logic",
+      "target": "topic_design_principles",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6531",
-      "target": "topic_design_principles",
+      "target": "topic_policy_models",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6531",
+      "target": "topic_logic",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5001,28 +5001,14 @@
     },
     {
       "source": "course_CSCI 4541",
-      "target": "topic_intrusion_detection_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4541",
-      "target": "topic_network_authentication",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4541",
-      "target": "topic_networks",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 4541",
       "target": "topic_network_attacks",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4541",
+      "target": "topic_security",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5036,7 +5022,21 @@
     },
     {
       "source": "course_CSCI 4541",
-      "target": "topic_security",
+      "target": "topic_intrusion_detection_systems",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4541",
+      "target": "topic_network_authentication",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 4541",
+      "target": "topic_networks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5046,6 +5046,20 @@
       "target": "prof_Refaei_M",
       "type": "taught_by",
       "label": "taught_by",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6541",
+      "target": "topic_network_attacks",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6541",
+      "target": "topic_security",
+      "type": "covers_topic",
+      "label": "covers_topic",
       "weight": 1.0
     },
     {
@@ -5064,20 +5078,6 @@
     },
     {
       "source": "course_CSCI 6541",
-      "target": "topic_networks",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6541",
-      "target": "topic_network_attacks",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6541",
       "target": "topic_packet_level_communication_security_systems",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -5085,7 +5085,7 @@
     },
     {
       "source": "course_CSCI 6541",
-      "target": "topic_security",
+      "target": "topic_networks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5106,14 +5106,14 @@
     },
     {
       "source": "course_CSCI 4554",
-      "target": "topic_graphics",
+      "target": "topic_hierarchical_modeling",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 4554",
-      "target": "topic_hierarchical_modeling",
+      "target": "topic_graphics",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5232,14 +5232,14 @@
     },
     {
       "source": "course_CSCI 6444",
-      "target": "topic_a_data_set",
+      "target": "topic_programming_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6444",
-      "target": "topic_programming_systems",
+      "target": "topic_a_data_set",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5260,14 +5260,14 @@
     },
     {
       "source": "course_CSCI 6515",
-      "target": "topic_augmented_transition_networks",
+      "target": "topic_computer_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6515",
-      "target": "topic_computer_systems",
+      "target": "topic_augmented_transition_networks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5330,28 +5330,14 @@
     },
     {
       "source": "course_CSCI 6365",
-      "target": "topic_machine_learning",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6365",
       "target": "topic_theory",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
-      "source": "course_CSCI 6011",
-      "target": "topic_system_usage",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6011",
-      "target": "topic_version_control",
+      "source": "course_CSCI 6365",
+      "target": "topic_machine_learning",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5365,13 +5351,6 @@
     },
     {
       "source": "course_CSCI 6011",
-      "target": "topic_computer_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6011",
       "target": "topic_basic_data_structures",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -5379,7 +5358,21 @@
     },
     {
       "source": "course_CSCI 6011",
+      "target": "topic_system_usage",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6011",
       "target": "topic_algorithms",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6011",
+      "target": "topic_computer_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5394,6 +5387,13 @@
     {
       "source": "course_CSCI 6011",
       "target": "topic_data_structures",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6011",
+      "target": "topic_version_control",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5414,13 +5414,6 @@
     },
     {
       "source": "course_CSCI 6212",
-      "target": "topic_discrete_math",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6212",
       "target": "topic_optimization",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -5435,13 +5428,6 @@
     },
     {
       "source": "course_CSCI 6212",
-      "target": "topic_oop",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6212",
       "target": "topic_calculus",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -5449,7 +5435,21 @@
     },
     {
       "source": "course_CSCI 6212",
+      "target": "topic_discrete_math",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6212",
       "target": "topic_data_structures",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6212",
+      "target": "topic_oop",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5470,14 +5470,14 @@
     },
     {
       "source": "course_CSCI 6221",
-      "target": "topic_design_patterns",
+      "target": "topic_software_life_cycle_concepts",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6221",
-      "target": "topic_software_life_cycle_concepts",
+      "target": "topic_design_patterns",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5498,35 +5498,7 @@
     },
     {
       "source": "course_CSCI 6231",
-      "target": "topic_testing",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6231",
-      "target": "topic_ai",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6231",
-      "target": "topic_structured_and_object-oriented_design",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6231",
       "target": "topic_software_engineering",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6231",
-      "target": "topic_other_development_models",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5540,14 +5512,21 @@
     },
     {
       "source": "course_CSCI 6231",
-      "target": "topic_the_life-cycle_model",
+      "target": "topic_ai",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6231",
-      "target": "topic_program_development",
+      "target": "topic_testing",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6231",
+      "target": "topic_other_development_models",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5561,7 +5540,28 @@
     },
     {
       "source": "course_CSCI 6231",
+      "target": "topic_the_life-cycle_model",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6231",
+      "target": "topic_structured_and_object-oriented_design",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6231",
       "target": "topic_design_models",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6231",
+      "target": "topic_program_development",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5582,7 +5582,7 @@
     },
     {
       "source": "course_CSCI 6234",
-      "target": "topic_programming_languages",
+      "target": "topic_usability",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5610,7 +5610,7 @@
     },
     {
       "source": "course_CSCI 6234",
-      "target": "topic_usability",
+      "target": "topic_programming_languages",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5631,14 +5631,14 @@
     },
     {
       "source": "course_CSCI 6235",
-      "target": "topic_component-based_software_development",
+      "target": "topic_component_models",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6235",
-      "target": "topic_component_models",
+      "target": "topic_component-based_software_development",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5646,20 +5646,6 @@
     {
       "source": "course_CSCI 6345",
       "target": "topic_quantum_computing",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6345",
-      "target": "topic_linear_algebra",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6345",
-      "target": "topic_quantum_algorithms_and_protocols,_epr_paradox",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5679,6 +5665,20 @@
       "weight": 1.0
     },
     {
+      "source": "course_CSCI 6345",
+      "target": "topic_linear_algebra",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6345",
+      "target": "topic_quantum_algorithms_and_protocols,_epr_paradox",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
       "source": "course_CSCI 6418",
       "target": "prof_Salimi_B",
       "type": "taught_by",
@@ -5687,7 +5687,7 @@
     },
     {
       "source": "course_CSCI 6418",
-      "target": "topic_ux",
+      "target": "topic_small_networks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5701,14 +5701,14 @@
     },
     {
       "source": "course_CSCI 6418",
-      "target": "topic_small_networks",
+      "target": "topic_ux",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6418",
-      "target": "topic_networks",
+      "target": "topic_other_network_utilities",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5729,14 +5729,14 @@
     },
     {
       "source": "course_CSCI 6418",
-      "target": "topic_other_network_utilities",
+      "target": "topic_the_stand-alone_system",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6418",
-      "target": "topic_the_stand-alone_system",
+      "target": "topic_networks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5758,6 +5758,13 @@
     {
       "source": "course_CSCI 6421",
       "target": "topic_tolerance_algorithms",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6421",
+      "target": "topic_distributed_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5791,13 +5798,6 @@
       "weight": 1.0
     },
     {
-      "source": "course_CSCI 6421",
-      "target": "topic_distributed_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
       "source": "course_CSCI 6442",
       "target": "prof_Fernandez_R",
       "type": "taught_by",
@@ -5806,14 +5806,21 @@
     },
     {
       "source": "course_CSCI 6442",
-      "target": "topic_logic",
+      "target": "topic_a_database",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6442",
-      "target": "topic_conceptual_and_logical_design",
+      "target": "topic_database_management_systems",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6442",
+      "target": "topic_database_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5834,28 +5841,21 @@
     },
     {
       "source": "course_CSCI 6442",
-      "target": "topic_a_database",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6442",
-      "target": "topic_database_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6442",
-      "target": "topic_database_management_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6442",
       "target": "topic_database_management",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6442",
+      "target": "topic_conceptual_and_logical_design",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6442",
+      "target": "topic_logic",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5897,28 +5897,7 @@
     },
     {
       "source": "course_CSCI 6461",
-      "target": "topic_network_architectures",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6461",
-      "target": "topic_networks",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6461",
-      "target": "topic_memory_subsystem_design",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6461",
-      "target": "topic_system",
+      "target": "topic_parallel_and_distributed_system_architecture",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5932,7 +5911,28 @@
     },
     {
       "source": "course_CSCI 6461",
-      "target": "topic_parallel_and_distributed_system_architecture",
+      "target": "topic_system",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6461",
+      "target": "topic_network_architectures",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6461",
+      "target": "topic_memory_subsystem_design",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6461",
+      "target": "topic_networks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5946,7 +5946,7 @@
     },
     {
       "source": "course_CSCI 6534",
-      "target": "topic_cybersecurity",
+      "target": "topic_frameworks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5960,7 +5960,7 @@
     },
     {
       "source": "course_CSCI 6534",
-      "target": "topic_frameworks",
+      "target": "topic_cybersecurity",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -5988,14 +5988,14 @@
     },
     {
       "source": "course_CSCI 6548",
-      "target": "topic_authentication_and_authorization_models",
+      "target": "topic_ai",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6548",
-      "target": "topic_ai",
+      "target": "topic_cryptography",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6009,14 +6009,14 @@
     },
     {
       "source": "course_CSCI 6548",
-      "target": "topic_blockchain",
+      "target": "topic_authentication_and_authorization_models",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_CSCI 6548",
-      "target": "topic_cryptography",
+      "target": "topic_blockchain",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6030,14 +6030,7 @@
     },
     {
       "source": "course_CSCI 6554",
-      "target": "topic_graphics",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6554",
-      "target": "topic_shape_modeling",
+      "target": "topic_algorithmic_aspects",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6058,7 +6051,14 @@
     },
     {
       "source": "course_CSCI 6554",
-      "target": "topic_algorithmic_aspects",
+      "target": "topic_shape_modeling",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6554",
+      "target": "topic_graphics",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6079,7 +6079,21 @@
     },
     {
       "source": "course_CSCI 6562",
-      "target": "topic_graphics",
+      "target": "topic_a_design_and_evaluation_tool",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6562",
+      "target": "topic_hardware_components",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_CSCI 6562",
+      "target": "topic_development",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6100,21 +6114,7 @@
     },
     {
       "source": "course_CSCI 6562",
-      "target": "topic_a_design_and_evaluation_tool",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6562",
-      "target": "topic_development",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_CSCI 6562",
-      "target": "topic_hardware_components",
+      "target": "topic_graphics",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6744,13 +6744,6 @@
     },
     {
       "source": "course_DATS 1001",
-      "target": "topic_real-world_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 1001",
       "target": "topic_standard_data_science_tools",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -6759,6 +6752,13 @@
     {
       "source": "course_DATS 1001",
       "target": "topic_data_science",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 1001",
+      "target": "topic_real-world_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6779,14 +6779,7 @@
     },
     {
       "source": "course_DATS 2102",
-      "target": "topic_data_science_questions",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 2102",
-      "target": "topic_data_science",
+      "target": "topic_visualization",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6794,6 +6787,13 @@
     {
       "source": "course_DATS 2102",
       "target": "topic_data_presentation_skills",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 2102",
+      "target": "topic_data_science",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6814,7 +6814,7 @@
     },
     {
       "source": "course_DATS 2102",
-      "target": "topic_visualization",
+      "target": "topic_data_science_questions",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6856,14 +6856,14 @@
     },
     {
       "source": "course_DATS 2103",
-      "target": "topic_algorithms",
+      "target": "topic_data",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_DATS 2103",
-      "target": "topic_data",
+      "target": "topic_algorithms",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6891,13 +6891,6 @@
     },
     {
       "source": "course_DATS 2104",
-      "target": "topic_databases",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 2104",
       "target": "topic_database_security_prerequisites",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -6905,7 +6898,7 @@
     },
     {
       "source": "course_DATS 2104",
-      "target": "topic_data_warehousing",
+      "target": "topic_data_stewardship",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -6919,6 +6912,13 @@
     },
     {
       "source": "course_DATS 2104",
+      "target": "topic_data_warehousing",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 2104",
       "target": "topic_database",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -6926,7 +6926,7 @@
     },
     {
       "source": "course_DATS 2104",
-      "target": "topic_data_stewardship",
+      "target": "topic_databases",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7031,14 +7031,14 @@
     },
     {
       "source": "course_DATS 6101",
-      "target": "topic_algorithms",
+      "target": "topic_data_mining",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_DATS 6101",
-      "target": "topic_data_mining",
+      "target": "topic_algorithms",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7066,13 +7066,6 @@
     },
     {
       "source": "course_DATS 6102",
-      "target": "topic_statistics",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 6102",
       "target": "topic_infrastructure",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -7080,7 +7073,7 @@
     },
     {
       "source": "course_DATS 6102",
-      "target": "topic_data_warehousing",
+      "target": "topic_statistics",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7088,6 +7081,13 @@
     {
       "source": "course_DATS 6102",
       "target": "topic_ai",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 6102",
+      "target": "topic_data_warehousing",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7115,14 +7115,14 @@
     },
     {
       "source": "course_DATS 6103",
-      "target": "topic_cluster_analysis",
+      "target": "topic_association_analysis",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_DATS 6103",
-      "target": "topic_association_analysis",
+      "target": "topic_cluster_analysis",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7157,14 +7157,14 @@
     },
     {
       "source": "course_DATS 6202",
-      "target": "topic_algorithm_design",
+      "target": "topic_optimization",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_DATS 6202",
-      "target": "topic_optimization",
+      "target": "topic_probability",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7178,7 +7178,7 @@
     },
     {
       "source": "course_DATS 6202",
-      "target": "topic_probability",
+      "target": "topic_algorithm_design",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7199,27 +7199,6 @@
     },
     {
       "source": "course_DATS 6303",
-      "target": "topic_linear_algebra",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 6303",
-      "target": "topic_deep_learning",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 6303",
-      "target": "topic_stochastic_system",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 6303",
       "target": "topic_ai",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -7234,14 +7213,7 @@
     },
     {
       "source": "course_DATS 6303",
-      "target": "topic_networks",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 6303",
-      "target": "topic_frameworks",
+      "target": "topic_deep_network_architectures",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7255,7 +7227,14 @@
     },
     {
       "source": "course_DATS 6303",
-      "target": "topic_deep_network_architectures",
+      "target": "topic_stochastic_system",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 6303",
+      "target": "topic_frameworks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7263,6 +7242,27 @@
     {
       "source": "course_DATS 6303",
       "target": "topic_the_implementation",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 6303",
+      "target": "topic_deep_learning",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 6303",
+      "target": "topic_linear_algebra",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 6303",
+      "target": "topic_networks",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7283,6 +7283,13 @@
     },
     {
       "source": "course_DATS 6304",
+      "target": "topic_information_systems",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 6304",
       "target": "topic_geographic_data_structure",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -7291,13 +7298,6 @@
     {
       "source": "course_DATS 6304",
       "target": "topic_geographic_information_systems",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 6304",
-      "target": "topic_information_systems",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7374,13 +7374,6 @@
     },
     {
       "source": "course_DATS 6401",
-      "target": "topic_graphics",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 6401",
       "target": "topic_visualization",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -7389,6 +7382,13 @@
     {
       "source": "course_DATS 6401",
       "target": "topic_data_science",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 6401",
+      "target": "topic_graphics",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7423,14 +7423,14 @@
     },
     {
       "source": "course_DATS 6450",
-      "target": "topic_ai",
+      "target": "topic_data_science_programs",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
     },
     {
       "source": "course_DATS 6450",
-      "target": "topic_data_science_programs",
+      "target": "topic_ai",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0
@@ -7528,13 +7528,6 @@
     },
     {
       "source": "course_DATS 6501",
-      "target": "topic_data_science_program",
-      "type": "covers_topic",
-      "label": "covers_topic",
-      "weight": 1.0
-    },
-    {
-      "source": "course_DATS 6501",
       "target": "topic_five_pre-approved_data_science_courses",
       "type": "covers_topic",
       "label": "covers_topic",
@@ -7543,6 +7536,13 @@
     {
       "source": "course_DATS 6501",
       "target": "topic_data_science",
+      "type": "covers_topic",
+      "label": "covers_topic",
+      "weight": 1.0
+    },
+    {
+      "source": "course_DATS 6501",
+      "target": "topic_data_science_program",
       "type": "covers_topic",
       "label": "covers_topic",
       "weight": 1.0

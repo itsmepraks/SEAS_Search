@@ -1,6 +1,359 @@
 {
+  "Goldfrank, J": [
+    "course_CSCI 1012",
+    "course_CSCI 3908",
+    "course_CSCI 4511",
+    "course_CSCI 6511",
+    "course_CSCI 6908"
+  ],
+  "Shaban, H": [
+    "course_CSCI 1012"
+  ],
+  "Vidrine, E": [
+    "course_CSCI 1022"
+  ],
+  "Brenner, N": [
+    "course_CSCI 1023"
+  ],
+  "Dobolyi, K": [
+    "course_CSCI 1111",
+    "course_CSCI 2113",
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999"
+  ],
+  "Taylor, J": [
+    "course_CSCI 1112",
+    "course_CSCI 3401",
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999"
+  ],
+  "Malek-Madani, R": [
+    "course_CSCI 1311"
+  ],
+  "He, L": [
+    "course_CSCI 2441",
+    "course_CSCI 2460"
+  ],
+  "Parmer, G": [
+    "course_CSCI 2541",
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Simha, R": [
+    "course_CSCI 3212",
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Hwa, R": [
+    "course_CSCI 3313",
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Pless, R": [
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Aviv, A": [
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Zhou, J": [
+    "course_CSCI 3908",
+    "course_CSCI 4531",
+    "course_CSCI 6531",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Yerukhimovich, A": [
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Feng, S": [
+    "course_CSCI 3908",
+    "course_CSCI 4364",
+    "course_CSCI 6364",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Hahn, J": [
+    "course_CSCI 3908",
+    "course_CSCI 6554",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Youssef, A": [
+    "course_CSCI 3908",
+    "course_CSCI 6212",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Narahari, B": [
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Vora, P": [
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Wood, T": [
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Woodworth, B": [
+    "course_CSCI 3908",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Qu, X": [
+    "course_CSCI 3908",
+    "course_CSCI 4364",
+    "course_CSCI 6364",
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Mohan, S": [
+    "course_CSCI 3908",
+    "course_CSCI 4907",
+    "course_CSCI 6907",
+    "course_CSCI 6908",
+    "course_CSCI 6999"
+  ],
+  "Cobb, M": [
+    "course_CSCI 4237"
+  ],
+  "Kim, T; Qu, X": [
+    "course_CSCI 4244"
+  ],
+  "Qu, X; Kim, T": [
+    "course_CSCI 4244"
+  ],
+  "Qu, X; Shapiro, J": [
+    "course_CSCI 4244"
+  ],
+  "Mehrabian, A": [
+    "course_CSCI 6364"
+  ],
+  "Sipple, J": [
+    "course_CSCI 4366",
+    "course_CSCI 6366"
+  ],
+  "Ok, H": [
+    "course_CSCI 4454",
+    "course_CSCI 6548"
+  ],
+  "Byun, J": [
+    "course_CSCI 4455"
+  ],
+  "Refaei, M": [
+    "course_CSCI 4541",
+    "course_CSCI 6541"
+  ],
+  "Adhami, L": [
+    "course_CSCI 4554"
+  ],
+  "Fernandez, R": [
+    "course_CSCI 4907",
+    "course_CSCI 6907",
+    "course_CSCI 6442"
+  ],
+  "Zirikly, A": [
+    "course_CSCI 4907",
+    "course_CSCI 6515"
+  ],
+  "Mendenhall, A": [
+    "course_CSCI 4907",
+    "course_CSCI 6907",
+    "course_EMSE 6586",
+    "course_DATS 6401"
+  ],
+  "Omrani Sabbaghi, S": [
+    "course_CSCI 4907",
+    "course_CSCI 6444"
+  ],
+  "Hamidian, S; Mehrabian, A": [
+    "course_CSCI 4907",
+    "course_CSCI 6365"
+  ],
+  "Lee, T": [
+    "course_CSCI 6907",
+    "course_MAE 6292"
+  ],
+  "Szajnfarber, Z; Pless, R": [
+    "course_CSCI 6907"
+  ],
+  "Hwang, Y": [
+    "course_CSCI 6221"
+  ],
+  "McKeeby, J": [
+    "course_CSCI 6231"
+  ],
+  "Melo, W": [
+    "course_CSCI 6234"
+  ],
+  "Levy, R": [
+    "course_CSCI 6235"
+  ],
+  "Salimi, B": [
+    "course_CSCI 6418"
+  ],
+  "Haghnazar Koochaksaraei, R": [
+    "course_CSCI 6421"
+  ],
+  "Bellaachia, A": [
+    "course_CSCI 6443"
+  ],
+  "Kaisler, S": [
+    "course_CSCI 6461"
+  ],
+  "Lancaster, M": [
+    "course_CSCI 6461"
+  ],
+  "Kelly, P": [
+    "course_CSCI 6534"
+  ],
+  "Nicolas, E": [
+    "course_CSCI 6562"
+  ],
+  "Pless, R; Szajnfarber, Z": [
+    "course_EMSE 6992"
+  ],
+  "Huang, H": [
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Wei, P": [
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Park, C": [
+    "course_CSCI 6908",
+    "course_CSCI 6998",
+    "course_CSCI 6999",
+    "course_CSCI 8999"
+  ],
+  "Hitczenko, K": [
+    "course_CSCI 6908"
+  ],
+  "Choi, H": [
+    "course_CSCI 8999"
+  ],
+  "Burnett, S": [
+    "course_DATS 1001",
+    "course_DATS 4001"
+  ],
+  "Walker, A": [
+    "course_DATS 1001",
+    "course_DATS 2103"
+  ],
+  "Yin, J": [
+    "course_DATS 2102",
+    "course_DATS 6501"
+  ],
+  "Alekseyev, M": [
+    "course_DATS 2103"
+  ],
+  "Shatnawi, H": [
+    "course_DATS 2104",
+    "course_DATS 6102"
+  ],
+  "Majhi, S": [
+    "course_DATS 4001",
+    "course_DATS 6001"
+  ],
+  "Morris, D": [
+    "course_DATS 6101"
+  ],
+  "Narula, D": [
+    "course_DATS 6101"
+  ],
+  "Rui, N": [
+    "course_DATS 6103"
+  ],
+  "Huang, Y": [
+    "course_DATS 6202",
+    "course_DATS 6501"
+  ],
+  "Jafari, A": [
+    "course_DATS 6303",
+    "course_STAT 6260",
+    "course_DATS 6312",
+    "course_DATS 6501"
+  ],
+  "Johnson, S": [
+    "course_DATS 6304",
+    "course_GEOG 6304"
+  ],
+  "Jafari, R": [
+    "course_DATS 6401"
+  ],
+  "Dasgupta, A": [
+    "course_DATS 6450"
+  ],
+  "Mann, M": [
+    "course_DATS 6450",
+    "course_GEOG 6293",
+    "course_GEOG 3198"
+  ],
+  "O'Brien, M": [
+    "course_DATS 6450",
+    "course_GEOG 6306",
+    "course_GEOG 3106"
+  ],
+  "Kundu, S": [
+    "course_DATS 6499"
+  ],
+  "Awl, A": [
+    "course_DATS 6501"
+  ],
   "_metadata": {
     "note": "Real instructor mappings from knowledge graph",
-    "total_professors": -1
+    "total_professors": 76
   }
 }

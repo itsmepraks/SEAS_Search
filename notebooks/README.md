@@ -1,8 +1,52 @@
-# Knowledge Graph QA System - Improvements & Cleanup
+# Notebooks Directory - SEAS Search Project
 
-## 🎯 What Was Done
+This directory contains all Jupyter notebooks for training and evaluating the SEAS Search question-answering system.
 
-Your notebook has been **improved and cleaned up** with these changes:
+## 📚 Notebook Overview
+
+### 1. **Llama3.1_(8B)-finetuning.ipynb** - Standard Fine-tuning
+- **Purpose**: Baseline fine-tuning approach using standard hyperparameters
+- **Features**: 
+  - LoRA adapters for efficient training
+  - 3 epochs of training
+  - Basic training metrics
+- **Output**: Fine-tuned model for course Q&A
+- **Status**: ✅ Complete - Real training data exported to `public/data/standard_training_metrics.json`
+
+### 2. **Llama3.1_(8B)-finetuning-optimized.ipynb** - Optimized Fine-tuning
+- **Purpose**: Enhanced fine-tuning with validation split and early stopping
+- **Features**:
+  - Train/validation split
+  - Early stopping
+  - Cosine annealing learning rate
+  - Evaluation metrics
+- **Output**: Optimized fine-tuned model
+- **Status**: 🔄 In progress
+
+### 3. **Llama3.1_(8B)-KG-QA-System.ipynb** - Knowledge Graph-Based QA
+- **Purpose**: Knowledge graph-enhanced question answering system
+- **Features**:
+  - Knowledge graph construction (courses, professors, topics, prerequisites)
+  - Multi-hop reasoning
+  - Graph-based retrieval
+  - RAG (Retrieval-Augmented Generation)
+- **Output**: KG-enhanced QA model
+- **Status**: 🔄 In progress
+
+### 4. **Meta_Synthetic_Data_Llama3_2_(3B).ipynb** - Synthetic Data Generation
+- **Purpose**: Generate synthetic training data using smaller model
+- **Features**: Data augmentation for training
+- **Status**: ✅ Available
+
+### 5. **[Backup] Llama3.1_(8B)-KG-QA-System.ipynb**
+- **Purpose**: Backup of KG-QA System notebook
+- **Status**: 📦 Archive
+
+---
+
+## 🎯 KG-QA System: Improvements & Cleanup
+
+The `Llama3.1_(8B)-KG-QA-System.ipynb` notebook has been **improved and cleaned up** with these changes:
 
 ### ✅ **3 Core Fixes Applied**
 
@@ -169,8 +213,8 @@ Raw Answer: Answer: The prerequisites...assistantуватися...
 ## 🔍 What Changed in Each Cell
 
 ### Cell 0 (Header)
-- **Removed**: "Graph Attention Network (GAT) for Graph Retrieval"
-- Cleaner feature list
+- **Note**: Header still mentions "Graph Attention Networks (GAT)" in the feature list, but GAT implementation code has been removed. This is a documentation inconsistency that should be updated.
+- The actual GAT code (classes, imports) has been removed from the notebook.
 
 ### Cell 2 (Pip Installs)
 - **Removed**: `torch-geometric`
@@ -302,11 +346,19 @@ A: Check the output after Cell 13. You should see "Generated 170-200 multi-hop q
 
 ```
 notebooks/
-├── Llama3.1_(8B)-KG-QA-System.ipynb  ⭐ IMPROVED & CLEANED
-└── README.md                          📖 This file
+├── Llama3.1_(8B)-finetuning.ipynb              ⭐ Standard fine-tuning (Complete)
+├── Llama3.1_(8B)-finetuning-optimized.ipynb     🔄 Optimized fine-tuning (In progress)
+├── Llama3.1_(8B)-KG-QA-System.ipynb             ⭐ KG-Based QA System (Improved & Cleaned)
+├── Meta_Synthetic_Data_Llama3_2_(3B).ipynb      📊 Synthetic data generation
+├── [Backup] Llama3.1_(8B)-KG-QA-System.ipynb    📦 Backup archive
+└── README.md                                     📖 This file
 ```
 
-That's it! Simple and clean.
+## 🔗 Related Files
+
+- **Data Export Scripts**: See `DATA_EXPORT_SCRIPTS.md` in project root for exporting training metrics
+- **Frontend Data**: Exported JSON files go to `public/data/` directory
+- **Training Metrics**: Standard training data available at `public/data/training_metrics.json`
 
 ---
 
@@ -333,5 +385,13 @@ That's it! Simple and clean.
 
 ---
 
-*Last updated: December 2, 2025*
-*Notebook: `Llama3.1_(8B)-KG-QA-System.ipynb`*
+## ⚠️ Known Issues
+
+1. **GAT Reference in Header**: The notebook header (Cell 0) still mentions "Graph Attention Networks (GAT)" in the feature list, but the GAT implementation code has been removed. This is a documentation inconsistency that should be updated.
+
+2. **Notebook Widget Metadata**: The standard fine-tuning notebook had widget metadata removed to fix GitHub rendering issues. Widgets will regenerate when running in Jupyter/Colab.
+
+---
+
+*Last updated: December 6, 2025*
+*Primary notebooks: `Llama3.1_(8B)-finetuning.ipynb`, `Llama3.1_(8B)-finetuning-optimized.ipynb`, `Llama3.1_(8B)-KG-QA-System.ipynb`*
