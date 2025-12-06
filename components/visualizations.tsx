@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState, type ReactNode } from "react"
 import { TrendingDown, TrendingUp, Database, Layers } from "lucide-react"
 import { motion } from "framer-motion"
 import {
@@ -65,6 +66,15 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 }
 
 export function Visualizations() {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  const renderChart = (chart: ReactNode) =>
+    isClient ? chart : <div className="h-full w-full rounded-lg bg-muted/10" />
+
   return (
     <div className="min-h-screen pt-16">
       <div className="mx-auto max-w-4xl px-4 py-8">
@@ -124,32 +134,34 @@ export function Visualizations() {
               <p className="text-xs text-muted-foreground mt-0.5">Loss over 10 epochs</p>
             </div>
             <div className="h-56">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={trainingLossData}>
-                  <defs>
-                    <linearGradient id="lossGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="oklch(0.65 0.15 250)" stopOpacity={0.4} />
-                      <stop offset="95%" stopColor="oklch(0.65 0.15 250)" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.25 0.005 260)" vertical={false} />
-                  <XAxis
-                    dataKey="epoch"
-                    tick={{ fill: "oklch(0.5 0 0)", fontSize: 11 }}
-                    axisLine={false}
-                    tickLine={false}
-                  />
-                  <YAxis tick={{ fill: "oklch(0.5 0 0)", fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
-                  <Tooltip content={<CustomTooltip />} />
-                  <Area
-                    type="monotone"
-                    dataKey="loss"
-                    stroke="oklch(0.65 0.15 250)"
-                    strokeWidth={2}
-                    fill="url(#lossGradient)"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
+              {renderChart(
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={trainingLossData}>
+                    <defs>
+                      <linearGradient id="lossGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="oklch(0.65 0.15 250)" stopOpacity={0.4} />
+                        <stop offset="95%" stopColor="oklch(0.65 0.15 250)" stopOpacity={0} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.25 0.005 260)" vertical={false} />
+                    <XAxis
+                      dataKey="epoch"
+                      tick={{ fill: "oklch(0.5 0 0)", fontSize: 11 }}
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <YAxis tick={{ fill: "oklch(0.5 0 0)", fontSize: 11 }} axisLine={false} tickLine={false} width={35} />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Area
+                      type="monotone"
+                      dataKey="loss"
+                      stroke="oklch(0.65 0.15 250)"
+                      strokeWidth={2}
+                      fill="url(#lossGradient)"
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              )}
             </div>
           </motion.div>
 
@@ -165,24 +177,26 @@ export function Visualizations() {
               <p className="text-xs text-muted-foreground mt-0.5">Training samples by category</p>
             </div>
             <div className="h-44">
-              <ResponsiveContainer width="100%" height="100%">
-                <RechartsPie>
-                  <Pie
-                    data={categoryDistribution}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={50}
-                    outerRadius={75}
-                    paddingAngle={3}
-                    dataKey="value"
-                  >
-                    {categoryDistribution.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} stroke="transparent" />
-                    ))}
-                  </Pie>
-                  <Tooltip content={<CustomTooltip />} />
-                </RechartsPie>
-              </ResponsiveContainer>
+              {renderChart(
+                <ResponsiveContainer width="100%" height="100%">
+                  <RechartsPie>
+                    <Pie
+                      data={categoryDistribution}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={50}
+                      outerRadius={75}
+                      paddingAngle={3}
+                      dataKey="value"
+                    >
+                      {categoryDistribution.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} stroke="transparent" />
+                      ))}
+                    </Pie>
+                    <Tooltip content={<CustomTooltip />} />
+                  </RechartsPie>
+                </ResponsiveContainer>
+              )}
             </div>
             <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2">
               {categoryDistribution.map((item) => (
@@ -208,33 +222,35 @@ export function Visualizations() {
               <p className="text-xs text-muted-foreground mt-0.5">Model performance across different query types</p>
             </div>
             <div className="h-56">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={accuracyByCategory} layout="vertical" barSize={20}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.25 0.005 260)" horizontal={false} />
-                  <XAxis
-                    type="number"
-                    domain={[0, 100]}
-                    tick={{ fill: "oklch(0.5 0 0)", fontSize: 11 }}
-                    axisLine={false}
-                    tickLine={false}
-                  />
-                  <YAxis
-                    type="category"
-                    dataKey="category"
-                    tick={{ fill: "oklch(0.6 0 0)", fontSize: 12 }}
-                    axisLine={false}
-                    tickLine={false}
-                    width={90}
-                  />
-                  <Tooltip content={<CustomTooltip />} formatter={(value) => [`${value}%`, "Accuracy"]} />
-                  <Bar
-                    dataKey="accuracy"
-                    fill="oklch(0.65 0.15 250)"
-                    radius={[0, 6, 6, 0]}
-                    background={{ fill: "oklch(0.2 0.005 260)", radius: 6 }}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
+              {renderChart(
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={accuracyByCategory} layout="vertical" barSize={20}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.25 0.005 260)" horizontal={false} />
+                    <XAxis
+                      type="number"
+                      domain={[0, 100]}
+                      tick={{ fill: "oklch(0.5 0 0)", fontSize: 11 }}
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <YAxis
+                      type="category"
+                      dataKey="category"
+                      tick={{ fill: "oklch(0.6 0 0)", fontSize: 12 }}
+                      axisLine={false}
+                      tickLine={false}
+                      width={90}
+                    />
+                    <Tooltip content={<CustomTooltip />} formatter={(value) => [`${value}%`, "Accuracy"]} />
+                    <Bar
+                      dataKey="accuracy"
+                      fill="oklch(0.65 0.15 250)"
+                      radius={[0, 6, 6, 0]}
+                      background={{ fill: "oklch(0.2 0.005 260)", radius: 6 }}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              )}
             </div>
           </motion.div>
         </div>
