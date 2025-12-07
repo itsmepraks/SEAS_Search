@@ -11,7 +11,7 @@ const statsData = [
   { label: "Bulletin Courses", value: "187", subtext: "CSCI & DATS" },
   { label: "Schedule Instances", value: "586", subtext: "Spring 2026" },
   { label: "Training Samples", value: "2,828", subtext: "Q&A pairs" },
-  { label: "Evaluation Status", value: "Pending", subtext: "Accuracy under review" },
+  { label: "Evaluation Status", value: "Complete", subtext: "26% / 34% / 38% accuracy" },
 ]
 
 const explorationCards = [
@@ -105,6 +105,37 @@ export default function OverviewPage() {
           <p className="text-lg text-muted-foreground/80 max-w-3xl mx-auto">
             Fine-tuning Large Language Models on GWU course data with graph-augmented reasoning
             for prerequisite planning and multi-hop question answering
+          </p>
+        </motion.div>
+
+        {/* Project Attribution */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mb-8 text-center"
+        >
+          <p className="text-sm text-muted-foreground/80">
+            Final project as part of{" "}
+            <span className="font-semibold text-foreground/90">CSCI_6366 Neural Networks and Deep Learning</span>
+            {" "}by{" "}
+            <a 
+              href="https://anuragd.me" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-medium text-foreground/90 hover:text-foreground underline decoration-2 underline-offset-2 transition-colors"
+            >
+              Anurag Dhungana
+            </a>
+            {" "}and{" "}
+            <a 
+              href="https://praks.me" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-medium text-foreground/90 hover:text-foreground underline decoration-2 underline-offset-2 transition-colors"
+            >
+              Prakriti Bista
+            </a>
           </p>
         </motion.div>
 

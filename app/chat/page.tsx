@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Navigation } from "@/components/navigation"
@@ -12,7 +13,7 @@ const models = [
     name: "KG-QA System Model",
     description: "Knowledge Graph-based Question Answering system with multi-hop reasoning capabilities. This model can answer complex queries requiring prerequisite chain traversal and relationship understanding.",
     repo: "itsmepraks/gwcourses_RAG",
-    url: "https://huggingface.co/itsmepraks/gwcourses_RAG",
+    url: "https://huggingface.co/itsmepraks/gwcourses_RAG/tree/main",
     icon: Sparkles,
     gradient: "from-purple-500/20 to-pink-500/20",
     borderColor: "border-purple-500/20",
@@ -27,7 +28,7 @@ const models = [
     name: "Optimized Fine-tuning Model",
     description: "Optimized fine-tuned model for simple Q&A tasks. Best for straightforward questions about individual courses, instructors, and schedules.",
     repo: "itsmepraks/gwcoursesfinetuned",
-    url: "https://huggingface.co/itsmepraks/gwcoursesfinetuned",
+    url: "https://huggingface.co/itsmepraks/gwcoursesfinetuned/tree/main",
     icon: Zap,
     gradient: "from-blue-500/20 to-cyan-500/20",
     borderColor: "border-blue-500/20",
@@ -40,7 +41,7 @@ const models = [
   },
 ]
 
-export default function ChatPage() {
+export default function ChatPage(): JSX.Element {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
