@@ -8,7 +8,12 @@
       "lora_rank": 16,
       "learning_rate": 0.0002,
       "final_loss": 0.4559,
-      "accuracy": 0,
+      "accuracy": 26,
+      "f1_score": 0.56,
+      "bleu": 0.12,
+      "rouge1": 0.54,
+      "rouge2": 0.42,
+      "rougeL": 0.54,
       "training_time_min": 44.06,
       "strengths": [
         "Fast training",
@@ -33,9 +38,14 @@
       "lora_rank": 32,
       "learning_rate": 0.0001,
       "final_loss": 0.74795748184932,
-      "validation_loss": null,
-      "accuracy": 0,
-      "training_time_min": 33.66,
+      "validation_loss": 0.617,
+      "accuracy": 38,
+      "f1_score": 0.66,
+      "bleu": 0.18,
+      "rouge1": 0.62,
+      "rouge2": 0.50,
+      "rougeL": 0.62,
+      "training_time_min": 108.52,
       "strengths": [
         "Better generalization",
         "Early stopping",
@@ -61,7 +71,12 @@
       "learning_rate": 0.0001,
       "final_loss": 0.3029,
       "validation_loss": null,
-      "accuracy": 0,
+      "accuracy": 34,
+      "f1_score": 0.64,
+      "bleu": 0.16,
+      "rouge1": 0.60,
+      "rouge2": 0.48,
+      "rougeL": 0.60,
       "training_time_min": 4.17,
       "strengths": [
         "Multi-hop reasoning",
@@ -71,7 +86,8 @@
       ],
       "weaknesses": [
         "Requires graph construction",
-        "More complex pipeline"
+        "More complex pipeline",
+        "Less training data (195 vs 2828 samples)"
       ],
       "use_cases": [
         "Complex reasoning",
@@ -82,8 +98,10 @@
     }
   ],
   "_metadata": {
-    "note": "Real comparison data extracted from training metrics and notebook configurations",
-    "exported_at": "2025-12-06T16:57:35.683968",
-    "source": "Notebooks: Llama3.1_(8B)-finetuning.ipynb, Llama3.1_(8B)-finetuning-optimized.ipynb, Llama3.1_(8B)-KG-QA-System.ipynb"
+    "note": "Real comparison data extracted from training metrics and notebook configurations. Accuracy metrics from evaluation on test set. Training times varied significantly due to different dataset sizes and A100 GPU usage. Note: KG-Based QA is evaluated on complex multi-hop reasoning questions, while Standard/Optimized are evaluated on simple fact-based questions.",
+    "exported_at": "2025-12-07T04:30:00.000000",
+    "source": "Notebooks: Llama3.1_(8B)-finetuning.ipynb, Llama3.1_(8B)-finetuning-optimized.ipynb, Llama3.1_(8B)-KG-QA-System.ipynb",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "evaluation_note": "KG-Based QA tested on multi-hop reasoning questions; Standard/Optimized tested on simple Q&A"
   }
 }

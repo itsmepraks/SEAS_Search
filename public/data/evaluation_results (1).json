@@ -1,0 +1,25 @@
+{
+  "evaluation_date": "2025-12-07T04:18:53.807690",
+  "models_evaluated": [
+    "KG-Based QA System",
+    "Optimized Fine-tuning"
+  ],
+  "metrics": {
+    "KG-Based QA System": {
+      "exact_match": 0.0,
+      "f1": 0.17275811326407248,
+      "bleu": 0.023912213740891454,
+      "rouge1": 0.15384690974863585,
+      "rouge2": 0.10094925384822992,
+      "rougeL": 0.13170063749030067
+    },
+    "Optimized Fine-tuning": {
+      "exact_match": 0.0,
+      "f1": 0.4723237291882416,
+      "bleu": 0.0634190923720663,
+      "rouge1": 0.19402120581099316,
+      "rouge2": 0.178798359729019,
+      "rougeL": 0.19498091770600406
+    }
+  }
+}

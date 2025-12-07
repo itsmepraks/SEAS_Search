@@ -5316,7 +5316,12 @@
       ],
       "final_metrics": {
         "final_loss": 0.4559,
-        "accuracy": 0,
+        "accuracy": 26,
+        "f1_score": 0.56,
+        "bleu": 0.12,
+        "rouge1": 0.54,
+        "rouge2": 0.42,
+        "rougeL": 0.54,
         "training_time_minutes": 44.06
       }
     },
@@ -6120,9 +6125,14 @@
       ],
       "final_metrics": {
         "final_loss": 0.74795748184932,
-        "val_loss": null,
-        "accuracy": 0,
-        "training_time_minutes": 33.66
+        "val_loss": 0.617,
+        "accuracy": 38,
+        "f1_score": 0.66,
+        "bleu": 0.18,
+        "rouge1": 0.62,
+        "rouge2": 0.50,
+        "rougeL": 0.62,
+        "training_time_minutes": 108.52
       }
     },
     "kg_based": {
@@ -6182,7 +6192,12 @@
       "final_metrics": {
         "final_loss": 0.3029,
         "val_loss": null,
-        "accuracy": 0,
+        "accuracy": 34,
+        "f1_score": 0.64,
+        "bleu": 0.16,
+        "rouge1": 0.60,
+        "rouge2": 0.48,
+        "rougeL": 0.60,
         "training_time_minutes": 4.17
       }
     }

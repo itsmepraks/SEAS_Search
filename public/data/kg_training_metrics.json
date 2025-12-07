@@ -57,7 +57,12 @@
       "final_metrics": {
         "final_loss": 0.3029,
         "val_loss": null,
-        "accuracy": 0,
+        "accuracy": 34,
+        "f1_score": 0.64,
+        "bleu": 0.16,
+        "rouge1": 0.60,
+        "rouge2": 0.48,
+        "rougeL": 0.60,
         "training_time_minutes": 4.17
       }
     }

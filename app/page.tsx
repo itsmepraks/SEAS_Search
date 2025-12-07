@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Card } from "@/components/ui/card"
 import { Navigation } from "@/components/navigation"
 import { BackToTop } from "@/components/back-to-top"
-import { Network, Database, FileText, BarChart3, Layers, ArrowRight, BookOpen, Zap, Target, MessageCircle } from "lucide-react"
+import { Network, Database, FileText, BarChart3, Layers, ArrowRight, BookOpen, Zap, Target, MessageCircle, Sparkles } from "lucide-react"
 
 const statsData = [
   { label: "Bulletin Courses", value: "187", subtext: "CSCI & DATS" },
@@ -42,6 +42,13 @@ const explorationCards = [
     href: "/results",
     icon: BarChart3,
     gradient: "from-green-500/20 to-emerald-500/20",
+  },
+  {
+    title: "Outputs",
+    description: "Review clean answers and raw traces from the finetuning-optimized checkpoint",
+    href: "/outputs",
+    icon: Sparkles,
+    gradient: "from-amber-500/20 to-yellow-500/20",
   },
   {
     title: "Architecture",

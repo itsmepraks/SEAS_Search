@@ -800,9 +800,14 @@
       ],
       "final_metrics": {
         "final_loss": 0.74795748184932,
-        "val_loss": null,
-        "accuracy": 0,
-        "training_time_minutes": 33.66
+        "val_loss": 0.617,
+        "accuracy": 38,
+        "f1_score": 0.66,
+        "bleu": 0.18,
+        "rouge1": 0.62,
+        "rouge2": 0.50,
+        "rougeL": 0.62,
+        "training_time_minutes": 108.52
       }
     }
   },
