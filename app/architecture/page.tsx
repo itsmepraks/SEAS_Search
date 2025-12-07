@@ -80,8 +80,8 @@ const pipelineStages = [
     details: [
       "5 epochs with early stopping",
       "Validation split (80/20)",
-      "Final loss: 0.64, Accuracy: 94.8%",
-      "Training time: ~115 minutes on GPU",
+      "Final loss: 0.30 (accuracy pending)",
+      "Training time: ~4.2 minutes on GPU",
     ]
   },
   {
@@ -153,7 +153,7 @@ graph TB
     F --> G[Fine-tuning<br/>5 epochs]
     G --> H[Early Stopping<br/>Patience=3]
     H --> I[Validation Loss<br/>Monitoring]
-    I --> J[Optimized Model<br/>91.2% Accuracy]
+    I --> J[Optimized Model<br/>Loss 0.75<br/>Accuracy pending]
     
     style A fill:#3b82f6
     style C fill:#8b5cf6
@@ -178,7 +178,7 @@ graph TB
     J --> K[LoRA Adapters<br/>r=32, alpha=32]
     K --> L[Fine-tuning with<br/>Graph Context]
     L --> M[Graph Retriever<br/>Subgraph Selection]
-    M --> N[KG-QA Model<br/>94.8% Accuracy]
+    M --> N[KG-QA Model<br/>Loss 0.30<br/>Accuracy pending]
     
     style A fill:#3b82f6
     style F fill:#10b981
@@ -222,10 +222,10 @@ const optimizedHyperparameters = {
     "Effective Batch Size": "8",
   },
   "Performance Metrics": {
-    "Final Training Loss": "0.78",
-    "Final Validation Loss": "0.67",
-    "Accuracy": "91.2%",
-    "Training Time": "108.5 minutes",
+    "Final Training Loss": "0.75",
+    "Final Validation Loss": "N/A",
+    "Accuracy": "Pending",
+    "Training Time": "33.7 minutes",
     "GPU": "Tesla T4 (14.7 GB)",
     "Peak Memory Usage": "7.46 GB (50.6%)",
   },
@@ -275,10 +275,10 @@ const kgQAHyperparameters = {
     "Covers Topic Edges": "325",
   },
   "Performance Metrics": {
-    "Final Training Loss": "0.64",
+    "Final Training Loss": "0.30",
     "Final Validation Loss": "N/A (early stopping)",
-    "Accuracy": "94.8%",
-    "Training Time": "115.3 minutes",
+    "Accuracy": "Pending",
+    "Training Time": "4.2 minutes",
     "GPU": "NVIDIA A100-SXM4-40GB",
     "Peak Memory Usage": "7.58 GB (19.2%)",
   },

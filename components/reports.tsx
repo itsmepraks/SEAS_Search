@@ -20,7 +20,7 @@ const reports = [
   },
   {
     title: "Evaluation Results",
-    description: "Performance benchmarks, accuracy metrics, and comparison with baseline models.",
+    description: "Performance benchmarks, training metrics, and comparison with baseline models.",
     date: "2024-12-20",
     status: "In Progress",
     icon: Lightbulb,
@@ -38,8 +38,8 @@ const findings = [
   {
     title: "Domain Specificity Benefits",
     content:
-      "Fine-tuning on GWU-specific terminology and course codes resulted in 92% accuracy on course identification tasks, compared to 45% with the base model.",
-    metric: "92%",
+      "Fine-tuning on GWU-specific terminology and course codes is expected to outperform the base model; quantitative accuracy numbers are pending evaluation.",
+    metric: "Pending",
     metricLabel: "Accuracy",
   },
   {

@@ -29,7 +29,7 @@ const approaches = [
     subtitle: "Basic Llama 3.1 8B fine-tuning on 2,828 Q&A pairs",
     notebook: "Llama3.1_(8B)-finetuning.ipynb",
     status: "baseline",
-    outcome: "Good - 87.5% accuracy",
+    outcome: "Baseline - final loss 0.46 (accuracy pending)",
     reason: "Repetition issues, simple pattern matching, no multi-hop reasoning",
     icon: TrendingUp,
     color: "blue",
@@ -41,7 +41,7 @@ const approaches = [
     subtitle: "Enhanced hyperparameters, validation, early stopping",
     notebook: "Llama3.1_(8B)-finetuning-optimized.ipynb",
     status: "improved",
-    outcome: "Better - 91.2% accuracy",
+    outcome: "Improved stability - final loss 0.75 (accuracy pending)",
     reason: "Still couldn't handle prerequisite chains or complex multi-hop queries",
     icon: TrendingUp,
     color: "indigo",
@@ -53,7 +53,7 @@ const approaches = [
     subtitle: "Knowledge Graph + Graph-augmented training",
     notebook: "Llama3.1_(8B)-KG-QA-System.ipynb",
     status: "final",
-    outcome: "Best - 94.8% accuracy",
+    outcome: "Best loss so far - 0.30 (accuracy pending)",
     reason: "Multi-hop reasoning, prerequisite planning, structured knowledge",
     icon: Network,
     color: "green",
@@ -245,8 +245,8 @@ export default function MethodologyPage() {
                     <div>
                       <h3 className="font-semibold text-lg mb-2">Why Knowledge Graphs?</h3>
                       <p className="text-foreground/80 mb-4 leading-relaxed">
-                        After optimized fine-tuning reached <span className="font-semibold">91.2% accuracy</span>,
-                        we realized the model still couldn't answer questions like <span className="italic">"What prerequisites
+                        Even after optimized fine-tuning converged around a <span className="font-semibold">0.75 final loss</span>,
+                        the model still couldn't answer questions like <span className="italic">"What prerequisites
                         do I need to take CSCI 6364?"</span> or <span className="italic">"Which courses should I complete
                         after CSCI 2113?"</span>
                       </p>
@@ -270,7 +270,7 @@ export default function MethodologyPage() {
                         <div className="bg-background/50 p-3 rounded-lg">
                           <div className="font-medium mb-1">Result</div>
                           <div className="text-muted-foreground text-xs">
-                            +3.6% accuracy boost, multi-hop reasoning, prerequisite planning
+                            Lower loss, multi-hop reasoning, prerequisite planning
                           </div>
                         </div>
                       </div>
@@ -293,16 +293,16 @@ export default function MethodologyPage() {
               <h4 className="font-semibold mb-3">Standard Fine-tuning</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Accuracy</span>
-                  <span className="font-bold">87.5%</span>
+                  <span className="text-muted-foreground">Final Loss</span>
+                  <span className="font-bold">0.46</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Training</span>
-                  <span>23.7 min</span>
+                  <span className="text-muted-foreground">Training Time</span>
+                  <span>44.1 min</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Multi-hop</span>
-                  <span className="text-red-500">✗</span>
+                  <span className="text-muted-foreground">Evaluation</span>
+                  <span className="text-muted-foreground">Accuracy pending</span>
                 </div>
               </div>
             </Card>
@@ -311,16 +311,16 @@ export default function MethodologyPage() {
               <h4 className="font-semibold mb-3">Optimized Fine-tuning</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Accuracy</span>
-                  <span className="font-bold">91.2%</span>
+                  <span className="text-muted-foreground">Final Loss</span>
+                  <span className="font-bold">0.75</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Training</span>
-                  <span>108.5 min</span>
+                  <span className="text-muted-foreground">Training Time</span>
+                  <span>33.7 min</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Multi-hop</span>
-                  <span className="text-red-500">✗</span>
+                  <span className="text-muted-foreground">Evaluation</span>
+                  <span className="text-muted-foreground">Accuracy pending</span>
                 </div>
               </div>
             </Card>
@@ -329,12 +329,12 @@ export default function MethodologyPage() {
               <h4 className="font-semibold mb-3">KG-Based System ⭐</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Accuracy</span>
-                  <span className="font-bold text-green-600 dark:text-green-400">94.8%</span>
+                  <span className="text-muted-foreground">Final Loss</span>
+                  <span className="font-bold text-green-600 dark:text-green-400">0.30</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Training</span>
-                  <span>115.3 min</span>
+                  <span className="text-muted-foreground">Training Time</span>
+                  <span>4.2 min</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Multi-hop</span>

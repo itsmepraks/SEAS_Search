@@ -3,20 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react"
 import { TrendingDown, TrendingUp, Database, Layers } from "lucide-react"
 import { motion } from "framer-motion"
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  PieChart as RechartsPie,
-  Pie,
-  Cell,
-} from "recharts"
+import { AreaChart, Area, CartesianGrid, Tooltip, ResponsiveContainer, PieChart as RechartsPie, Pie, Cell } from "recharts"
 
 const trainingLossData = [
   { epoch: 1, loss: 2.45 },
@@ -38,19 +25,11 @@ const categoryDistribution = [
   { name: "Faculty", value: 120, color: "oklch(0.6 0.18 340)" },
 ]
 
-const accuracyByCategory = [
-  { category: "Course ID", accuracy: 95 },
-  { category: "Schedule", accuracy: 89 },
-  { category: "Prerequisites", accuracy: 92 },
-  { category: "Faculty", accuracy: 87 },
-  { category: "Locations", accuracy: 94 },
-]
-
 const metrics = [
-  { label: "Final Loss", value: "0.34", icon: TrendingDown, change: "-86%", positive: true },
-  { label: "Accuracy", value: "91.2%", icon: TrendingUp, change: "+46%", positive: true },
-  { label: "Samples", value: "860", icon: Database, change: null, positive: null },
-  { label: "Epochs", value: "10", icon: Layers, change: null, positive: null },
+  { label: "Best Final Loss", value: "0.30", icon: TrendingDown, change: null, positive: null },
+  { label: "Evaluation Status", value: "Pending", icon: TrendingUp, change: null, positive: null },
+  { label: "Training Samples", value: "2,828", icon: Database, change: null, positive: null },
+  { label: "KG-RAG Samples", value: "200", icon: Layers, change: null, positive: null },
 ]
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -210,49 +189,20 @@ export function Visualizations() {
             </div>
           </motion.div>
 
-          {/* Accuracy by Category */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="rounded-xl border border-border/50 bg-card/50 p-5 lg:col-span-2"
-          >
-            <div className="mb-4">
-              <h3 className="font-medium">Accuracy by Category</h3>
-              <p className="text-xs text-muted-foreground mt-0.5">Model performance across different query types</p>
-            </div>
-            <div className="h-56">
-              {renderChart(
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={accuracyByCategory} layout="vertical" barSize={20}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.25 0.005 260)" horizontal={false} />
-                    <XAxis
-                      type="number"
-                      domain={[0, 100]}
-                      tick={{ fill: "oklch(0.5 0 0)", fontSize: 11 }}
-                      axisLine={false}
-                      tickLine={false}
-                    />
-                    <YAxis
-                      type="category"
-                      dataKey="category"
-                      tick={{ fill: "oklch(0.6 0 0)", fontSize: 12 }}
-                      axisLine={false}
-                      tickLine={false}
-                      width={90}
-                    />
-                    <Tooltip content={<CustomTooltip />} formatter={(value) => [`${value}%`, "Accuracy"]} />
-                    <Bar
-                      dataKey="accuracy"
-                      fill="oklch(0.65 0.15 250)"
-                      radius={[0, 6, 6, 0]}
-                      background={{ fill: "oklch(0.2 0.005 260)", radius: 6 }}
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
-              )}
-            </div>
-          </motion.div>
+        {/* Evaluation placeholder */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="rounded-xl border border-border/50 bg-card/50 p-5 lg:col-span-2 flex flex-col items-center justify-center text-center"
+        >
+          <Layers className="h-10 w-10 text-muted-foreground/60 mb-3" />
+          <h3 className="font-medium mb-1">Evaluation Pending</h3>
+          <p className="text-sm text-muted-foreground max-w-md">
+            Quantitative accuracy metrics will be added after the current evaluation pass. Until then, the charts above
+            focus on training dynamics and data composition reflected in <code>public/data</code>.
+          </p>
+        </motion.div>
         </div>
 
         {/* Coming soon placeholder */}

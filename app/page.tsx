@@ -11,7 +11,7 @@ const statsData = [
   { label: "Bulletin Courses", value: "187", subtext: "CSCI & DATS" },
   { label: "Schedule Instances", value: "586", subtext: "Spring 2026" },
   { label: "Training Samples", value: "2,828", subtext: "Q&A pairs" },
-  { label: "Final Accuracy", value: "94.8%", subtext: "KG-based model" },
+  { label: "Evaluation Status", value: "Pending", subtext: "Accuracy under review" },
 ]
 
 const explorationCards = [

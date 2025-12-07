@@ -1,262 +1,73 @@
-# SEAS Search - GWU Course Search System
+# SEAS Search - Repository Guide
 
-A fine-tuned LLM-based question-answering system for GWU Computer Science courses, providing information about course schedules, instructors, descriptions, and availability for Spring 2026.
+**Live site:** https://seas-search.vercel.app/
 
-## Overview
+This repo contains the full pipeline for the GWU SEAS course-search project: notebooks, datasets, exported JSON used by the frontend, and the Next.js showcase. The frontend itself is an interactive project report that reads static JSON exports, renders methodology/results/architecture, and provides a data explorer plus chat demo. Use the map below to jump directly to the artifacts you need.
 
-This project fine-tunes Llama 3.1 8B to answer questions about GWU Computer Science courses by combining:
-- **Real-time schedule data** from GWU's course schedule system
-- **Course descriptions** from the GWU Bulletin
-- **Fine-tuned language model** for natural language understanding
+## Where Things Live
 
-## Project Structure
+| Type | Path | Notes |
+|------|------|-------|
+| **Notebooks** | `notebooks/` | Each `.ipynb` file is the canonical experiment record. The folder also includes `README.md` summarizing status per notebook. |
+| **Raw & Prepared Data** | `data/` | CSVs scraped from GW systems plus JSONL training datasets (`course_finetune*.jsonl`). Edit these before re-exporting to the app. |
+| **Frontend Data Exports** | `public/data/` | Everything the Next.js site renders: merged training metrics, comparison tables, KG JSON, prerequisite/topic/instructor maps, and synced copies of the JSONL/CSV files. |
+| **Model + Frontend Code** | `app/`, `components/`, `lib/`, `styles/` | Next.js App Router UI, Recharts visualizations, data explorer, and shared helpers. |
+| **Utility Scripts** | `utils/` | `scrape_courses.py`, `prepare_dataset.py`, `convert_kg_to_json.py`, and sync helpers that copy `data/` assets into `public/data/`. |
 
-```text
-SEAS_Search/
-├── notebooks/                      # Jupyter notebooks for training
-│   ├── Llama3.1_(8B)-KG-QA-System.ipynb         # Knowledge Graph QA system
-│   ├── Llama3.1_(8B)-finetuning-optimized.ipynb  # Optimized fine-tuning notebook
-│   ├── Llama3.1_(8B)-finetuning.ipynb            # Original fine-tuning notebook
-│   └── Meta_Synthetic_Data_Llama3_2_(3B).ipynb   # Synthetic data generation (optional)
-├── data/                           # Training data
-│   ├── spring_2026_courses.csv      # Course schedule data
-│   ├── bulletin_courses.csv          # Course descriptions
-│   ├── course_finetune.jsonl         # Formatted training dataset (simple Q&A)
-│   └── course_finetune_kg_rag.jsonl  # KG-RAG training dataset (multi-hop)
-├── utils/                          # Data preparation scripts
-│   ├── scrape_courses.py           # Scrapes schedule + bulletin data
-│   ├── prepare_dataset.py          # Converts CSV to training format
-│   └── convert_kg_to_json.py       # Converts KG pickle to JSON for frontend
-├── app/                            # Next.js app directory
-├── components/                     # React components
-├── public/                         # Static assets
-│   └── data/                       # Frontend data files (JSON exports)
-└── lib/                            # Utility libraries
-```
+## Notebook Reference
 
-## Notebooks
+| Notebook | Purpose | Key Outputs |
+|----------|---------|-------------|
+| `notebooks/Llama3.1_(8B)-finetuning.ipynb` | Baseline LoRA fine-tuning on 2,828 Q&A pairs. | Produces `lora_model_standard/` (if saved) and `public/data/standard_training_metrics.json`. |
+| `notebooks/Llama3.1_(8B)-finetuning-optimized.ipynb` | Adds train/val split, cosine schedule, early stopping. | Generates `optimized_ft_training_metrics.json`, optional `lora_model_optimized/`. Final merged checkpoint hosted at [itsmepraks/gwcoursesfinetuned](https://huggingface.co/itsmepraks/gwcoursesfinetuned). |
+| `notebooks/Llama3.1_(8B)-KG-QA-System.ipynb` | Builds the knowledge graph, creates multi-hop QA data, and fine-tunes with graph context. | Exports `kg_training_metrics.json`, `knowledge_graph.json`, `course_finetune_kg_rag.jsonl`, derived maps, and pushes the graph-aware checkpoint to [itsmepraks/gwcourses_RAG](https://huggingface.co/itsmepraks/gwcourses_RAG). |
+| `notebooks/Meta_Synthetic_Data_Llama3_2_(3B).ipynb` | Optional synthetic data generation from bulletin text. | Produces intermediate JSONL files under `data/` if you choose to augment datasets. |
 
-### 🧠 `Llama3.1_(8B)-KG-QA-System.ipynb`
+> **Model checkpoints:** When you run any notebook in Colab, models save locally (e.g., `lora_model_kg_qa/`, `merged_model_kg_qa/`). Upload them to cloud storage manually if you want to keep them—git ignores those directories.
 
-**Purpose:** Knowledge Graph Question Answering system with multi-hop reasoning
+## Data & Exported JSON
 
-**Features:**
-- Knowledge graph construction from course data (courses, professors, topics, prerequisites)
-- Automated prerequisite and topic extraction from descriptions
-- Graph Attention Network (GAT) framework for graph retrieval
-- Multi-hop reasoning question generation
-- Retrieval-Augmented Generation (RAG) training format
-- Comprehensive evaluation metrics (EM, F1, BLEU, ROUGE)
-- End-to-end inference pipeline with graph retrieval
+1. **Raw CSVs (`data/`):**
+   - `spring_2026_courses.csv` – schedule instances (586 rows).
+   - `bulletin_courses.csv` – CSCI/DATS bulletin entries (187 rows).
 
-**Usage:**
-1. Ensure CSV data files exist (`spring_2026_courses.csv`, `bulletin_courses.csv`)
-2. Run all cells sequentially - the notebook builds the graph and generates training data
-3. Model saves to `lora_model_kg_qa/` and knowledge graph to `kg_graph.pkl`
+2. **Training JSONL (`data/`):**
+   - `course_finetune.jsonl` – 2,828 single-hop Q&A pairs.
+   - `course_finetune_kg_rag.jsonl` – 200 multi-hop examples emitted by the KG notebook.
 
-**Best for:** Complex queries requiring multi-hop reasoning like "Which courses should I take to prepare for X if I've completed Y?"
+3. **Frontend JSON (`public/data/`):**
+   - `training_metrics.json` – merged standard, optimized, and KG metrics.
+   - `model_comparison.json` – hyperparameters + summary stats for the Results tab.
+   - `knowledge_graph.json`, `topics_map.json`, `prerequisites_map.json`, `instructors_map.json` – NetworkX exports consumed by the visualization and data explorer.
+   - Synced copies of the CSV/JSONL files so the UI can render raw data tables without a backend.
 
-### 🎯 `Llama3.1_(8B)-finetuning-optimized.ipynb`
+Run `python utils/sync_data_to_public.py` after regenerating anything in `data/` to keep `public/data/` aligned.
 
-**Purpose:** Optimized fine-tuning with best practices for simple Q&A
+## Frontend & API
 
-**Features:**
-- Train/Validation split (80/20) to prevent overfitting
-- Early stopping based on validation loss
-- Optimized hyperparameters (cosine annealing, lower learning rate)
-- Evaluation metrics and checkpointing
-- Improved inference with proper stopping criteria
+- **Next.js App Router:** `app/` contains all routes (`/results`, `/knowledge-graph`, `/methodology`, etc.). The UI acts as an interactive project report: it visualizes metrics, shows the knowledge graph, walks through methodology/architecture, and embeds the chat interface—everything runs client-side over the static JSON snapshots.
+- **Data Explorer:** `components/data-explorer.tsx` fetches the JSONL/CSV files, so make sure they exist locally before running `pnpm dev`.
+- **Chat API:** `app/api/chat/route.ts` proxies either a Hugging Face Inference Endpoint or a Gradio Space; configure `HF_SPACE_ID` or `HF_MODEL_ENDPOINT` in environment variables to enable live chat.
 
-**Usage:**
-1. Ensure `course_finetune.jsonl` exists (generated by `prepare_dataset.py`)
-2. Run all cells sequentially
-3. Model saves to `lora_model_optimized/` and `merged_model_optimized/`
-
-**Best for:** Simple single-hop questions like "Who teaches X?" or "Tell me about CSCI 1012."
-
-### 📝 `Llama3.1_(8B)-finetuning.ipynb` (Original)
-
-**Purpose:** Basic fine-tuning implementation
-
-**Features:**
-- Simple training loop
-- 3 epochs fixed training
-- Basic inference setup
-
-**Note:** Use the optimized version for better results.
-
-### 🔧 `Meta_Synthetic_Data_Llama3_2_(3B).ipynb` (Optional)
-
-**Purpose:** Generate synthetic Q&A pairs from course bulletin
-
-**Features:**
-- Uses Llama 3.2 3B to generate additional training data
-- Scrapes bulletin descriptions
-- Creates question-answer pairs
-
-**Note:** Currently not required - the main pipeline uses real schedule data.
-
-## Backend/Model
-
-The backend consists of a data collection pipeline, two distinct training approaches, and model inference capabilities. Here's how everything fits together:
-
-### Why Two Approaches?
-
-We started with the **simple fine-tuning approach** (`finetuning-optimized.ipynb`) to get a working baseline. This worked well for straightforward questions like "Who teaches CSCI 1012?" or "When is Machine Learning offered?" However, we quickly discovered its limitations:
-
-**What the Simple Fine-tuning Approach Lacked:**
-- **No relationship understanding**: The model couldn't understand prerequisite chains or course relationships
-- **Single-hop reasoning only**: It could answer questions about individual courses but couldn't traverse relationships between courses
-- **No structured knowledge**: Course information was treated as isolated facts rather than a connected graph
-- **Limited to simple queries**: Complex questions like "Which courses should I take to prepare for computer vision research if I've completed CSCI 6212?" were beyond its capabilities
-
-**Why We Built the Knowledge Graph QA System:**
-Our project goal was to build an intelligent question-answering system with **multi-hop reasoning** capabilities. The simple fine-tuning approach couldn't answer questions that required:
-- Following prerequisite chains (e.g., "What's the path from CSCI 1112 to CSCI 6364?")
-- Finding intersections (e.g., "Which professors teach prerequisites for both X and Y?")
-- Topic-based reasoning (e.g., "What courses cover machine learning and are prerequisites for computer vision courses?")
-
-The **KG-QA System** addresses these limitations by:
-1. **Building a knowledge graph** that captures relationships between courses, professors, topics, and prerequisites
-2. **Using graph retrieval** to find relevant subgraphs for complex queries
-3. **Training with RAG format** that combines graph context with LLM generation
-4. **Generating multi-hop questions** automatically from the graph structure
-
-**When to Use Which:**
-- **Simple Fine-tuning**: Use for production systems that only need to answer basic questions about individual courses. It's faster, simpler, and requires less computational resources.
-- **KG-QA System**: Use when you need to answer complex, multi-hop questions that require understanding relationships and traversing the course graph. This aligns with our research goals of exploring Graph Attention Networks and hybrid retrieval-generation architectures.
-
-### Data Flow
-
-```text
-1. Data Collection
-   └── scrape_courses.py
-       ├── Scrapes GWU course schedule → spring_2026_courses.csv
-       └── Scrapes GWU bulletin → bulletin_courses.csv
-
-2. Data Preparation (Two Paths)
-   
-   Path A: Simple Fine-tuning
-   └── prepare_dataset.py
-       └── Combines CSVs → course_finetune.jsonl
-           └── Used by: finetuning-optimized.ipynb
-   
-   Path B: Knowledge Graph QA
-   └── KG-QA-System.ipynb (reads CSVs directly)
-       ├── Extracts prerequisites & topics
-       ├── Builds knowledge graph
-       ├── Generates multi-hop questions
-       └── Creates course_finetune_kg_rag.jsonl
-
-3. Model Training
-   ├── Simple Fine-tuning: Trains on single-hop Q&A pairs
-   └── KG-QA: Trains with graph context for multi-hop reasoning
-
-4. Inference
-   ├── Simple: Direct question → answer
-   └── KG-QA: Query → entity extraction → graph retrieval → LLM generation
-```
-
-### Components
-
-**Data Collection (`utils/scrape_courses.py`)**
-- Scrapes real-time course schedule data from GWU's course system
-- Fetches course descriptions from the GWU Bulletin
-- Outputs structured CSV files with course information, instructors, schedules, and descriptions
-
-**Data Preparation (`utils/prepare_dataset.py`)**
-- Combines schedule and bulletin data
-- Generates simple Q&A pairs (5 variations per course)
-- Creates `course_finetune.jsonl` for basic fine-tuning
-
-**Simple Fine-tuning Approach (`finetuning-optimized.ipynb`)**
-- Loads pre-generated JSONL dataset
-- Fine-tunes Llama 3.1 8B with LoRA (Low-Rank Adaptation)
-- Optimized with train/validation split, early stopping, and better hyperparameters
-- Handles straightforward questions about individual courses
-
-**Knowledge Graph QA Approach (`KG-QA-System.ipynb`)**
-- Reads raw CSV files directly
-- Extracts prerequisite relationships and topics from course descriptions using NLP
-- Constructs a knowledge graph with nodes (courses, professors, topics) and edges (prerequisite, taught_by, covers_topic)
-- Generates complex multi-hop reasoning questions automatically
-- Implements Graph Attention Network (GAT) framework for graph-based retrieval
-- Trains model with Retrieval-Augmented Generation (RAG) format, combining graph context with LLM generation
-- Can answer complex queries like "Which courses should I take to prepare for computer vision research if I've completed CSCI 6212?"
-
-### Key Differences
-
-| Feature | Simple Fine-tuning | Knowledge Graph QA |
-|---------|-------------------|-------------------|
-| **Training Data** | Pre-generated JSONL | Graph-generated during training |
-| **Question Types** | Single-hop (simple Q&A) | Multi-hop (complex reasoning) |
-| **Graph Structure** | None | Full knowledge graph |
-| **Retrieval** | Direct model inference | Graph retrieval + LLM |
-| **Use Case** | "Who teaches X?" | "What's the path from X to Y?" |
-
-### Output Files
-
-After training, you'll find:
-- **Simple Fine-tuning**: `lora_model_optimized/`, `merged_model_optimized/`
-- **KG-QA**: `lora_model_kg_qa/`, `kg_graph.pkl`, `graph_retriever.pkl`
-
-## Quick Start
-
-### 1. Prepare Data
+## Running Locally
 
 ```bash
-# Scrape course data
-python utils/scrape_courses.py
-
-# Generate training dataset
-python utils/prepare_dataset.py
+pnpm install          # install dependencies
+pnpm dev              # start Next.js on http://localhost:3000
+pnpm lint             # run ESLint checks (TypeScript + hooks rules)
+pnpm build && pnpm start   # production build preview
 ```
 
-This creates:
-- `data/spring_2026_courses.csv` - Schedule data
-- `data/bulletin_courses.csv` - Course descriptions  
-- `data/course_finetune.jsonl` - Training dataset
+For data regeneration:
+```bash
+python utils/scrape_courses.py
+python utils/prepare_dataset.py
+python utils/sync_data_to_public.py
+```
+Then re-run the notebooks as needed to refresh training metrics or KG exports.
 
-### 2. Fine-tune Model
+## Deployment & Status
 
-1. Open `notebooks/Llama3.1_(8B)-finetuning-optimized.ipynb`
-2. Run all cells
-3. Model will be saved after training completes
-
-### 3. Test the Model
-
-The notebook includes inference cells that test queries like:
-- "Who Teaches Machine Learning?"
-- "What courses are available on Tuesdays?"
-- "Tell me about CSCI 1012."
-
-## Data Sources
-
-- **Course Schedule:** [GWU Course Schedule](https://my.gwu.edu/mod/pws/courses.cfm?campId=1&termId=202601&subjId=CSCI)
-- **Course Descriptions:** [GWU Bulletin - CSCI](https://bulletin.gwu.edu/courses/csci/)
-
-## Live Demo
-
-🌐 **Deployed Application**: [https://seas-search.vercel.app/](https://seas-search.vercel.app/)
-
-The live demo includes:
-- Interactive knowledge graph visualization
-- Course data exploration
-- Training methodology and results
-- Architecture overview
-- Key learnings and insights
-
-## Current Status
-
-- ✅ Data scraping pipeline (schedule + bulletin)
-- ✅ Dataset preparation and formatting
-- ✅ Fine-tuning implementation (original + optimized)
-- ✅ Knowledge Graph QA system with multi-hop reasoning
-- ✅ Model inference and testing
-- ✅ Frontend integration and deployment
-
-## Team
-
-Anurag Dhungana and Prakriti Bista
-
-Last updated: December 2025
+- **Live site:** https://seas-search.vercel.app/ (served from the `public/data` JSON snapshots).
+- **Team:** Anurag Dhungana · Prakriti Bista  
+- **Last major update:** December 2025 

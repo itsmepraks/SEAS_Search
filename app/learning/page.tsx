@@ -11,7 +11,7 @@ const whatWorked = [
   {
     title: "Knowledge Graphs for Structured Data",
     insight: "Graph representation dramatically improved multi-hop reasoning compared to unstructured text fine-tuning",
-    impact: "+7.3% accuracy gain, enabled prerequisite chain queries",
+    impact: "Lower loss and better prerequisite-chain answers (accuracy pending)",
   },
   {
     title: "Validation & Early Stopping",
@@ -21,7 +21,7 @@ const whatWorked = [
   {
     title: "Higher LoRA Rank",
     insight: "Increasing LoRA rank from 16 to 32 provided better model capacity for complex relationships",
-    impact: "Improved accuracy without significantly increasing training time",
+    impact: "Improved generalization without significantly increasing training time",
   },
   {
     title: "Cosine Annealing Schedule",
@@ -43,8 +43,8 @@ const whatDidntWork = [
   },
   {
     title: "Standard Fine-tuning for Multi-hop Queries",
-    reason: "Despite 87.5% accuracy, model couldn't answer 'What prerequisites lead to CSCI 6364?'",
-    lesson: "High accuracy on simple Q&A doesn't guarantee complex reasoning abilities",
+    reason: "Even with low training loss, the model couldn't answer 'What prerequisites lead to CSCI 6364?'",
+    lesson: "Loss alone doesn't guarantee complex reasoning abilities",
   },
   {
     title: "Text-only Prerequisite Understanding",

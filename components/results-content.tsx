@@ -167,7 +167,9 @@ export function ResultsContent() {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-muted-foreground">Accuracy</span>
-                      <span className="text-lg font-bold">{approach.accuracy}%</span>
+                      <span className="text-lg font-bold">
+                        {approach.accuracy > 0 ? `${approach.accuracy}%` : "Pending"}
+                      </span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-muted-foreground">Final Loss</span>
@@ -363,7 +365,9 @@ export function ResultsContent() {
                         )}
                         <div className="flex items-center justify-between">
                           <span className="text-muted-foreground">Accuracy</span>
-                          <span className="font-semibold">{approach.accuracy}%</span>
+                      <span className="font-semibold">
+                        {approach.accuracy > 0 ? `${approach.accuracy}%` : "Pending"}
+                      </span>
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="text-muted-foreground">Training Time</span>
