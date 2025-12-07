@@ -23,6 +23,8 @@ This repo contains the full pipeline for the GWU SEAS course-search project: not
 | `notebooks/Llama3.1_(8B)-KG-QA-System.ipynb` | Builds the knowledge graph, creates multi-hop QA data, and fine-tunes with graph context. | Exports `kg_training_metrics.json`, `knowledge_graph.json`, `course_finetune_kg_rag.jsonl`, derived maps, and pushes the graph-aware checkpoint to [itsmepraks/gwcourses_RAG](https://huggingface.co/itsmepraks/gwcourses_RAG). |
 | `notebooks/Meta_Synthetic_Data_Llama3_2_(3B).ipynb` | Optional synthetic data generation from bulletin text. | Produces intermediate JSONL files under `data/` if you choose to augment datasets. |
 
+> **GitHub rendering note:** GitHub’s nbviewer currently throws “Invalid Notebook – the `state` key is missing from `metadata.widgets`” (nbformat 5.10.4 / nbconvert 7.16.6). That metadata comes from Colab’s widget state and is harmless; clone the repo to open the notebooks locally (VS Code/Jupyter) or upload them to Google Colab where they render correctly.
+
 > **Model checkpoints:** When you run any notebook in Colab, models save locally (e.g., `lora_model_kg_qa/`, `merged_model_kg_qa/`). Upload them to cloud storage manually if you want to keep them—git ignores those directories.
 
 ## Data & Exported JSON

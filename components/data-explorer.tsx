@@ -79,6 +79,15 @@ function parseCSV(text: string): { headers: string[], rows: CSVRow[] } {
   }
 }
 
+function pickSample<T>(data: T[], size: number): T[] {
+  if (data.length <= size) return data
+  const indices = new Set<number>()
+  while (indices.size < size) {
+    indices.add(Math.floor(Math.random() * data.length))
+  }
+  return Array.from(indices).map((index) => data[index])
+}
+
 export function DataExplorer() {
   const [activeTab, setActiveTab] = useState<"standard" | "kg" | "schedule" | "bulletin">("standard")
   const [standardData, setStandardData] = useState<StandardTrainingItem[]>([])
@@ -177,8 +186,9 @@ export function DataExplorer() {
 
   const currentData = activeTab === "standard" ? standardData : activeTab === "kg" ? kgData : activeTab === "schedule" ? scheduleData : bulletinData
   const currentColumns = activeTab === "schedule" ? scheduleColumns : activeTab === "bulletin" ? bulletinColumns : []
+  const isCSVTab = activeTab === "schedule" || activeTab === "bulletin"
 
-  const filteredData = (activeTab === "schedule" || activeTab === "bulletin")
+  const filteredData = isCSVTab
     ? (currentData as CSVRow[]).filter((row) => {
         if (!searchQuery) return true
         const searchLower = searchQuery.toLowerCase()
@@ -205,6 +215,9 @@ export function DataExplorer() {
           ))
         )
       })
+
+  const displayLimit = isCSVTab ? 100 : 50
+  const displayedData = pickSample(filteredData, displayLimit)
 
   const copyToClipboard = async (text: string, id: string) => {
     await navigator.clipboard.writeText(text)
@@ -349,7 +362,7 @@ export function DataExplorer() {
             />
           </div>
           <p className="text-xs text-muted-foreground mt-2">
-            Found {filteredData.length} of {currentData.length} {activeTab === "schedule" || activeTab === "bulletin" ? "records" : "samples"}
+            Found {filteredData.length} of {currentData.length} {isCSVTab ? "records" : "samples"}
           </p>
         </motion.div>
 
@@ -389,9 +402,9 @@ export function DataExplorer() {
               </div>
             ) : filteredData.length === 0 ? (
               <div className="text-center py-12 text-muted-foreground">
-                No {activeTab === "schedule" || activeTab === "bulletin" ? "records" : "samples"} match your search
+                No {isCSVTab ? "records" : "samples"} match your search
               </div>
-            ) : (activeTab === "schedule" || activeTab === "bulletin") ? (
+            ) : isCSVTab ? (
               // CSV Table View
               <Card className="overflow-hidden">
                 <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
@@ -406,7 +419,7 @@ export function DataExplorer() {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {filteredData.slice(0, 100).map((row, index) => (
+                      {(displayedData as CSVRow[]).map((row, index) => (
                         <TableRow key={index}>
                           {currentColumns.map((col) => (
                             <TableCell key={col} className="max-w-[200px] truncate">
@@ -418,15 +431,15 @@ export function DataExplorer() {
                     </TableBody>
                   </Table>
                 </div>
-                {filteredData.length > 100 && (
+                {filteredData.length > displayLimit && (
                   <div className="p-4 border-t text-center text-sm text-muted-foreground">
-                    Showing first 100 of {filteredData.length} records. Use search to filter.
+                    Showing {displayLimit} random records out of {filteredData.length}. Use search to filter.
                   </div>
                 )}
               </Card>
             ) : (
               // JSONL Card View
-              filteredData.slice(0, 50).map((item, index) => {
+              (displayedData as (StandardTrainingItem | KGTrainingItem)[]).map((item, index) => {
                 const userMessage = item.messages.find(m => m.role === "user")
                 const assistantMessage = item.messages.find(m => m.role === "assistant")
                 const kgItem = item as KGTrainingItem
@@ -611,9 +624,9 @@ export function DataExplorer() {
             )}
           </AnimatePresence>
 
-          {!loading && filteredData.length > 50 && (
+          {!loading && filteredData.length > displayLimit && (
             <p className="text-center text-sm text-muted-foreground py-4">
-              Showing first 50 of {filteredData.length} samples. Use search to find specific items.
+              Showing {displayLimit} random samples out of {filteredData.length}. Use search to find specific items.
             </p>
           )}
         </div>

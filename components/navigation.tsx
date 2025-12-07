@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Home, Network, Database, FileText, BarChart3, GraduationCap, Layers, Lightbulb, MessageCircle } from "lucide-react"
+import { Home, Network, Database, FileText, BarChart3, GraduationCap, Layers, MessageCircle } from "lucide-react"
 import { motion } from "framer-motion"
 
 const navItems = [
@@ -13,7 +13,6 @@ const navItems = [
   { href: "/methodology", label: "Method", icon: FileText },
   { href: "/architecture", label: "Arch", icon: Layers },
   { href: "/results", label: "Results", icon: BarChart3 },
-  { href: "/learning", label: "Learning", icon: Lightbulb },
   { href: "/chat", label: "Chat", icon: MessageCircle },
 ]
 
